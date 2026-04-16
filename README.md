@@ -21,7 +21,7 @@ Follow these steps to get Encrava running on your local machine.
 ## 📁 1. Clone the repository
 
 ```bash
-git clone https://github.com/Kileyydev/Encrava-Consulting-Firm
+git clone https://github.com/Kileyydev/Encrava
 
 Then navigate into the project folder:
 
