@@ -13,21 +13,22 @@ import {
 
 export default function ServicesSection() {
   return (
-    <section className="w-full py-4 bg-white flex justify-center">
+    <section className="w-full py-8 bg-white flex justify-center">
 
       <div className="max-w-6xl px-6 w-full">
 
-        {/* TITLE (tight spacing like before) */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Services
-        </h2>
+        {/* TITLE */}
+        <div className="title-wrap">
+          <h2>Services</h2>
+          <div className="underline" />
+        </div>
 
         {/* MAIN CARD */}
-        <div className="mt-4 services-card">
+        <div className="mt-6 services-card">
 
           <div className="grid grid-cols-1 md:grid-cols-4 relative">
 
-            {/* GREEN PIPES (TALLER + MATCHING STYLE) */}
+            {/* GREEN PIPES */}
             <div className="pipe pipe-1" />
             <div className="pipe pipe-2" />
             <div className="pipe pipe-3" />
@@ -85,18 +86,42 @@ export default function ServicesSection() {
 
       {/* STYLES */}
       <style jsx>{`
+
+        /* 🔥 TITLE SYSTEM (REUSABLE STYLE NOW) */
+        .title-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .title-wrap h2 {
+          font-size: 32px;
+          font-weight: 600;
+          color: black;
+        }
+
+        .underline {
+          width: 80px;
+          height: 5px;
+
+          background: #14532d; /* DARK GREEN */
+
+          margin-top: 10px;
+
+          border-radius: 999px;
+        }
+
+        /* CARD */
         .services-card {
           background: white;
 
-          /* SAME BORDER STYLE AS WHY CHOOSE ENCRAVA */
           border: 2px solid rgba(0,0,0,0.12);
 
           border-radius: 30px 30px 0 0;
 
-          /* STRONGER, CLEANER SHADOW */
           box-shadow: 0 20px 55px rgba(0, 0, 0, 0.10);
 
-          padding: 26px;
+          padding: 28px;
 
           position: relative;
         }
@@ -127,29 +152,37 @@ export default function ServicesSection() {
           color: rgba(0,0,0,0.7);
 
           margin-top: 8px;
+
           display: flex;
           align-items: center;
           gap: 6px;
         }
 
-        /* 🔥 TALLER GREEN PIPES (MORE VISUAL PRESENCE) */
+        /* 🔥 PIPES (TALL + GLOWY) */
         .pipe {
           position: absolute;
 
-          /* increased height (your request) */
-          top: 10%;
-          bottom: 10%;
+          top: 8%;
+          bottom: 8%;
 
           width: 2px;
 
           background: #7BE09C;
 
-          box-shadow: 0 0 14px rgba(123, 224, 156, 0.65);
+          box-shadow: 0 0 18px rgba(123, 224, 156, 0.7);
         }
 
         .pipe-1 { left: 25%; }
         .pipe-2 { left: 50%; }
         .pipe-3 { left: 75%; }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+          .pipe {
+            display: none;
+          }
+        }
+
       `}</style>
 
     </section>

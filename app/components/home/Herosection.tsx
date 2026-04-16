@@ -2,21 +2,21 @@
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-white shadow-inner">
+    <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-white shadow-inner">
 
       {/* ================= BACKGROUND ================= */}
       <div className="absolute inset-0">
 
-        {/* GREEN GLOW ORBS (with shadow feel) */}
-        <div className="absolute top-[-180px] left-[-180px] w-[600px] h-[600px] bg-[#7BE09C]/30 rounded-full blur-3xl shadow-2xl animate-pulse" />
-        <div className="absolute bottom-[-180px] right-[-180px] w-[600px] h-[600px] bg-black/10 rounded-full blur-3xl shadow-2xl animate-pulse" />
+        {/* GLOW ORBS */}
+        <div className="absolute -top-50 -left-50 w-162.5 h-162.5 bg-[#7BE09C]/30 rounded-full blur-3xl shadow-2xl animate-pulse" />
+        <div className="absolute -bottom-50 -right-50 w-162.5 h-162.5 bg-black/10 rounded-full blur-3xl shadow-2xl animate-pulse" />
 
         {/* GRID */}
         <div className="grid-overlay" />
 
         {/* FLOATING NODES */}
         <div className="nodes">
-          {Array.from({ length: 22 }).map((_, i) => (
+          {Array.from({ length: 18 }).map((_, i) => (
             <span key={i} className="node" />
           ))}
         </div>
@@ -26,23 +26,30 @@ export default function HeroSection() {
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 max-w-5xl px-6 text-center">
 
-        <h1 className="text-4xl md:text-6xl font-semibold text-black leading-tight drop-shadow-sm">
+        {/* HEADLINE */}
+        <h1 className="hero-title">
           Africa’s Cyber Threats Are Unique. <br />
           So Is Our Protection.
         </h1>
 
-        <p className="mt-6 text-black/70 text-[15px] md:text-lg max-w-3xl mx-auto drop-shadow-sm">
-          Encrava delivers expert cybersecurity consulting and AI-powered security products built for the African market —
-          protecting mobile money platforms, fintech innovators, government systems, and enterprises across the continent.
+        {/* 🔥 UNDERLINE ACCENT */}
+        <div className="underline" />
+
+        {/* SUBTEXT */}
+        <p className="hero-sub">
+          Encrava delivers expert cybersecurity consulting and AI-powered security products
+          built for the African market — protecting mobile money platforms, fintech innovators,
+          government systems, and enterprises across the continent.
         </p>
 
-        <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+        {/* CTA */}
+        <div className="cta">
 
-          <button className="px-6 py-3 bg-[#7BE09C] text-black text-sm font-medium shadow-md hover:shadow-lg transition">
+          <button className="primary-btn">
             Book Free Consultation
           </button>
 
-          <button className="px-6 py-3 border border-black/20 text-black text-sm shadow-sm hover:shadow-md transition">
+          <button className="secondary-btn">
             Explore Products
           </button>
 
@@ -52,38 +59,135 @@ export default function HeroSection() {
 
       {/* ================= STYLES ================= */}
       <style jsx>{`
+
+        /* TITLE */
+        .hero-title {
+          font-size: 44px;
+          font-weight: 600;
+          color: black;
+          line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+          .hero-title {
+            font-size: 60px;
+          }
+        }
+
+        /* 🔥 UNDERLINE SYSTEM */
+        .underline {
+          width: 110px;
+          height: 6px;
+
+          background: #1F7A63;
+
+          margin: 16px auto 0 auto;
+
+          border-radius: 999px;
+        }
+
+        /* SUBTEXT */
+        .hero-sub {
+          margin-top: 20px;
+
+          font-size: 15px;
+          color: rgba(0,0,0,0.7);
+
+          max-width: 720px;
+          margin-left: auto;
+          margin-right: auto;
+
+          line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta {
+          margin-top: 28px;
+
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          align-items: center;
+        }
+
+        @media (min-width: 768px) {
+          .cta {
+            flex-direction: row;
+            justify-content: center;
+          }
+        }
+
+        .primary-btn {
+          padding: 12px 22px;
+
+          background: #7BE09C;
+          color: black;
+
+          font-size: 13px;
+          font-weight: 600;
+
+          border-radius: 10px;
+
+          box-shadow: 0 12px 30px rgba(123, 224, 156, 0.4);
+
+          transition: all 0.25s ease;
+        }
+
+        .primary-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 16px 40px rgba(123, 224, 156, 0.5);
+        }
+
+        .secondary-btn {
+          padding: 12px 22px;
+
+          border: 1px solid rgba(0,0,0,0.2);
+
+          font-size: 13px;
+          font-weight: 500;
+
+          border-radius: 10px;
+
+          background: white;
+
+          box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+          transition: all 0.25s ease;
+        }
+
+        .secondary-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+
         /* GRID */
         .grid-overlay {
           position: absolute;
           inset: 0;
 
           background-image:
-            linear-gradient(to right, rgba(0,0,0,0.14) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.14) 1px, transparent 1px);
+            linear-gradient(to right, rgba(0,0,0,0.12) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.12) 1px, transparent 1px);
 
-          background-size: 60px 60px;
+          background-size: 70px 70px;
 
-          opacity: 0.85;
+          opacity: 0.7;
 
-          animation: gridMove 18s linear infinite;
+          animation: gridMove 22s linear infinite;
 
-          box-shadow: inset 0 0 120px rgba(123, 224, 156, 0.18);
+          box-shadow: inset 0 0 140px rgba(123, 224, 156, 0.18);
         }
 
         @keyframes gridMove {
-          0% {
-            transform: translateY(0px);
-          }
-          100% {
-            transform: translateY(80px);
-          }
+          0% { transform: translateY(0px); }
+          100% { transform: translateY(90px); }
         }
 
-        /* NODES (MORE VISIBLE + MORE MOTION) */
+        /* NODES */
         .nodes {
           position: absolute;
           inset: 0;
-          overflow: hidden;
         }
 
         .node {
@@ -92,41 +196,32 @@ export default function HeroSection() {
           height: 10px;
           border-radius: 999px;
 
-          background: rgba(123, 224, 156, 0.95);
-          box-shadow: 0 0 12px rgba(123, 224, 156, 0.6);
+          background: #7BE09C;
 
-          animation: float 6s infinite ease-in-out;
+          box-shadow: 0 0 14px rgba(123, 224, 156, 0.7);
+
+          animation: float 5s infinite ease-in-out;
         }
 
         .node:nth-child(odd) {
           background: rgba(0,0,0,0.2);
-          box-shadow: 0 0 10px rgba(0,0,0,0.15);
+          box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
 
-        /* spread positions */
-        .node:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
-        .node:nth-child(2) { top: 25%; left: 70%; animation-delay: 0.5s; }
-        .node:nth-child(3) { top: 40%; left: 40%; animation-delay: 1s; }
-        .node:nth-child(4) { top: 60%; left: 20%; animation-delay: 1.5s; }
-        .node:nth-child(5) { top: 75%; left: 80%; animation-delay: 2s; }
-        .node:nth-child(6) { top: 50%; left: 60%; animation-delay: 2.5s; }
-        .node:nth-child(7) { top: 30%; left: 30%; animation-delay: 3s; }
-        .node:nth-child(8) { top: 85%; left: 10%; animation-delay: 3.5s; }
+        /* POSITIONS */
+        .node:nth-child(1) { top: 10%; left: 20%; }
+        .node:nth-child(2) { top: 30%; left: 75%; }
+        .node:nth-child(3) { top: 50%; left: 40%; }
+        .node:nth-child(4) { top: 70%; left: 15%; }
+        .node:nth-child(5) { top: 80%; left: 85%; }
+        .node:nth-child(6) { top: 45%; left: 60%; }
 
         @keyframes float {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.4;
-          }
-          50% {
-            transform: translate(25px, -25px) scale(1.4);
-            opacity: 1;
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-            opacity: 0.4;
-          }
+          0% { transform: translate(0,0) scale(1); opacity: 0.5; }
+          50% { transform: translate(30px,-30px) scale(1.5); opacity: 1; }
+          100% { transform: translate(0,0) scale(1); opacity: 0.5; }
         }
+
       `}</style>
 
     </section>

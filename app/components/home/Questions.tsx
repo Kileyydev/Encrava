@@ -46,21 +46,22 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full py-6 bg-white flex justify-center">
+    <section className="section">
 
-      <div className="w-full max-w-6xl px-4 md:px-6">
+      <div className="container">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Encrava Frequently Asked Questions
-        </h2>
+        <div className="title-wrap">
+          <h2 className="title">Frequently Asked Questions</h2>
+          <div className="underline" />
+        </div>
 
-        <p className="text-center text-sm text-black/60 mt-2">
-          Key questions about Encrava Intel, Shield, and cybersecurity operations in Africa.
+        <p className="subtitle">
+          Everything you need to know about Encrava’s cybersecurity solutions in Africa.
         </p>
 
         {/* GRID */}
-        <div className="mt-6 grid md:grid-cols-2 gap-4">
+        <div className="grid">
 
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
@@ -93,15 +94,65 @@ export default function FAQSection() {
 
       </div>
 
-      {/* STYLE */}
       <style jsx>{`
+
+        .section {
+          width: 100%;
+          background: #fff;
+          display: flex;
+          justify-content: center;
+          padding: 20px 0;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1100px;
+          padding: 0 20px;
+        }
+
+        /* TITLE */
+        .title-wrap {
+          text-align: center;
+        }
+
+        .title {
+          font-size: 30px;
+          font-weight: 700;
+          color: black;
+        }
+
+        .underline {
+          width: 140px;
+          height: 4px;
+          background: #14532d;
+          margin: 6px auto 0 auto;
+          border-radius: 10px;
+        }
+
+        .subtitle {
+          text-align: center;
+          font-size: 13px;
+          color: rgba(0,0,0,0.6);
+          margin-top: 8px;
+        }
+
+        /* GRID */
+        .grid {
+          margin-top: 16px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+
+        /* CARD */
         .faq-card {
-          border: 2px solid rgba(123, 224, 156, 0.55);
-          border-radius: 16px;
+          border: 1px solid rgba(0,0,0,0.1);
+          border-radius: 18px;
 
-          box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+          background: #E3EAE5;
 
-          background: white;
+          box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+
           overflow: hidden;
         }
 
@@ -114,7 +165,7 @@ export default function FAQSection() {
           align-items: center;
 
           border: none;
-          background: white;
+          background: transparent;
 
           cursor: pointer;
 
@@ -128,24 +179,32 @@ export default function FAQSection() {
           color: #7BE09C;
         }
 
+        /* ANSWER */
         .answer {
           max-height: 0;
           overflow: hidden;
           transition: all 0.35s ease;
-
           padding: 0 16px;
         }
 
         .answer.open {
-          max-height: 220px;
+          max-height: 240px;
           padding: 0 16px 14px 16px;
         }
 
         .answer p {
           font-size: 12.5px;
-          color: rgba(0,0,0,0.70);
+          color: rgba(0,0,0,0.7);
           line-height: 1.5;
         }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
       `}</style>
 
     </section>

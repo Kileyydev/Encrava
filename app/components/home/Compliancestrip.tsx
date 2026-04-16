@@ -21,7 +21,7 @@ export default function ComplianceStrip() {
   ];
 
   return (
-    <section className="w-full py-8 bg-[#E3EAE5] flex justify-center">
+    <section className="w-full py-8 bg-white flex justify-center">
 
       <div className="max-w-6xl w-full px-6">
 

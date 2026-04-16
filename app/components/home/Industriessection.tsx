@@ -13,6 +13,7 @@ import {
 
 export default function IndustriesSection() {
   const [index, setIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
 
   const groups = [
     [
@@ -32,7 +33,6 @@ export default function IndustriesSection() {
         desc: "Public sector platforms, ministries, county systems, and digital government services.",
       },
     ],
-
     [
       {
         icon: HeartPulse,
@@ -50,7 +50,6 @@ export default function IndustriesSection() {
         desc: "International NGOs, humanitarian orgs, and donor-funded digital systems.",
       },
     ],
-
     [
       {
         icon: Zap,
@@ -61,63 +60,111 @@ export default function IndustriesSection() {
   ];
 
   const next = () => {
+    if (animating) return;
+
+    setAnimating(true);
     setIndex((prev) => (prev + 1) % groups.length);
+
+    setTimeout(() => {
+      setAnimating(false);
+    }, 450);
   };
 
   return (
-    <section className="w-full py-4 bg-white flex justify-center">
+    <section className="section">
+      <div className="container">
 
-      <div className="max-w-6xl px-6 w-full">
-
-        {/* TITLE (tighter spacing) */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Industries We Serve
-        </h2>
+        {/* 🔥 TITLE SYSTEM */}
+        <div className="title-wrap">
+          <h2>Industries We Serve</h2>
+          <div className="underline" />
+        </div>
 
         {/* GRID */}
-        <div className="mt-4 grid md:grid-cols-3 gap-4">
-
+        <div className={`grid ${animating ? "fade" : ""}`}>
           {groups[index].map((item, i) => {
             const Icon = item.icon;
 
             return (
-              <div key={i} className="industry-card">
-
+              <div key={i} className="card">
                 <div className="top">
                   <Icon className="icon" />
                   <h3>{item.title}</h3>
                 </div>
 
                 <p>{item.desc}</p>
-
               </div>
             );
           })}
-
         </div>
 
-        {/* SINGLE DOT NAV */}
-        <div className="dots">
-          <button onClick={next} className="dot">
-            ...
-          </button>
+        {/* DOT CONTROL */}
+        <div className="nav">
+          <button onClick={next} className="dots">...</button>
         </div>
 
       </div>
 
-      {/* STYLES */}
       <style jsx>{`
-        .industry-card {
+
+        .section {
+          width: 100%;
+          background: #E3EAE5;
+          display: flex;
+          justify-content: center;
+          padding: 26px 0;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1100px;
+          padding: 0 20px;
+        }
+
+        /* 🔥 TITLE SYSTEM */
+        .title-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+
+        .title-wrap h2 {
+          font-size: 30px;
+          font-weight: 700;
+          color: black;
+        }
+
+        .underline {
+          width: 85px;
+          height: 5px;
+          background: #14532d;
+          margin-top: 8px;
+          border-radius: 999px;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+          transition: all 0.45s ease;
+        }
+
+        .fade {
+          opacity: 0.6;
+          transform: translateY(6px);
+        }
+
+        .card {
           background: white;
 
-          border: 1px solid rgba(0,0,0,0.10);
+          border: 1px solid rgba(0,0,0,0.12);
 
           border-radius: 30px 30px 0 0;
 
-          box-shadow: 0 14px 35px rgba(0,0,0,0.10);
+          box-shadow: 0 16px 45px rgba(0,0,0,0.10);
 
-          padding: 16px;
-
+          padding: 14px;
           min-height: 140px;
         }
 
@@ -146,24 +193,29 @@ export default function IndustriesSection() {
           line-height: 1.4;
         }
 
-        /* ONLY ONE NAV CONTROL */
-        .dots {
+        .nav {
           display: flex;
           justify-content: flex-end;
           margin-top: 6px;
         }
 
-        .dot {
-          font-size: 26px;
+        .dots {
+          font-size: 30px;
           font-weight: 900;
-          border: none;
-          background: transparent;
-          cursor: pointer;
           color: #7BE09C;
-          letter-spacing: 2px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          letter-spacing: 3px;
         }
-      `}</style>
 
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+      `}</style>
     </section>
   );
 }

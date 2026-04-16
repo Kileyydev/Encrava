@@ -7,44 +7,43 @@ export default function ProductsSection() {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <section className="w-full py-4 bg-white flex justify-center">
+    <section className="section">
 
-      <div className="max-w-6xl px-6 w-full">
+      <div className="container">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-4xl font-semibold text-center text-black">
-          Products
-        </h2>
+        <div className="title-wrap">
+          <h2 className="title">Products</h2>
+          <div className="underline" />
+        </div>
 
         {/* CARD */}
-        <div className="mt-4 product-card">
+        <div className="product-card">
 
           <div className={`inner ${flipped ? "flipped" : ""}`}>
 
-            {/* ================= FRONT ================= */}
+            {/* FRONT */}
             <div className="side front">
 
-              {/* IMAGE (FULL COVER LEFT SIDE) */}
               <div className="image-box">
                 <img src="/images/products/shield.jpg" alt="Encrava Intel" />
               </div>
 
-              {/* CONTENT */}
               <div className="content">
 
-                <div className="title">
+                <div className="title-row">
                   <Radar className="icon" />
                   Encrava Intel
                 </div>
 
                 <p className="lead">
-                  Africa-focused threat intelligence platform for real-time cyber visibility.
+                  Africa-focused threat intelligence platform built for real-time cyber visibility across mobile money, fintech, and government systems.
                 </p>
 
                 <ul>
                   <li>Monitors mobile money fraud networks</li>
                   <li>Tracks SIM-swap & phishing syndicates</li>
-                  <li>Detects leaked credentials from dark web markets</li>
+                  <li>Detects leaked credentials from regional dark web markets</li>
                   <li>Delivers alerts in under 60 seconds</li>
                 </ul>
 
@@ -61,22 +60,20 @@ export default function ProductsSection() {
                 </button>
 
               </div>
-
             </div>
 
-            {/* ================= BACK ================= */}
+            {/* BACK */}
             <div className="side back">
 
-              {/* CONTENT */}
               <div className="content">
 
-                <div className="title">
+                <div className="title-row">
                   <Shield className="icon" />
                   Encrava Shield
                 </div>
 
                 <p className="lead">
-                  AI-powered phishing detection system trained on African attack patterns.
+                  AI-powered phishing detection system trained on African attack patterns including M-Pesa, KRA, and banking impersonation.
                 </p>
 
                 <ul>
@@ -87,7 +84,7 @@ export default function ProductsSection() {
                 </ul>
 
                 <p className="sub">
-                  99.7% accuracy tuned for African cybercrime behavior.
+                  99.7% detection accuracy tuned for African cybercrime behavior.
                 </p>
 
                 <button className="btn">
@@ -100,7 +97,6 @@ export default function ProductsSection() {
 
               </div>
 
-              {/* IMAGE (FULL COVER RIGHT SIDE) */}
               <div className="image-box">
                 <img src="/images/products/shield.jpg" alt="Encrava Shield" />
               </div>
@@ -108,29 +104,64 @@ export default function ProductsSection() {
             </div>
 
           </div>
-
         </div>
 
       </div>
 
-      {/* STYLES */}
       <style jsx>{`
+
+        .section {
+          width: 100%;
+          background: #fff;
+          display: flex;
+          justify-content: center;
+          padding: 20px 0;
+        }
+
+        .container {
+          width: 100%;
+          max-width: 1100px;
+          padding: 0 20px;
+        }
+
+        /* TITLE */
+        .title-wrap {
+          text-align: center;
+          margin-bottom: 12px;
+        }
+
+        .title {
+          font-size: 32px;
+          font-weight: 700;
+          color: black;
+        }
+
+        .underline {
+          width: 120px;
+          height: 4px;
+          background: #14532d;
+          margin: 6px auto 0 auto;
+          border-radius: 10px;
+        }
+
+        /* CARD */
         .product-card {
-          margin-top: 28px;
+          margin-top: 18px;
 
-          border: 2px solid rgba(0,0,0,0.12);
           border-radius: 30px 30px 0 0;
+          border: 1px solid rgba(0,0,0,0.12);
 
-          box-shadow: 0 22px 60px rgba(0,0,0,0.10);
+          background: #E3EAE5;
+
+          box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 
           overflow: hidden;
-
           perspective: 1200px;
         }
 
         .inner {
           position: relative;
-          height: 460px;
+          height: 480px;
 
           transform-style: preserve-3d;
           transition: transform 0.75s ease;
@@ -145,8 +176,8 @@ export default function ProductsSection() {
           inset: 0;
 
           display: flex;
+          align-items: stretch;
           justify-content: space-between;
-          align-items: stretch; /* IMPORTANT FIX */
 
           backface-visibility: hidden;
         }
@@ -155,26 +186,20 @@ export default function ProductsSection() {
           transform: rotateY(180deg);
         }
 
-        /* 🔥 FULL IMAGE SIDE */
+        /* IMAGE */
         .image-box {
           width: 45%;
           height: 100%;
-
           overflow: hidden;
-
-          border-radius: 0;
         }
 
         .image-box img {
           width: 100%;
           height: 100%;
-
-          object-fit: cover; /* KEY FIX */
-          object-position: center;
-
-          filter: brightness(0.95);
+          object-fit: cover;
         }
 
+        /* CONTENT */
         .content {
           width: 55%;
           padding: 28px;
@@ -184,13 +209,13 @@ export default function ProductsSection() {
           gap: 10px;
         }
 
-        .title {
+        .title-row {
           display: flex;
           align-items: center;
           gap: 8px;
 
           font-size: 18px;
-          font-weight: 600;
+          font-weight: 700;
           color: black;
         }
 
@@ -200,18 +225,16 @@ export default function ProductsSection() {
 
         .lead {
           font-size: 13px;
-          font-weight: 500;
           color: rgba(0,0,0,0.75);
         }
 
         ul {
-          margin-top: 6px;
           padding-left: 16px;
         }
 
         li {
           font-size: 12.5px;
-          color: rgba(0,0,0,0.70);
+          color: rgba(0,0,0,0.65);
           margin-top: 6px;
         }
 
@@ -220,6 +243,7 @@ export default function ProductsSection() {
           color: rgba(0,0,0,0.55);
         }
 
+        /* BUTTONS */
         .btn {
           margin-top: 10px;
 
@@ -234,6 +258,7 @@ export default function ProductsSection() {
           font-weight: 600;
 
           cursor: pointer;
+
           display: inline-flex;
           align-items: center;
           gap: 6px;
@@ -252,6 +277,7 @@ export default function ProductsSection() {
           cursor: pointer;
           text-align: left;
         }
+
       `}</style>
 
     </section>

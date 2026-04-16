@@ -11,7 +11,7 @@ import {
 
 export default function EngagementProcess() {
   return (
-    <section className="w-full py-8 bg-white flex justify-center">
+    <section className="w-full py-10 bg-[#ffffff] flex justify-center">
 
       <div className="max-w-6xl px-6 w-full">
 
@@ -104,6 +104,7 @@ export default function EngagementProcess() {
           flex: 1;
 
           background: white;
+
           border: 2px solid rgba(20, 83, 45, 0.25);
           border-radius: 18px;
 
@@ -134,10 +135,10 @@ export default function EngagementProcess() {
           line-height: 1.4;
         }
 
-        /* 🔥 FIXED ARROW CONTAINER */
+        /* ARROW CENTER FIX */
         .arrowWrap {
           display: flex;
-          align-items: center;   /* vertical center */
+          align-items: center;
           justify-content: center;
         }
 

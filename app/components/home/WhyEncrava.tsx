@@ -1,36 +1,32 @@
-'use client';
+"use client";
 
 import { ShieldCheck } from "lucide-react";
 
 export default function WhyChooseEncrava() {
   return (
-    <section className="w-full py-14 bg-white flex justify-center">
+    <section className="w-full py-10 bg-white flex justify-center">
 
       <div className="max-w-6xl px-6 w-full">
 
-        {/* HEADER (ICON + COLORED TITLE) */}
-        <div className="flex flex-col items-center text-center">
-
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="text-[#7BE09C] w-6 h-6" />
-
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#7BE09C]">
-              Why Choose Encrava
-            </h2>
+        {/* TITLE SYSTEM */}
+        <div className="title-wrap">
+          <div className="title-row">
+            <ShieldCheck className="icon-main" />
+            <h2>Why Choose Encrava</h2>
           </div>
-
+          <div className="underline" />
         </div>
 
         {/* CARD */}
-        <div className="mt-8">
+        <div className="mt-6">
 
           <div className="why-card">
 
-            <h3 className="text-xl font-semibold text-black">
+            <h3 className="headline">
               Built for Africa’s Real Threat Landscape
             </h3>
 
-            <p className="mt-4 text-black/70 text-sm leading-relaxed">
+            <p className="desc">
               Encrava is not a foreign vendor retrofitting Western cybersecurity tools.
               We understand the attackers targeting Africa — from M-Pesa fraud syndicates,
               SIM-swap networks, and local phishing campaigns to state-aligned threat actors.
@@ -38,13 +34,13 @@ export default function WhyChooseEncrava() {
             </p>
 
             {/* FEATURES */}
-            <div className="mt-6 grid md:grid-cols-2 gap-6 text-sm">
+            <div className="features">
 
               <div className="feature">
                 <div className="dot" />
                 <div>
-                  <p className="font-semibold text-black">Local Threat Intelligence</p>
-                  <p className="text-black/70">
+                  <p className="title-sm">Local Threat Intelligence</p>
+                  <p className="sub">
                     Tracks African cybercriminal networks and regional attack patterns.
                   </p>
                 </div>
@@ -53,8 +49,8 @@ export default function WhyChooseEncrava() {
               <div className="feature">
                 <div className="dot" />
                 <div>
-                  <p className="font-semibold text-black">Mobile-First Security</p>
-                  <p className="text-black/70">
+                  <p className="title-sm">Mobile-First Security</p>
+                  <p className="sub">
                     Built for M-Pesa, USSD systems, fintech apps, and mobile banking.
                   </p>
                 </div>
@@ -63,8 +59,8 @@ export default function WhyChooseEncrava() {
               <div className="feature">
                 <div className="dot" />
                 <div>
-                  <p className="font-semibold text-black">Regulatory Alignment</p>
-                  <p className="text-black/70">
+                  <p className="title-sm">Regulatory Alignment</p>
+                  <p className="sub">
                     KDPA 2019, CBK guidelines, ODPC requirements, AU frameworks.
                   </p>
                 </div>
@@ -73,8 +69,8 @@ export default function WhyChooseEncrava() {
               <div className="feature">
                 <div className="dot" />
                 <div>
-                  <p className="font-semibold text-black">Affordable Enterprise Security</p>
-                  <p className="text-black/70">
+                  <p className="title-sm">Affordable Enterprise Security</p>
+                  <p className="sub">
                     Built for African budgets without reducing capability.
                   </p>
                 </div>
@@ -88,8 +84,46 @@ export default function WhyChooseEncrava() {
 
       </div>
 
-      {/* STYLE */}
+      {/* STYLES */}
       <style jsx>{`
+
+        /* 🔥 TITLE SYSTEM */
+        .title-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .title-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .title-row h2 {
+          font-size: 32px;
+          font-weight: 600;
+          color: black;
+        }
+
+        .icon-main {
+          color: #7BE09C;
+          width: 22px;
+          height: 22px;
+        }
+
+        .underline {
+          width: 90px;
+          height: 5px;
+
+          background: #14532d;
+
+          margin-top: 10px;
+
+          border-radius: 999px;
+        }
+
+        /* CARD */
         .why-card {
           background: white;
 
@@ -97,14 +131,36 @@ export default function WhyChooseEncrava() {
 
           border-radius: 30px 30px 0 0;
 
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 22px 60px rgba(0, 0, 0, 0.10);
 
-          padding: 36px;
+          padding: 32px;
+        }
+
+        .headline {
+          font-size: 18px;
+          font-weight: 600;
+          color: black;
+        }
+
+        .desc {
+          margin-top: 12px;
+          font-size: 13px;
+          color: rgba(0,0,0,0.7);
+          line-height: 1.6;
+        }
+
+        /* FEATURES GRID */
+        .features {
+          margin-top: 20px;
+
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 18px;
         }
 
         .feature {
           display: flex;
-          gap: 12px;
+          gap: 10px;
           align-items: flex-start;
         }
 
@@ -112,11 +168,35 @@ export default function WhyChooseEncrava() {
           width: 10px;
           height: 10px;
           margin-top: 6px;
+
           border-radius: 999px;
+
           background: #7BE09C;
-          box-shadow: 0 0 10px rgba(123, 224, 156, 0.6);
+
+          box-shadow: 0 0 12px rgba(123, 224, 156, 0.7);
+
           flex-shrink: 0;
         }
+
+        .title-sm {
+          font-size: 13px;
+          font-weight: 600;
+          color: black;
+        }
+
+        .sub {
+          font-size: 12.5px;
+          color: rgba(0,0,0,0.65);
+          margin-top: 4px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+          .features {
+            grid-template-columns: 1fr;
+          }
+        }
+
       `}</style>
 
     </section>
