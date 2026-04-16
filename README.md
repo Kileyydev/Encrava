@@ -1,7 +1,5 @@
 # Encrava
 
-Encrava is a modern web platform designed to deliver secure, scalable, and intelligent digital solutions. It focuses on building trust-driven systems with strong architecture, clean UI/UX, and performance-first engineering.  
-
 This project is built with **Next.js** and **Tailwind CSS**, making it fast, responsive, and easy to extend.
 
 ---
