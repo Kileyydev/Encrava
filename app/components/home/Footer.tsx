@@ -124,13 +124,14 @@ export default function Footer() {
           font-size: 13px;
           font-weight: 700;
           margin-bottom: 8px;
-          color: white;
+          color: black;
         }
 
         a {
           display: block;
           font-size: 12.5px;
           margin-bottom: 5px;
+          color: white;
         }
 
         .item {
