@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   Home,
   Settings,
@@ -50,14 +51,14 @@ export default function TopNavBar() {
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
           {/* LEFT LOGO */}
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-6 h-6 border border-black flex items-center justify-center text-[10px] font-medium">
               E
             </div>
             <span className="text-sm font-medium text-black">
               Encrava
             </span>
-          </div>
+          </Link>
 
           {/* CENTER NAV */}
           <nav className="hidden md:flex items-center gap-8">
@@ -67,14 +68,14 @@ export default function TopNavBar() {
               const Icon = item.icon;
 
               return (
-                <a
+                <Link
                   key={item.name}
-                  href="#"
+                  href={item.href}
                   className="flex items-center gap-2 text-[13px] font-normal text-black hover:opacity-60 transition"
                 >
                   <Icon size={16} />
                   {item.name}
-                </a>
+                </Link>
               );
             })}
 
@@ -90,16 +91,32 @@ export default function TopNavBar() {
               </button>
 
               {productOpen && (
-                <div className="absolute top-9 left-0 bg-#7BE09C border border-black/10 shadow-lg w-44 py-1">
+                <div className="absolute top-9 left-0 bg-white border border-black/10 shadow-lg w-48 py-1 rounded-lg">
 
-                  <a className="block px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20">
-                    Encrava Shield
-                  </a>
-
-                  <a className="block px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20">
-                    Encrava Intel
-                  </a>
-
+                  <Link
+                    href="/products"
+                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20">
+                    onClick={() => setProductOpen(false)}
+                  >
+                    📦 All Products
+                  </Link>
+                  <div className="border-t border-black/10 my-1"></div>
+                  {/* Shield Link */}
+                  <Link
+                    href="/products/shield"
+                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
+                    onClick={() => setProductOpen(false)}
+                  >
+                   🛡️ Encrava Shield
+                  </Link>
+                 {/* Intel Link */}
+                  <Link
+                    href="/products/intel"
+                    className="block px-4 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
+                    onClick={() => setProductOpen(false)}
+                  >
+                    🕵️‍♂️ Encrava Intel
+                  </Link>
                 </div>
               )}
             </div>
@@ -109,23 +126,26 @@ export default function TopNavBar() {
               const Icon = item.icon;
 
               return (
-                <a
+                <Link
                   key={item.name}
-                  href="#"
+                  href={item.href}
                   className="flex items-center gap-2 text-[13px] font-normal text-black hover:opacity-60 transition"
                 >
                   <Icon size={16} />
                   {item.name}
-                </a>
+                </Link>
               );
             })}
 
           </nav>
 
           {/* RIGHT CTA */}
-          <button className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-black bg-[#7BE09C] hover:opacity-80 transition">
+          <Link
+            href="/consultation"
+            className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-black bg-[#7BE09C] hover:opacity-80 transition rounded-full"
+          >
             Book Consultation
-          </button>
+          </Link>
 
           {/* MOBILE TOGGLE */}
           <button
@@ -147,55 +167,71 @@ export default function TopNavBar() {
                 const Icon = item.icon;
 
                 return (
-                  <a
+                  <Link
                     key={item.name}
-                    href="#"
+                    href={item.href}
                     className="flex items-center gap-2 text-[13px] text-black font-normal"
                     onClick={() => setMobileOpen(false)}
                   >
                     <Icon size={16} />
                     {item.name}
-                  </a>
+                  </Link>
                 );
               })}
 
               {/* PRODUCTS */}
               <button
                 onClick={() => setProductOpen(!productOpen)}
-                className="flex items-center gap-2 text-[13px] text-black font-normal"
+                className="flex items-center gap-2 text-[13px] text-black font-normal w-full text-left"
               >
                 <Boxes size={16} />
                 Products
-                <ChevronDown size={14} />
+                <ChevronDown size={14} className={`transition-transform ${productOpen ? "rotate-180" : ""}`} />
               </button>
 
               {productOpen && (
                 <div className="ml-6 flex flex-col gap-2">
-
-                  <a
-                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
-                    onClick={() => setMobileOpen(false)}
+                  <Link
+                    href="/products"
+                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
+                  >
+                    📦 All Products
+                  </Link>
+                    <Link
+                    href="/products/shield"
+                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
                   >
                     Encrava Shield
-                  </a>
-
-                  <a
-                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20"
-                    onClick={() => setMobileOpen(false)}
+                  </Link>
+                  <Link
+                    href="/products/intel"
+                    className="px-3 py-2 text-[13px] text-black hover:bg-[#7BE09C]/20 rounded"
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
                   >
                     Encrava Intel
-                  </a>
-
+                  </Link>
                 </div>
               )}
 
               {/* CTA */}
-              <button
-                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#7BE09C] text-black"
+              <Link
+                href="/consultation"
+                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#7BE09C] text-black text-center rounded-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Book Consultation
-              </button>
+              </Link>
 
             </div>
           </div>
