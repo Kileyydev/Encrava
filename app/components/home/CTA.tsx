@@ -28,9 +28,9 @@ export default function CTASection() {
                 Book a Consultation <ArrowRight size={16} />
               </button>
 
-              <button className="secondary">
+              <Link href="/products/intel" className="secondary">
                 Explore Encrava Intel
-              </button>
+              </Link>
 
             </div>
           </div>
