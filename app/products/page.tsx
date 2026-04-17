@@ -1,6 +1,7 @@
 // app/products/page.tsx
 import Link from "next/link";
 import { Radar, Shield, CheckCircle2, ArrowRight } from "lucide-react";
+import Footer from "../components/home/Footer"; 
 
 export default function ProductsLandingPage() {
   return (
