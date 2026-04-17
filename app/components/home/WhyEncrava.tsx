@@ -116,7 +116,7 @@ export default function WhyChooseEncrava() {
           width: 90px;
           height: 5px;
 
-          background: #14532d;
+          background: #ffe0f0;
 
           margin-top: 10px;
 

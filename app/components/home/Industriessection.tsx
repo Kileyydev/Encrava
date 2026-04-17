@@ -138,7 +138,7 @@ export default function IndustriesSection() {
         .underline {
           width: 85px;
           height: 5px;
-          background: #14532d;
+          background: #ffe0f0;
           margin-top: 8px;
           border-radius: 999px;
         }

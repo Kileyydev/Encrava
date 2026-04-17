@@ -84,7 +84,7 @@ export default function EngagementProcess() {
         .underline {
           width: 120px;
           height: 4px;
-          background: #14532d;
+          background: #ffe0f0;
           margin: 10px auto 18px auto;
           border-radius: 10px;
         }

@@ -140,7 +140,7 @@ export default function ProductsSection() {
         .underline {
           width: 120px;
           height: 4px;
-          background: #14532d;
+          background: #ffe0f0;
           margin: 6px auto 0 auto;
           border-radius: 10px;
         }

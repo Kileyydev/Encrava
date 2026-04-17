@@ -79,7 +79,7 @@ export default function HeroSection() {
           width: 110px;
           height: 6px;
 
-          background: #1F7A63;
+          background: #ffe0f0;
 
           margin: 16px auto 0 auto;
 

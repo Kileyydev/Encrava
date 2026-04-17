@@ -73,7 +73,7 @@ export default function ComplianceStrip() {
         .underline {
           width: 140px;
           height: 4px;
-          background: #14532d; /* dark green */
+          background: #ffe0f0; /* dark green */
           margin: 10px auto 0 auto;
           border-radius: 10px;
           box-shadow: 0 2px 10px rgba(20, 83, 45, 0.25);

@@ -104,7 +104,7 @@ export default function ServicesSection() {
           width: 80px;
           height: 5px;
 
-          background: #14532d; /* DARK GREEN */
+          background: #ffe0f0; /* DARK GREEN */
 
           margin-top: 10px;
 
