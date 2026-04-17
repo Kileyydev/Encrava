@@ -177,7 +177,7 @@ export default function IndustriesSection() {
         .icon {
           width: 18px;
           height: 18px;
-          color: #7BE09C;
+          color: #ffe0f0;
         }
 
         h3 {

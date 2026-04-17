@@ -142,7 +142,7 @@ export default function TopNavBar() {
           {/* RIGHT CTA */}
           <Link
             href="/consultation"
-            className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-black bg-[#7BE09C] hover:opacity-80 transition rounded-full"
+            className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-black bg-[#166b5f] hover:opacity-80 transition rounded-full"
           >
             Book Consultation
           </Link>
