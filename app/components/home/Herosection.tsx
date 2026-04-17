@@ -121,8 +121,8 @@ export default function HeroSection() {
         .primary-btn {
           padding: 12px 22px;
 
-          background: #7BE09C;
-          color: black;
+          background: #166b5f;
+          color: white;
 
           font-size: 13px;
           font-weight: 600;
