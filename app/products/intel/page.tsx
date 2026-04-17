@@ -7,6 +7,8 @@ import TopNavBar from "../components/home/Navbar";
 export default function IntelPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#eef6f0]">
+
+      <TopNavBar />
       
       {/* Back to Products Link */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -168,6 +170,8 @@ export default function IntelPage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

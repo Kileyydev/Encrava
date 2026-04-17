@@ -7,6 +7,8 @@ import TopNavBar from "../components/home/Navbar";
 export default function ProductsLandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#eef6f0]">
+
+      <TopNavBar />
       
       {/* Hero Section */}
       <section className="py-20 text-center">
@@ -167,6 +169,8 @@ export default function ProductsLandingPage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
