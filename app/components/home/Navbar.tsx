@@ -227,7 +227,7 @@ export default function TopNavBar() {
               {/* CTA */}
               <Link
                 href="/consultation"
-                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#7BE09C] text-black text-center rounded-full"
+                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#166b5f] text-black text-center rounded-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Book Consultation
