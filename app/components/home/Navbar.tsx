@@ -20,13 +20,13 @@ export default function TopNavBar() {
 
   // ORDER UPDATED HERE 👇
   const links = [
-    { name: "Home", icon: Home },
-    { name: "Services", icon: Settings },
-    { name: "Resources", icon: BookOpen },
-    { name: "About Us", icon: Info },
-    { name: "Contact Us", icon: Mail },
+    { name: "Home", icon: Home, href: "/" },
+    { name: "Services", icon: Settings, href: "/services" },
+    { name: "Resources", icon: BookOpen, href: "/resources" },
+    { name: "About Us", icon: Info, href: "/about" },
+    { name: "Contact Us", icon: Mail, href: "/contact" },
   ];
-
+  
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
