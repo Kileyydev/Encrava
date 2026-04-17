@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Radar, Shield, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ProductsSection() {
   const [flipped, setFlipped] = useState(false);
@@ -51,9 +52,9 @@ export default function ProductsSection() {
                   Built specifically for African cyber threat environments.
                 </p>
 
-                <button className="btn">
+                <Link href="/products/intel" className="btn">
                   Learn More <ArrowRight size={14} />
-                </button>
+                </Link>
 
                 <button className="switch" onClick={() => setFlipped(true)}>
                   Switch to Shield →
@@ -87,9 +88,9 @@ export default function ProductsSection() {
                   99.7% detection accuracy tuned for African cybercrime behavior.
                 </p>
 
-                <button className="btn">
+                <Link href="/products/shield" className="btn">
                   Learn More <ArrowRight size={14} />
-                </button>
+                </Link>
 
                 <button className="switch" onClick={() => setFlipped(false)}>
                   ← Back to Intel
