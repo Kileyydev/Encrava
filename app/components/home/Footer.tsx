@@ -117,7 +117,7 @@ export default function Footer() {
         .text {
           font-size: 12.5px;
           margin-top: 8px;
-          color: rgba(0,0,0,0.75);
+          color: white;
         }
 
         h4 {

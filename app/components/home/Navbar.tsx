@@ -142,7 +142,7 @@ export default function TopNavBar() {
           {/* RIGHT CTA */}
           <Link
             href="/consultation"
-            className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-black bg-[#166b5f] hover:opacity-80 transition rounded-full"
+            className="hidden md:block px-4 py-1.5 text-[12px] font-medium text-white bg-[#166b5f] hover:opacity-80 transition rounded-full"
           >
             Book Consultation
           </Link>
@@ -150,7 +150,7 @@ export default function TopNavBar() {
           {/* MOBILE TOGGLE */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-black text-xl"
+            className="md:hidden text-white text-xl"
           >
             {mobileOpen ? "−" : "+"}
           </button>
@@ -227,7 +227,7 @@ export default function TopNavBar() {
               {/* CTA */}
               <Link
                 href="/consultation"
-                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#166b5f] text-black text-center rounded-full"
+                className="mt-2 px-4 py-2 text-[12px] font-medium bg-[#166b5f] text-white text-center rounded-full"
                 onClick={() => setMobileOpen(false)}
               >
                 Book Consultation

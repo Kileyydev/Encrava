@@ -248,7 +248,7 @@ export default function ProductsSection() {
         .btn {
           margin-top: 10px;
 
-          background: #7BE09C;
+          background: #ffe0f0;
           color: black;
 
           border: none;
