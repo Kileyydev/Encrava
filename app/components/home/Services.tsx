@@ -149,7 +149,7 @@ export default function ServicesSection() {
 
         .item {
           font-size: 12.5px;
-          color: rgba(0,0,0,0.7);
+          color: #ffe0f0;
 
           margin-top: 8px;
 
