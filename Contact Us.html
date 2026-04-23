@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1c1917;
+      --sand: #f5f0e8;
+      --accent: #b85c2c;
+      --accent-light: #d4784a;
+      --muted: #8a7d72;
+      --border: #e0d8ce;
+      --white: #fdfaf6;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--sand);
+      font-family: 'Lato', sans-serif;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 880px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    /* LEFT */
+    .panel-left {
+      background: var(--ink);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      color: var(--sand);
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+    }
+
+    .heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--white);
+      margin-top: 8px;
+    }
+
+    .heading em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 280px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-top: auto;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .ci-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ci-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent-light);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .ci-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #5f5e5a;
+      margin-bottom: 3px;
+    }
+
+    .ci-value {
+      font-size: 13px;
+      font-weight: 300;
+      color: #d3d1c7;
+    }
+
+    /* RIGHT */
+    .panel-right {
+      background: var(--white);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .form-sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 4px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: 7px 0;
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: #c2b8ae; }
+    input:focus, select:focus, textarea:focus { border-bottom-color: var(--accent); }
+
+    select {
+      cursor: pointer;
+      color: var(--muted);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238a7d72'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 1.25rem;
+    }
+
+    select option { color: var(--ink); }
+
+    textarea { resize: none; min-height: 90px; line-height: 1.75; }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .privacy-note {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn:hover:not(:disabled) { background: var(--accent-light); transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover svg { transform: translateX(3px); }
+
+    .spinner {
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .success-msg {
+      background: #eaf3de;
+      border-left: 2px solid #639922;
+      padding: 10px 14px;
+      border-radius: 2px;
+      font-size: 12px;
+      color: #3b6d11;
+      animation: fadeup 0.4s ease;
+    }
+
+    @keyframes fadeup {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .page { grid-template-columns: 1fr; }
+      .panel-left { padding: 2.5rem 1.75rem; }
+      .panel-right { padding: 2.5rem 1.75rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- LEFT PANEL -->
+    <aside class="panel-left">
+      <div>
+        <p class="eyebrow">ENCRAVA SHIELD     ENCRAVA INTIEL</p>
+        <h1 class="heading">Let's start a<br><em>conversation.</em></h1>
+      </div>
+      <p class="desc">
+        For inquiries fill the form and we'll get back to you in 24 hours.
+      </p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <p class="ci-label">Email</p>
+            <p class="ci-value">Htalo@encrava.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21L8.5 10.5s1.5 3 5 5l1.113-1.724a1 1 0 011.21-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <p class="ci-label">Phone</p>
+            <p class="ci-value">+254 708 848 568</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <p class="ci-label">Location</p>
+            <p class="ci-value">Nairobi, Kenya</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <main class="panel-right">
+      <div>
+        <h2 class="form-title">Reach us Here</h2>
+        <p class="form-sub">Kindly fill all fields</p>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input id="name" type="text" placeholder="..." />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input id="email" type="email" placeholder="..." />
+        </div>
+        <div class="form-group full">
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option value="" disabled selected>Select a topic…</option>
+            <option>General enquiry</option>
+            <option>New project</option>
+            <option>Partnership</option>
+            <option>Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us what's on your mind…"></textarea>
+        </div>
+      </div>
+
+      <div id="success-wrap"></div>
+
+      <div class="form-footer">
+        <p class="privacy-note">We respect your privacy. No information shared will be publicized.</p>
+        <button class="btn" id="submit-btn" disabled>
+          Send message
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const fields = ['name', 'email', 'subject', 'message'];
+    const btn = document.getElementById('submit-btn');
+
+    function checkFields() {
+      const allFilled = fields.every(id => document.getElementById(id).value.trim() !== '');
+      btn.disabled = !allFilled;
+    }
+
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', checkFields);
+      el.addEventListener('change', checkFields);
+    });
+
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      btn.innerHTML = '<div class="spinner"></div> Sending…';
+
+      // Simulate sending — replace this timeout with your real form handler
+      setTimeout(() => {
+        btn.innerHTML = 'Sent ✓';
+        document.getElementById('success-wrap').innerHTML =
+          '<div class="success-msg">Message received! We\'ll be in touch within 24 hours.</div>';
+        fields.forEach(id => {
+          const el = document.getElementById(id);
+          el.value = '';
+          el.disabled = true;
+        });
+      }, 1600);
+    });
+  </script>
+
+</body>
+</html>
