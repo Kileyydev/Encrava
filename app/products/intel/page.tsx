@@ -6,7 +6,7 @@ import TopNavBar from "../../components/home/Navbar";
 
 export default function IntelPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#eef6f0]">
+    <div className="min-h-screen bg-linear-to-br from-[#f0f9ff] to-[#eef6f0]">
 
       <TopNavBar />
       
@@ -25,7 +25,7 @@ export default function IntelPage() {
               <span className="bg-[#ffe0f0] text-[#b34e6b] px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-6">
                 🕵️‍♂️ African Threat Intelligence
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#166b5f] to-[#2b9a7a] bg-clip-text text-transparent mb-6">
+              <h1 className="text-4xl md:text-5xl font-extrabold bg-linear-to-r from-[#166b5f] to-[#2b9a7a] bg-clip-text text-transparent mb-6">
                 African Threats Need African Intelligence
               </h1>
               <p className="text-lg text-[#2f5e53] mb-8 leading-relaxed">
@@ -42,7 +42,7 @@ export default function IntelPage() {
               </div>
               <p className="text-sm text-[#4b5563] mt-4">No credit card required · M-Pesa payment available</p>
             </div>
-            <div className="bg-gradient-to-br from-[#d2eae2] to-[#e0f1ea] rounded-3xl p-8 shadow-xl">
+            <div className="bg-linear-to-br from-[#d2eae2] to-[#e0f1ea] rounded-3xl p-8 shadow-xl">
               <h3 className="text-xl font-bold text-[#1e5a4e] mb-4">🔍 Real-time African Intel</h3>
               <div className="space-y-3">
                 {[
@@ -151,7 +151,7 @@ export default function IntelPage() {
             </div>
 
             {/* Right side - Contact form / CTA */}
-            <div className="bg-gradient-to-br from-[#166b5f] to-[#0f5549] rounded-2xl p-8 shadow-xl text-white">
+            <div className="bg-linear-to-br from-[#166b5f] to-[#0f5549] rounded-2xl p-8 shadow-xl text-white">
               <h3 className="text-2xl font-bold mb-4">Get Your Custom Quote</h3>
               <p className="text-white/80 mb-6">Fill in the details and our team will respond within 24 hours with a tailored pricing proposal.</p>
               
