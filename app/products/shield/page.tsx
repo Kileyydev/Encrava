@@ -144,14 +144,13 @@ export default function ShieldPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-[#145c4f] mb-4">Simple, transparent pricing</h2>
-          <p className="text-center text-[#2f5e53] mb-12">Kenya Shillings / USD — NGO & public sector discounts available</p>
+          <p className="text-center text-[#2f5e53] mb-12">USD — NGO & public sector discounts available</p>
           
           <div className="grid md:grid-cols-3 gap-8">
             {/* Msingi Starter */}
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-green-200">
               <div className="bg-[#ffe0f0] inline-block px-3 py-1 rounded-full text-sm font-semibold text-[#b14562] mb-4">Msingi (Starter)</div>
-              <div className="text-3xl font-bold text-[#166b5f]">KES 500<span className="text-sm font-normal">/user/mo</span></div>
-              <div className="text-sm text-gray-500 mb-4">~$4 USD/user/mo</div>
+              <div className="text-2xl font-bold text-[#166b5f]">~$4 USD/user/mo</div>
               <ul className="space-y-2 mb-6">
                 {['Up to 200 users', 'Email link analysis', 'Attachment sandboxing', 'African brand watchlist', 'Email quarantine'].map(item => (
                   <li key={item} className="flex items-center gap-2 text-sm"><CheckCircle2 className="w-4 h-4 text-[#166b5f]" />{item}</li>
@@ -164,8 +163,7 @@ export default function ShieldPage() {
             <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-[#ffb3c6] relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#166b5f] text-white px-4 py-1 rounded-full text-xs font-bold">Most Popular</div>
               <div className="bg-[#166b5f] inline-block px-3 py-1 rounded-full text-sm font-semibold text-white mb-4 mt-2">Biashara (Business)</div>
-              <div className="text-3xl font-bold text-[#166b5f]">KES 900<span className="text-sm font-normal">/user/mo</span></div>
-              <div className="text-sm text-gray-500 mb-4">~$7 USD/user/mo</div>
+              <div className="text-2xl font-bold text-[#166b5f]">~$7 USD/user/mo</div>
               <ul className="space-y-2 mb-6">
                 {['Unlimited users', 'Kiswahili NLP engine', 'BEC detection', 'Auto-remediation & SIEM', 'Priority support + API'].map(item => (
                   <li key={item} className="flex items-center gap-2 text-sm"><CheckCircle2 className="w-4 h-4 text-[#166b5f]" />{item}</li>
