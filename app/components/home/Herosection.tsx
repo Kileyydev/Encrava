@@ -2,7 +2,7 @@
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] flex items-center justify-center overflow-visible bg-black">
+    <section className="relative min-h-[98vh] flex items-center justify-center overflow-visible bg-black">
 
       {/* ================= BACKGROUND ================= */}
       <div className="absolute inset-0">
