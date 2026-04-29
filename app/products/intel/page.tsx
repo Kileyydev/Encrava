@@ -1,6 +1,6 @@
 // app/products/intel/page.tsx
 import Link from "next/link";
-import { Radar, CheckCircle2, Zap, Globe, Shield, Bell, Database, BarChart3, Lock, ArrowLeft } from "lucide-react";
+import { Radar, CheckCircle2, Zap, Globe, Shield, Bell, Database, BarChart3, Lock, ArrowLeft, Mail, Phone } from "lucide-react";
 import Footer from "../../components/home/Footer"; 
 import TopNavBar from "../../components/home/Navbar"; 
 
