@@ -118,18 +118,127 @@ export default function IntelPage() {
       </section>
 
       {/* Pricing Section */}
-      <section>
-    <h2>Pricing</h2>
-    <div class="pricing-consult">
-      <h3>📞 Custom Pricing for Your Organisation</h3>
-      <p>Every organisation has unique needs. Contact our team for a tailored quote based on your user count, deployment preference, and required features.</p>
-      <a href="#" class="btn-primary" style="background: #b1536e;">Contact Sales for Pricing →</a>
-      <p style="margin-top: 20px; font-size: 0.85rem;">✨ NGO & public sector discounts available | Annual plans include free months</p>
-    </div>
-          
-    <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#ffb3c6]">
-      <p className="text-sm text-[#2f5e53]">💡 All prices in KES or USD. Annual subscriptions receive two months free. M-Pesa and RTGS bank transfer accepted. NGO and public sector discounts of up to 30% available.</p>
-    </div>
+      <section className="py-16 bg-white/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#145c4f] mb-4">Custom Pricing for Every Organisation</h2>
+            <p className="text-lg text-[#2f5e53] max-w-2xl mx-auto">
+              We understand that every organisation has unique needs. Get a personalised quote tailored to your security requirements, user count, and deployment preferences.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left side - Why custom pricing */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-green-200">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="bg-[#ffe0f0] p-3 rounded-full">
+                  <Shield className="w-6 h-6 text-[#b14562]" />
+                </div>
+                <h3 className="text-xl font-bold text-[#145c4f]">Why custom quotes?</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  '✓ Flexible pricing based on your organisation size and needs',
+                  '✓ Volume discounts for 500+ users or multiple products',
+                  '✓ NGO, faith-based, and public sector special pricing (up to 30% off)',
+                  '✓ On-premises deployment options with custom licensing',
+                  '✓ Annual subscription — get 2 months free',
+                  '✓ M-Pesa, RTGS, and flexible payment terms available'
+                ].map(item => (
+                  <li key={item} className="text-[#2f5e53]">{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Right side - Contact form / CTA */}
+            <div className="bg-gradient-to-br from-[#166b5f] to-[#0f5549] rounded-2xl p-8 shadow-xl text-white">
+              <h3 className="text-2xl font-bold mb-4">Get Your Custom Quote</h3>
+              <p className="text-white/80 mb-6">Fill in the details and our team will respond within 24 hours with a tailored pricing proposal.</p>
+              
+              <form className="space-y-4">
+                <div>
+                  <input 
+                    type="text" 
+                    placeholder="Full name" 
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[#ffb3c6]"
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="email" 
+                    placeholder="Work email" 
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[#ffb3c6]"
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="text" 
+                    placeholder="Organisation name" 
+                    className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[#ffb3c6]"
+                  />
+                </div>
+                <div>
+                  <select className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white focus:outline-none focus:border-[#ffb3c6]">
+                    <option value="" className="text-[#0a2f2a]">Estimated users / seats</option>
+                    <option value="1-50" className="text-[#0a2f2a]">1-50 users</option>
+                    <option value="51-200" className="text-[#0a2f2a]">51-200 users</option>
+                    <option value="201-500" className="text-[#0a2f2a]">201-500 users</option>
+                    <option value="501-1000" className="text-[#0a2f2a]">501-1000 users</option>
+                    <option value="1000+" className="text-[#0a2f2a]">1000+ users</option>
+                  </select>
+                </div>
+                <button className="w-full bg-[#ffb3c6] text-[#0f5549] font-semibold py-3 rounded-xl hover:bg-[#ffc0d0] transition">
+                  Request Quote →
+                </button>
+              </form>
+              
+              <div className="mt-6 pt-6 border-t border-white/20 text-center">
+                <p className="text-sm text-white/70 mb-3">Or contact us directly</p>
+                <div className="flex justify-center gap-6">
+                  <Link href="mailto:sales@encrava.com" className="flex items-center gap-2 text-white/80 hover:text-white text-sm">
+                    <Mail size={16} /> sales@encrava.com
+                  </Link>
+                  <Link href="tel:+254700123456" className="flex items-center gap-2 text-white/80 hover:text-white text-sm">
+                    <Phone size={16} /> +254 700 123 456
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional note */}
+          <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#ffb3c6]">
+            <p className="text-sm text-[#2f5e53]">
+              💡 <span className="font-semibold">Looking for a bundle?</span> Ask about our Encrava Shield + Intel combined package — proactive threat intelligence plus AI-powered email protection at a discounted rate. NGO and public sector discounts of up to 30% available.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Enterprise Features Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#145c4f] mb-4">Everything in Enterprise (Shirika)</h2>
+            <p className="text-[#2f5e53]">Premium features for large organisations and government entities</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: <Database className="w-8 h-8" />, title: "365-day Retention", desc: "Long-term data retention for compliance and historical analysis" },
+              { icon: <Lock className="w-8 h-8" />, title: "On-premises Deployment", desc: "Full data sovereignty with on-prem deployment option" },
+              { icon: <Bell className="w-8 h-8" />, title: "Dedicated Analyst Support", desc: "24/7 access to our threat intelligence analysts" },
+              { icon: <BarChart3 className="w-8 h-8" />, title: "Custom Data Pipelines", desc: "Tailored integrations with your existing security stack" },
+              { icon: <Zap className="w-8 h-8" />, title: "99.9% SLA-backed Uptime", desc: "Enterprise-grade reliability with guaranteed uptime" },
+              { icon: <Globe className="w-8 h-8" />, title: "Multi-tenant Support", desc: "Manage multiple subsidiaries or departments from one console" }
+            ].map(feature => (
+              <div key={feature.title} className="bg-white rounded-2xl p-6 text-center shadow-md border border-green-200 hover:shadow-lg transition">
+                <div className="text-[#166b5f] flex justify-center mb-4">{feature.icon}</div>
+                <h3 className="font-bold text-[#145c4f] mb-2">{feature.title}</h3>
+                <p className="text-sm text-[#2f5e53]">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <Footer />
