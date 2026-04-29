@@ -81,7 +81,7 @@ export default function ProductsSection() {
                   <li>M-Pesa, KRA & bank impersonation detection</li>
                   <li>Business email compromise protection</li>
                   <li>Link & attachment analysis in under 2 seconds</li>
-                  <li>Kiswahili + English phishing detection</li>
+                  <li>English phishing detection</li>
                 </ul>
 
                 <p className="sub">

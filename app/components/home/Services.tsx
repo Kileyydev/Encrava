@@ -40,7 +40,7 @@ export default function ServicesSection() {
     {
       icon: GraduationCap,
       title: "Security Awareness Training",
-      desc: "Employee-focused training in English & Kiswahili covering phishing, social engineering, and fraud prevention.",
+      desc: "Employee-focused training in English covering phishing, social engineering, and fraud prevention.",
     },
   ];
 

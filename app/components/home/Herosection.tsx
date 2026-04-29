@@ -2,7 +2,7 @@
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[98vh] flex items-center justify-center overflow-visible bg-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-visible bg-black">
 
       {/* ================= BACKGROUND ================= */}
       <div className="absolute inset-0">
@@ -11,14 +11,14 @@ export default function HeroSection() {
       </div>
 
       {/* ================= SERVER IMAGE (STATIC + PULLED UP) ================= */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-110px] z-10 pointer-events-none">
+      <div className="absolute left-1/2 -translate-x-1/2 -bottom-27.5 z-10 pointer-events-none">
         
         {/* GREEN BASE GLOW */}
         <div className="bottom-glow" />
 
         <img
           src="/images/herosection/server.png"
-          className="w-[520px] md:w-[820px] lg:w-[980px] opacity-100 scale-105"
+          className="w-130 md:w-205 lg:w-245 opacity-100 scale-105"
         />
       </div>
 

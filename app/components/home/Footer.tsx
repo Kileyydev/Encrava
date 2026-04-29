@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone, MapPin, Shield, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useState } from "react";
 
 export default function Footer() {
@@ -15,10 +15,14 @@ export default function Footer() {
           {/* GRID */}
           <div className="grid">
 
+            {/* BRAND */}
             <div>
               <div className="logo">
-                <Shield size={18} />
-                Encrava
+                <img
+                  src="/images/logos/greenlogo.png"
+                  alt="Encrava Logo"
+                  className="logo-img"
+                />
               </div>
 
               <p className="text">
@@ -27,6 +31,7 @@ export default function Footer() {
               </p>
             </div>
 
+            {/* COMPANY */}
             <div>
               <h4>Company</h4>
               <a>Home</a>
@@ -35,6 +40,7 @@ export default function Footer() {
               <a>About</a>
             </div>
 
+            {/* CONTACT */}
             <div>
               <h4>Contact</h4>
 
@@ -45,7 +51,7 @@ export default function Footer() {
 
           </div>
 
-          {/* DIVIDER (tight) */}
+          {/* DIVIDER */}
           <div className="divider" />
 
           {/* BOTTOM */}
@@ -83,14 +89,12 @@ export default function Footer() {
         </div>
       )}
 
+      {/* ================= STYLES ================= */}
       <style jsx>{`
+
         .footer {
           background: #166B5F;
-
-          /* 🔥 KEY FIX: remove vertical waste */
           padding: 24px 0 18px 0;
-          margin-top: 0;
-
           position: relative;
         }
 
@@ -106,32 +110,41 @@ export default function Footer() {
           gap: 24px;
         }
 
+        /* ================= LOGO ================= */
         .logo {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-weight: 700;
-          font-size: 16px;
+          gap: 10px;
+        }
+
+        .logo-img {
+          height: 98px;
+          width: auto;
+          object-fit: contain;
+          filter: brightness(1.1) contrast(1.05);
         }
 
         .text {
           font-size: 12.5px;
-          margin-top: 8px;
+          margin-top: 10px;
           color: white;
+          opacity: 0.95;
+          line-height: 1.5;
         }
 
         h4 {
           font-size: 13px;
           font-weight: 700;
-          margin-bottom: 8px;
+          margin-bottom: 10px;
           color: black;
         }
 
         a {
           display: block;
           font-size: 12.5px;
-          margin-bottom: 5px;
+          margin-bottom: 6px;
           color: white;
+          cursor: pointer;
         }
 
         .item {
@@ -139,24 +152,23 @@ export default function Footer() {
           align-items: center;
           gap: 8px;
           font-size: 12.5px;
-          margin-bottom: 5px;
+          margin-bottom: 6px;
           color: white;
         }
 
-        /* 🔥 FIX: divider spacing reduced */
         .divider {
           height: 1px;
           background: black;
           margin: 14px 0 8px 0;
+          opacity: 0.4;
         }
 
-        /* 🔥 FIX: bottom spacing reduced */
         .bottom {
           text-align: center;
           font-size: 12px;
-          padding: 0;
           margin: 0;
           color: white;
+          opacity: 0.9;
         }
 
         .floating {
@@ -230,6 +242,7 @@ export default function Footer() {
             grid-template-columns: 1fr;
           }
         }
+
       `}</style>
     </>
   );
