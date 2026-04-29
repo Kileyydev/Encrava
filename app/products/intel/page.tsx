@@ -127,10 +127,10 @@ export default function IntelPage() {
       <p style="margin-top: 20px; font-size: 0.85rem;">✨ NGO & public sector discounts available | Annual plans include free months</p>
     </div>
           
-          <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#ffb3c6]">
-            <p className="text-sm text-[#2f5e53]">💡 All prices in KES or USD. Annual subscriptions receive two months free. M-Pesa and RTGS bank transfer accepted. NGO and public sector discounts of up to 30% available.</p>
-          </div>
-        </section>
+    <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#ffb3c6]">
+      <p className="text-sm text-[#2f5e53]">💡 All prices in KES or USD. Annual subscriptions receive two months free. M-Pesa and RTGS bank transfer accepted. NGO and public sector discounts of up to 30% available.</p>
+    </div>
+      </section>
 
       <Footer />
     </div>
