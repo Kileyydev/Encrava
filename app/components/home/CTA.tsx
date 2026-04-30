@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CTASection() {
   return (
-    <section className="w-full pt-8 pb-0 bg-white flex justify-center">
+    <section className="w-full pt-8 pb-0 bg-[#f3f6f5] flex justify-center">
 
       <div className="w-full max-w-6xl px-4 md:px-6">
 

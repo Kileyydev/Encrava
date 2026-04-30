@@ -98,7 +98,7 @@ export default function FAQSection() {
 
         .section {
           width: 100%;
-          background: #fff;
+          background: #f3f6f5;
           display: flex;
           justify-content: center;
           padding: 20px 0;
@@ -149,7 +149,7 @@ export default function FAQSection() {
           border: 1px solid rgba(0,0,0,0.1);
           border-radius: 18px;
 
-          background: #E3EAE5;
+          background: #fff;
 
           box-shadow: 0 12px 35px rgba(0,0,0,0.08);
 

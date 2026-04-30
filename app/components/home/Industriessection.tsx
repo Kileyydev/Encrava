@@ -109,7 +109,7 @@ export default function IndustriesSection() {
 
         .section {
           width: 100%;
-          background: #fff;
+          background: #f3f6f5;
           display: flex;
           justify-content: center;
           padding: 26px 0;

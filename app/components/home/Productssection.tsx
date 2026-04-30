@@ -113,7 +113,7 @@ export default function ProductsSection() {
 
         .section {
           width: 100%;
-          background: #fff;
+          background: #f3f6f5;
           display: flex;
           justify-content: center;
           padding: 20px 0;

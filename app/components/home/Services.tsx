@@ -45,7 +45,7 @@ export default function ServicesSection() {
   ];
 
   return (
-    <section className="w-full py-10 bg-white flex justify-center">
+    <section className="w-full py-10 bg-[#f3f6f5] flex justify-center">
       <div className="max-w-6xl px-6 w-full">
 
         {/* TITLE */}
