@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Jost } from "next/font/google";
 import "./globals.css";
 
-import EmotionRegistry from "./providers/EmotionRegistry";
-
 const jost = Jost({
   subsets: ["latin"],
   variable: "--font-jost",
@@ -21,10 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${jost.variable} h-full antialiased`}>
-      <body className="min-h-full font-sans">
-        <EmotionRegistry>
-          {children}
-        </EmotionRegistry>
+      <body className="min-h-full font-sans bg-white text-slate-900">
+        {children}
       </body>
     </html>
   );
