@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Box, Container, Typography, Grid, Stack } from "@mui/material";
 import {
   ShieldCheck,
   Activity,
@@ -14,15 +13,15 @@ import {
 const items = [
   {
     slug: "cybersecurity-risk-assessment",
-    icon: <ShieldCheck size={22} />,
+    icon: ShieldCheck,
     title: "Cybersecurity Risk Assessment",
     text: "Deep evaluation of systems aligned with KDPA 2019, ISO 27001, and NIST standards.",
     smear: "/assets/smears/smear1.png",
-    position: "top right",
+    position: "top-right",
   },
   {
     slug: "penetration-testing",
-    icon: <Activity size={22} />,
+    icon: Activity,
     title: "Penetration Testing (VAPT)",
     text: "Real-world attack simulations across web, APIs, mobile, and fintech infrastructure.",
     smear: "/assets/smears/smear3.png",
@@ -30,23 +29,23 @@ const items = [
   },
   {
     slug: "kdpa-compliance-programme",
-    icon: <FileCheck2 size={22} />,
+    icon: FileCheck2,
     title: "KDPA Compliance Programme",
     text: "Full data protection compliance including audits, DPIAs, and ODPC registration support.",
     smear: "/assets/smears/smear1.png",
-    position: "top left",
+    position: "top-left",
   },
   {
     slug: "mobile-fintech-security",
-    icon: <Smartphone size={22} />,
+    icon: Smartphone,
     title: "Mobile & Fintech Security",
     text: "Security for mobile money systems, fintech apps, APIs, and telecom environments.",
     smear: "/assets/smears/smear1.png",
-    position: "bottom right",
+    position: "bottom-right",
   },
   {
     slug: "incident-response-retainer",
-    icon: <AlertTriangle size={22} />,
+    icon: AlertTriangle,
     title: "Incident Response & Retainer",
     text: "24/7 breach response, forensic analysis, containment, and recovery support.",
     smear: "/assets/smears/smear3.png",
@@ -54,194 +53,114 @@ const items = [
   },
   {
     slug: "security-awareness-training",
-    icon: <GraduationCap size={22} />,
+    icon: GraduationCap,
     title: "Security Awareness Training",
     text: "Employee-focused training on phishing, fraud prevention, and cyber hygiene.",
     smear: "/assets/smears/smear1.png",
-    position: "bottom right",
+    position: "bottom-right",
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <Box
-      sx={{
-        backgroundColor: "#fff",
-        py: { xs: 6, md: 10 },
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
+    <section className="w-full bg-white py-16 relative overflow-hidden">
 
       {/* glow */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: -120,
-          left: -100,
-          width: 320,
-          height: 320,
-          background: "rgba(22,107,95,0.08)",
-          filter: "blur(120px)",
-        }}
-      />
+      <div className="absolute -top-24 -left-24 w-[320px] h-80 bg-[#166b5f]/10 blur-[120px]" />
 
-      <Container maxWidth="xl">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-        <Grid container spacing={6}>
+          {/* LEFT TITLE */}
+          <div className="lg:col-span-4">
+            <div className="sticky top-28 space-y-5">
 
-          {/* LEFT = TITLE */}
-          <Grid size={{ xs: 12, lg: 4 }}>
-            <Stack spacing={2.5} sx={{ position: "sticky", top: 110 }}>
-
-              <Typography
-                sx={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.22em",
-                  color: "#166b5f",
-                  textTransform: "uppercase",
-                }}
-              >
+              <p className="text-xs tracking-[0.22em] uppercase font-bold text-[#166b5f]">
                 Encrava Services
-              </Typography>
+              </p>
 
-              <Typography
-                sx={{
-                  fontSize: { xs: "2.3rem", md: "3.6rem" },
-                  fontWeight: 700,
-                  lineHeight: 1.05,
-                  letterSpacing: "-0.04em",
-                  color: "#0f172a",
-                }}
-              >
+              <h2 className="text-[2.3rem] md:text-[3.4rem] font-bold leading-[1.05] text-slate-900">
                 Cybersecurity Built for{" "}
-                <Box component="span" sx={{ color: "#166b5f" }}>
-                  Africa.
-                </Box>
-              </Typography>
+                <span className="text-[#166b5f]">Africa.</span>
+              </h2>
 
-              <Box sx={{ width: 90, height: 4, background: "#166b5f" }} />
+              <div className="w-22.5 h-1 bg-[#166b5f]" />
 
-              <Typography
-                sx={{
-                  fontSize: "0.95rem",
-                  color: "#64748b",
-                  lineHeight: 1.8,
-                  maxWidth: 420,
-                }}
-              >
+              <p className="text-sm md:text-[0.95rem] text-slate-500 leading-7 max-w-md">
                 From penetration testing to compliance and incident response,
                 Encrava delivers security systems tailored for African fintech,
                 government, and enterprise environments.
-              </Typography>
+              </p>
 
-            </Stack>
-          </Grid>
+            </div>
+          </div>
 
-          {/* RIGHT = CARDS */}
-          <Grid size={{ xs: 12, lg: 8 }}>
-            <Grid container spacing={0}>
+          {/* RIGHT CARDS */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
 
-              {items.map((item, i) => (
-                <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={i}>
+              {items.map((item, i) => {
+                const Icon = item.icon;
 
-                  <Box
-                    sx={{
-                      position: "relative",
-                      p: 4,
-                      minHeight: 230,
-                      borderRight: { lg: "1px solid rgba(15,23,42,0.08)" },
-                      borderBottom: "1px solid rgba(15,23,42,0.08)",
-                      overflow: "hidden",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                    }}
+                return (
+                  <div
+                    key={i}
+                    className="relative p-6 min-h-57.5 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
                   >
 
                     {/* smear */}
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        inset: -40,
+                    <div
+                      className="absolute -inset-10 opacity-10 pointer-events-none"
+                      style={{
                         backgroundImage: `url(${item.smear})`,
-                        backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
-                        backgroundPosition: item.position,
-                        opacity: 0.12,
-                        zIndex: 0,
-                        pointerEvents: "none",
+                        backgroundSize: "contain",
+                        backgroundPosition: item.position.replace("-", " "),
                       }}
                     />
 
                     {/* content */}
-                    <Box sx={{ position: "relative", zIndex: 2 }}>
+                    <div className="relative z-10 flex flex-col h-full">
 
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 2,
-                          mb: 1.5,
-                        }}
-                      >
-                        <Box sx={{ color: "#166b5f" }}>
-                          {item.icon}
-                        </Box>
+                      {/* title row */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <Icon className="text-[#166b5f]" size={22} />
 
-                        <Typography
-                          sx={{
-                            fontSize: "1rem",
-                            fontWeight: 700,
-                            color: "#0f172a",
-                          }}
-                        >
+                        <h3 className="text-[1rem] font-semibold text-slate-900 leading-snug">
                           {item.title}
-                        </Typography>
-                      </Box>
+                        </h3>
+                      </div>
 
-                      <Typography
-                        sx={{
-                          fontSize: "0.85rem",
-                          color: "#64748b",
-                          lineHeight: 1.7,
-                        }}
-                      >
+                      {/* text */}
+                      <p className="text-sm text-slate-500 leading-7">
                         {item.text}
-                      </Typography>
+                      </p>
 
-                    </Box>
+                      {/* CTA (same style as your services page) */}
+                      <div className="mt-auto pt-5">
+                        <Link
+                          href={`/services/${item.slug}`}
+                          className="
+                            inline-flex items-center gap-2
+                            text-[#166b5f] text-[12px] font-semibold
+                            underline underline-offset-4
+                            hover:opacity-80 transition
+                          "
+                        >
+                          Learn More
+                        </Link>
+                      </div>
 
-                    {/* CTA */}
-                    <Box sx={{ position: "relative", zIndex: 2, mt: 2 }}>
+                    </div>
+                  </div>
+                );
+              })}
 
-                      <Link
-                        href={`/services/${item.slug}`}
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          color: "#166b5f",
-                          textDecoration: "underline",
-                          textUnderlineOffset: "3px",
-                        }}
-                      >
-                        Learn More
-                      </Link>
+            </div>
+          </div>
 
-                    </Box>
-
-                  </Box>
-
-                </Grid>
-              ))}
-
-            </Grid>
-          </Grid>
-
-        </Grid>
-
-      </Container>
-    </Box>
+        </div>
+      </div>
+    </section>
   );
 }

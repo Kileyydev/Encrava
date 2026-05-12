@@ -93,7 +93,7 @@ export default function Footer() {
       <style jsx>{`
 
         .footer {
-          background: #000;
+          background: #166b5f;
           padding: 24px 0 18px 0;
           position: relative;
         }
@@ -176,7 +176,7 @@ export default function Footer() {
           right: 18px;
           top: -16px;
 
-          background: #166b5f;
+          background: #000;
           color: white;
           border: none;
 

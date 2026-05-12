@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Shield, Radar } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 export default function CTASection() {
@@ -27,7 +26,7 @@ export default function CTASection() {
               built for the continent.
             </p>
 
-            {/* BUTTONS (MATCH HERO STYLE) */}
+            {/* BUTTONS */}
             <div className="buttons">
 
               <button
@@ -93,18 +92,12 @@ export default function CTASection() {
 
         .cta-card {
           background: white;
-
           border: 1px solid rgba(0,0,0,0.08);
-
           box-shadow: 0 25px 70px rgba(0,0,0,0.12);
-
           padding: 36px;
-
           display: flex;
           justify-content: space-between;
           gap: 40px;
-
-          border-radius: 0;
         }
 
         /* LEFT */
@@ -135,7 +128,6 @@ export default function CTASection() {
           flex-wrap: wrap;
         }
 
-        /* 🔥 HERO-STYLE BUTTON */
         .cta-btn {
           display: flex;
           align-items: center;
@@ -146,7 +138,6 @@ export default function CTASection() {
           border-radius: 999px;
 
           background: transparent;
-
           border: 1px solid rgba(0,0,0,0.12);
 
           cursor: pointer;
@@ -166,7 +157,6 @@ export default function CTASection() {
         .cta-btn.active {
           background: #166b5f;
           color: white;
-
           box-shadow: 0 10px 25px rgba(22,107,95,0.25);
         }
 
@@ -181,7 +171,7 @@ export default function CTASection() {
           transform: translateX(0);
         }
 
-        /* RIGHT */
+        /* RIGHT (UPDATED GREEN BADGES 💚) */
         .visual {
           flex: 1;
           display: flex;
@@ -195,18 +185,26 @@ export default function CTASection() {
           align-items: center;
           gap: 10px;
 
-          padding: 12px 14px;
+          padding: 14px 16px;
 
-          border: 1px solid rgba(0,0,0,0.08);
+          background: #166b5f;
+          color: white;
 
-          background: #fff;
+          border-radius: 0;
 
-          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+
+          transition: 0.25s ease;
+        }
+
+        .badge:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 18px 35px rgba(0,0,0,0.15);
         }
 
         .badge .icon {
-          color: #166b5f;
-          opacity: 1;
+          color: white;
+          opacity: 0.9;
           transform: none;
         }
 
