@@ -79,7 +79,7 @@ export default function CTASection() {
 
         .section {
           width: 100%;
-          background: #166b5f;
+          background: #fff;
           display: flex;
           justify-content: center;
           padding: 28px 0 0;
