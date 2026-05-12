@@ -10,14 +10,7 @@ export default function IntelPage() {
 
       <TopNavBar />
       
-      {/* Back to Products Link */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#166b5f] hover:text-[#0f5549] transition">
-          <ArrowLeft size={16} /> Back to Home
-        </Link>
-      </div>
-
-      {/* Hero Section */}
+          {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
