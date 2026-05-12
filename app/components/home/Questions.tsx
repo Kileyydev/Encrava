@@ -17,7 +17,7 @@ export default function FAQSection() {
     },
     {
       q: "What attacks does Encrava Shield protect against?",
-      a: "Shield detects M-Pesa impersonation, KRA scams, bank phishing pages, business email compromise, job scams, and WhatsApp-based phishing attacks.",
+      a: "Shield detects M-Pesa impersonation, KRA scams, bank phishing pages, business email compromise, job scams, WhatsApp phishing, and SMS spoofing attacks.",
     },
     {
       q: "Is Encrava compliant with Kenyan regulations?",
@@ -25,19 +25,35 @@ export default function FAQSection() {
     },
     {
       q: "Can Encrava integrate with existing enterprise systems?",
-      a: "Yes. It integrates with Microsoft 365, Google Workspace, SIEM tools like Splunk and Sentinel, and supports REST API-based custom integrations.",
+      a: "Yes. It integrates with Microsoft 365, Google Workspace, SIEM tools like Splunk and Microsoft Sentinel, and supports REST APIs for custom systems.",
     },
     {
       q: "Does Encrava support SMEs or only large enterprises?",
-      a: "Encrava supports both SMEs and enterprises with scalable pricing tiers designed for African business environments.",
+      a: "Encrava supports both SMEs and enterprises with scalable tiers designed for African business environments.",
     },
     {
       q: "How accurate is Encrava Shield in detecting phishing?",
-      a: "Shield achieves up to 99.7% accuracy on African phishing datasets, including Kiswahili-language and local impersonation campaigns.",
+      a: "Shield achieves up to 99.7% accuracy on African phishing datasets including Kiswahili-language scams and local impersonation campaigns.",
     },
     {
       q: "Does Encrava provide incident response support?",
-      a: "Yes. We offer incident response planning, 24/7 retainer support, and rapid response assistance for active security incidents.",
+      a: "Yes. We offer 24/7 incident response support, breach containment, forensic investigation, and recovery assistance.",
+    },
+    {
+      q: "What is Encrava Intel?",
+      a: "Encrava Intel is a threat intelligence engine that tracks African cybercrime ecosystems including fraud groups, leaked data sources, and active threat actors.",
+    },
+    {
+      q: "What is Encrava Shield?",
+      a: "Encrava Shield is a real-time protection layer that detects and blocks phishing, impersonation, malware links, and fraudulent digital activity.",
+    },
+    {
+      q: "How fast does Encrava respond to threats?",
+      a: "Threat detection and alerting happens in real time, typically under 60 seconds depending on the threat source and channel.",
+    },
+    {
+      q: "Can Encrava be used in banking and fintech?",
+      a: "Yes. Encrava is designed specifically for fintech, banking, mobile money platforms, and telecom ecosystems across Africa.",
     },
   ];
 
@@ -52,13 +68,12 @@ export default function FAQSection() {
 
         {/* TITLE */}
         <div className="title-wrap">
-          <h2 className="title">Frequently Asked Questions</h2>
+          <h2>Frequently Asked Questions</h2>
           <div className="underline" />
+          <p>
+            Everything you need to know about Encrava’s cybersecurity ecosystem.
+          </p>
         </div>
-
-        <p className="subtitle">
-          Everything you need to know about Encrava’s cybersecurity solutions in Africa.
-        </p>
 
         {/* GRID */}
         <div className="grid">
@@ -67,8 +82,9 @@ export default function FAQSection() {
             const isOpen = openIndex === index;
 
             return (
-              <div key={index} className="faq-card">
+              <div key={index} className="faq">
 
+                {/* QUESTION */}
                 <button
                   className="question"
                   onClick={() => toggle(index)}
@@ -76,12 +92,13 @@ export default function FAQSection() {
                   <span>{item.q}</span>
 
                   {isOpen ? (
-                    <ChevronUp className="icon" />
+                    <ChevronUp size={18} />
                   ) : (
-                    <ChevronDown className="icon" />
+                    <ChevronDown size={18} />
                   )}
                 </button>
 
+                {/* ANSWER */}
                 <div className={`answer ${isOpen ? "open" : ""}`}>
                   <p>{item.a}</p>
                 </div>
@@ -98,104 +115,106 @@ export default function FAQSection() {
 
         .section {
           width: 100%;
-          background: #f3f6f5;
-          display: flex;
-          justify-content: center;
-          padding: 20px 0;
+          background: #ffffff;
+
+          padding: 30px 0;
         }
 
         .container {
-          width: 100%;
           max-width: 1100px;
+          margin: 0 auto;
           padding: 0 20px;
         }
 
         /* TITLE */
         .title-wrap {
           text-align: center;
+          margin-bottom: 14px;
         }
 
-        .title {
+        .title-wrap h2 {
           font-size: 30px;
           font-weight: 700;
-          color: black;
+          color: #0f172a;
+        }
+
+        .title-wrap p {
+          font-size: 13px;
+          color: #64748b;
+          margin-top: 6px;
         }
 
         .underline {
-          width: 140px;
-          height: 4px;
-          background: #ffe0f0;
-          margin: 6px auto 0 auto;
-          border-radius: 10px;
-        }
-
-        .subtitle {
-          text-align: center;
-          font-size: 13px;
-          color: rgba(0,0,0,0.6);
-          margin-top: 8px;
+          width: 100px;
+          height: 3px;
+          background: #166b5f;
+          margin: 8px auto 0;
         }
 
         /* GRID */
         .grid {
-          margin-top: 16px;
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
+          gap: 12px;
+          margin-top: 16px;
         }
 
         /* CARD */
-        .faq-card {
-          border: 1px solid rgba(0,0,0,0.1);
-          border-radius: 18px;
-
-          background: #fff;
-
-          box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        .faq {
+          background: #166b5f;
+          border: none;
 
           overflow: hidden;
         }
 
+        /* QUESTION */
         .question {
           width: 100%;
-          padding: 14px 16px;
+
+          padding: 14px;
 
           display: flex;
           justify-content: space-between;
           align-items: center;
 
+          background: #166b5f;
+          color: #ffffff;
+
           border: none;
-          background: transparent;
 
           cursor: pointer;
 
           font-size: 13px;
           font-weight: 600;
-          color: black;
-          text-align: left;
-        }
 
-        .icon {
-          color: #7BE09C;
+          text-align: left;
         }
 
         /* ANSWER */
         .answer {
           max-height: 0;
           overflow: hidden;
+
           transition: all 0.35s ease;
-          padding: 0 16px;
+
+          padding: 0 14px;
+
+          background: #166b5f;
         }
 
         .answer.open {
-          max-height: 240px;
-          padding: 0 16px 14px 16px;
+          max-height: 260px;
+          padding: 0 14px 14px 14px;
         }
 
         .answer p {
-          font-size: 12.5px;
-          color: rgba(0,0,0,0.7);
-          line-height: 1.5;
+          font-size: 12.8px;
+          color: rgba(255,255,255,0.82);
+          line-height: 1.6;
+        }
+
+        svg {
+          color: white;
         }
 
         /* MOBILE */

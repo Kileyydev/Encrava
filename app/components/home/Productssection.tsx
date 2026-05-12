@@ -1,286 +1,115 @@
 "use client";
-
 import { useState } from "react";
-import { Radar, Shield, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-export default function ProductsSection() {
-  const [flipped, setFlipped] = useState(false);
+const slides = [
+  {
+    title: "Encrava Intel",
+    subtitle: "African Threat Intelligence Platform",
+    desc: "Real-time intelligence built around African cybercrime networks — M-Pesa fraud, SIM-swap rings, Telegram fraud channels, and regional threat actors targeting financial systems across East Africa.",
+    points: [
+      "M-Pesa fraud & SIM-swap monitoring",
+      "Dark web + Telegram threat tracking",
+      "Kiswahili threat intelligence analysis",
+      "Sub-60s real-time alert delivery",
+    ],
+    image: "/images/herosection/sphere2.png",
+  },
+  {
+    title: "Encrava Shield",
+    subtitle: "AI-Powered Phishing Detection",
+    desc: "Detects African-targeted phishing including M-Pesa scams, KRA impersonation, fake job offers, and business email compromise with AI models trained on local threat patterns.",
+    points: [
+      "99.7% phishing detection accuracy",
+      "Kiswahili NLP detection engine",
+      "M-Pesa + KRA impersonation blocking",
+      "Auto email quarantine & remediation",
+    ],
+    image: "/images/herosection/sphere2.png",
+  },
+  
+];
+
+export default function EncravaProductShowcase() {
+  const [index, setIndex] = useState(0);
+  const prev = () => setIndex((i) => (i === 0 ? slides.length - 1 : i - 1));
+  const next = () => setIndex((i) => (i === slides.length - 1 ? 0 : i + 1));
+  const slide = slides[index];
 
   return (
-    <section className="section">
-
-      <div className="container">
-
-        {/* TITLE */}
-        <div className="title-wrap">
-          <h2 className="title">Products</h2>
-          <div className="underline" />
+    <section className="relative w-full bg-[#166b5f] text-white overflow-hidden py-16">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 items-center gap-10">
+        
+        {/* LEFT CONTENT */}
+        <div className="space-y-5">
+          <h3 className="text-sm uppercase tracking-[0.25em] opacity-80">
+            {slide.subtitle}
+          </h3>
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
+            {slide.title}
+          </h2>
+          <div className="w-20 h-0.75 bg-white" />
+          <p className="text-sm leading-relaxed opacity-90">
+            {slide.desc}
+          </p>
+          <ul className="space-y-2 text-sm opacity-90">
+            {slide.points.map((p, i) => (
+              <li key={i} className="flex gap-2">
+                <span className="text-white">•</span>
+                {p}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* CARD */}
-        <div className="product-card">
-
-          <div className={`inner ${flipped ? "flipped" : ""}`}>
-
-            {/* FRONT */}
-            <div className="side front">
-
-              <div className="image-box">
-                <img src="/images/products/shield.jpg" alt="Encrava Intel" />
-              </div>
-
-              <div className="content">
-
-                <div className="title-row">
-                  <Radar className="icon" />
-                  Encrava Intel
-                </div>
-
-                <p className="lead">
-                  Africa-focused threat intelligence platform built for real-time cyber visibility across mobile money, fintech, and government systems.
-                </p>
-
-                <ul>
-                  <li>Monitors mobile money fraud networks</li>
-                  <li>Tracks SIM-swap & phishing syndicates</li>
-                  <li>Detects leaked credentials from regional dark web markets</li>
-                  <li>Delivers alerts in under 60 seconds</li>
-                </ul>
-
-                <p className="sub">
-                  Built specifically for African cyber threat environments.
-                </p>
-
-                <Link href="/products/intel" className="btn">
-                  Learn More <ArrowRight size={14} />
-                </Link>
-
-                <button className="switch" onClick={() => setFlipped(true)}>
-                  Switch to Shield →
-                </button>
-
-              </div>
-            </div>
-
-            {/* BACK */}
-            <div className="side back">
-
-              <div className="content">
-
-                <div className="title-row">
-                  <Shield className="icon" />
-                  Encrava Shield
-                </div>
-
-                <p className="lead">
-                  AI-powered phishing detection system trained on African attack patterns including M-Pesa, KRA, and banking impersonation.
-                </p>
-
-                <ul>
-                  <li>M-Pesa, KRA & bank impersonation detection</li>
-                  <li>Business email compromise protection</li>
-                  <li>Link & attachment analysis in under 2 seconds</li>
-                  <li>English phishing detection</li>
-                </ul>
-
-                <p className="sub">
-                  99.7% detection accuracy tuned for African cybercrime behavior.
-                </p>
-
-                <Link href="/products/shield" className="btn">
-                  Learn More <ArrowRight size={14} />
-                </Link>
-
-                <button className="switch" onClick={() => setFlipped(false)}>
-                  ← Back to Intel
-                </button>
-
-              </div>
-
-              <div className="image-box">
-                <img src="/images/products/shield.jpg" alt="Encrava Shield" />
-              </div>
-
-            </div>
-
+        {/* CENTER IMAGE - Large Size */}
+        <div className="flex justify-center items-center">
+          <div className="relative w-105 md:w-130 lg:w-145 h-105 md:h-130 lg:h-145">
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-contain drop-shadow-2xl"
+              priority
+              sizes="(max-width: 768px) 420px, (max-width: 1024px) 520px, 580px"
+            />
           </div>
         </div>
 
+        {/* RIGHT CONTENT */}
+        <div className="space-y-5 md:text-right">
+          <h3 className="text-sm uppercase tracking-[0.25em] opacity-80">
+            Encrava Platform
+          </h3>
+          <h2 className="text-2xl md:text-3xl font-bold">
+            Built for Africa
+          </h2>
+          <div className="w-20 h-0.75 bg-white md:ml-auto" />
+          <p className="text-sm leading-relaxed opacity-90">
+            Every Encrava product is engineered specifically for African infrastructure, mobile-first systems, and regional threat actors — not retrofitted from Western models.
+          </p>
+          <p className="text-sm opacity-80">
+            {index + 1} / {slides.length}
+          </p>
+        </div>
       </div>
 
-      <style jsx>{`
-
-        .section {
-          width: 100%;
-          background: #f3f6f5;
-          display: flex;
-          justify-content: center;
-          padding: 20px 0;
-        }
-
-        .container {
-          width: 100%;
-          max-width: 1100px;
-          padding: 0 20px;
-        }
-
-        /* TITLE */
-        .title-wrap {
-          text-align: center;
-          margin-bottom: 12px;
-        }
-
-        .title {
-          font-size: 32px;
-          font-weight: 700;
-          color: black;
-        }
-
-        .underline {
-          width: 120px;
-          height: 4px;
-          background: #ffe0f0;
-          margin: 6px auto 0 auto;
-          border-radius: 10px;
-        }
-
-        /* CARD */
-        .product-card {
-          margin-top: 18px;
-
-          border-radius: 30px 30px 0 0;
-          border: 1px solid rgba(0,0,0,0.12);
-
-          background: #fff;
-
-          box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-
-          overflow: hidden;
-          perspective: 1200px;
-        }
-
-        .inner {
-          position: relative;
-          height: 480px;
-
-          transform-style: preserve-3d;
-          transition: transform 0.75s ease;
-        }
-
-        .inner.flipped {
-          transform: rotateY(180deg);
-        }
-
-        .side {
-          position: absolute;
-          inset: 0;
-
-          display: flex;
-          align-items: stretch;
-          justify-content: space-between;
-
-          backface-visibility: hidden;
-        }
-
-        .back {
-          transform: rotateY(180deg);
-        }
-
-        /* IMAGE */
-        .image-box {
-          width: 45%;
-          height: 100%;
-          overflow: hidden;
-        }
-
-        .image-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        /* CONTENT */
-        .content {
-          width: 55%;
-          padding: 28px;
-
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .title-row {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-
-          font-size: 18px;
-          font-weight: 700;
-          color: black;
-        }
-
-        .icon {
-          color: #7BE09C;
-        }
-
-        .lead {
-          font-size: 13px;
-          color: rgba(0,0,0,0.75);
-        }
-
-        ul {
-          padding-left: 16px;
-        }
-
-        li {
-          font-size: 12.5px;
-          color: rgba(0,0,0,0.65);
-          margin-top: 6px;
-        }
-
-        .sub {
-          font-size: 12px;
-          color: rgba(0,0,0,0.55);
-        }
-
-        /* BUTTONS */
-        .btn {
-          margin-top: 10px;
-
-          background: #ffe0f0;
-          color: black;
-
-          border: none;
-          border-radius: 10px;
-
-          padding: 9px 14px;
-          font-size: 12px;
-          font-weight: 600;
-
-          cursor: pointer;
-
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .switch {
-          margin-top: 6px;
-
-          background: transparent;
-          border: none;
-
-          color: #b34e6b;
-          font-size: 12px;
-          font-weight: 600;
-
-          cursor: pointer;
-          text-align: left;
-        }
-
-      `}</style>
-
+      {/* ARROWS */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-6">
+        <button
+          onClick={prev}
+          className="p-3 border border-white/40 hover:border-white transition"
+        >
+          <ArrowLeft size={18} />
+        </button>
+        <button
+          onClick={next}
+          className="p-3 border border-white/40 hover:border-white transition"
+        >
+          <ArrowRight size={18} />
+        </button>
+      </div>
     </section>
   );
 }

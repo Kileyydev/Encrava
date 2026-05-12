@@ -189,7 +189,7 @@ const frameworks = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#eef6f0]">
+    <div className="min-h-screen bg-linear-to-br from-[#f0f9ff] to-[#eef6f0]">
       <TopNavBar />
 
       {/* ── Hero ── */}
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             <span className="bg-[#e0f1ea] text-[#166b5f] px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-6">
               Huduma — Consulting Services
             </span>
-            <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#166b5f] to-[#2b9a7a] bg-clip-text text-transparent mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-extrabold bg-linear-to-r from-[#166b5f] to-[#2b9a7a] bg-clip-text text-transparent mb-6 leading-tight">
               Expert Security. Built for African Operating Realities.
             </h1>
             <p className="text-lg text-[#2f5e53] mb-8 leading-relaxed">
@@ -356,7 +356,7 @@ export default function ServicesPage() {
       {/* ── CTA Banner ── */}
       <section className="py-16 bg-white/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-[#166b5f] to-[#0f5549] rounded-3xl p-10 md:p-14 text-white text-center shadow-xl">
+          <div className="bg-linear-to-br from-[#166b5f] to-[#0f5549] rounded-3xl p-10 md:p-14 text-white text-center shadow-xl">
             <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
               Ready to Build a Stronger Security Foundation?
             </h2>

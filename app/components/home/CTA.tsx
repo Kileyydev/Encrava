@@ -2,17 +2,21 @@
 
 import { ArrowRight, Shield, Radar } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CTASection() {
-  return (
-    <section className="w-full pt-8 pb-0 bg-[#f3f6f5] flex justify-center">
+  const [active, setActive] = useState<"consult" | "products" | null>(null);
 
-      <div className="w-full max-w-6xl px-4 md:px-6">
+  return (
+    <section className="section">
+
+      <div className="wrapper">
 
         <div className="cta-card">
 
           {/* LEFT */}
           <div className="content">
+
             <h2 className="title">
               Secure Your Organization Before Attacks Happen
             </h2>
@@ -23,17 +27,27 @@ export default function CTASection() {
               built for the continent.
             </p>
 
+            {/* BUTTONS (MATCH HERO STYLE) */}
             <div className="buttons">
 
-              <button className="primary">
-                Book a Consultation <ArrowRight size={16} />
+              <button
+                onMouseEnter={() => setActive("consult")}
+                className={`cta-btn ${active === "consult" ? "active" : ""}`}
+              >
+                Book Consultation
+                <ArrowRight className="icon" size={18} />
               </button>
 
-              <Link href="/products/intel" className="secondary">
-                Explore Encrava Intel
-              </Link>
+              <button
+                onMouseEnter={() => setActive("products")}
+                className={`cta-btn ${active === "products" ? "active" : ""}`}
+              >
+                Explore Products
+                <ArrowRight className="icon" size={18} />
+              </button>
 
             </div>
+
           </div>
 
           {/* RIGHT */}
@@ -62,40 +76,58 @@ export default function CTASection() {
 
       {/* STYLE */}
       <style jsx>{`
+
+        .section {
+          width: 100%;
+          background: #166b5f;
+          display: flex;
+          justify-content: center;
+          padding: 28px 0 0;
+        }
+
+        .wrapper {
+          width: 100%;
+          max-width: 1100px;
+          padding: 0 20px;
+        }
+
         .cta-card {
-          border: 2px solid rgba(0,0,0,0.12);
-          border-radius: 30px 30px 0 0;
+          background: white;
+
+          border: 1px solid rgba(0,0,0,0.08);
 
           box-shadow: 0 25px 70px rgba(0,0,0,0.12);
 
-          padding: 40px;
+          padding: 36px;
 
           display: flex;
           justify-content: space-between;
           gap: 40px;
 
-          background: white;
+          border-radius: 0;
         }
 
+        /* LEFT */
         .content {
           flex: 1;
         }
 
         .title {
-          font-size: 28px;
+          font-size: 26px;
           font-weight: 700;
-          color: black;
-          line-height: 1.2;
+          color: #0f172a;
+          line-height: 1.25;
         }
 
         .subtitle {
           margin-top: 14px;
           font-size: 14px;
           color: rgba(0,0,0,0.65);
-          line-height: 1.6;
+          line-height: 1.7;
           max-width: 520px;
         }
 
+        /* BUTTONS */
         .buttons {
           margin-top: 22px;
           display: flex;
@@ -103,41 +135,53 @@ export default function CTASection() {
           flex-wrap: wrap;
         }
 
-        .primary {
-          background: black;
-          color: white;
-
-          border: none;
-          padding: 12px 16px;
-
-          font-size: 13px;
-          font-weight: 600;
-
-          border-radius: 10px;
-
+        /* 🔥 HERO-STYLE BUTTON */
+        .cta-btn {
           display: flex;
           align-items: center;
           gap: 8px;
 
-          cursor: pointer;
-        }
+          padding: 12px 18px;
 
-        .secondary {
+          border-radius: 999px;
+
           background: transparent;
-          color: black;
 
-          border: 1px solid rgba(0,0,0,0.2);
+          border: 1px solid rgba(0,0,0,0.12);
 
-          padding: 12px 16px;
+          cursor: pointer;
+
+          transition: all 0.3s ease;
 
           font-size: 13px;
           font-weight: 600;
 
-          border-radius: 10px;
-
-          cursor: pointer;
+          color: #0f172a;
         }
 
+        .cta-btn:hover {
+          border-color: #166b5f;
+        }
+
+        .cta-btn.active {
+          background: #166b5f;
+          color: white;
+
+          box-shadow: 0 10px 25px rgba(22,107,95,0.25);
+        }
+
+        .icon {
+          opacity: 0;
+          transform: translateX(-6px);
+          transition: 0.3s ease;
+        }
+
+        .cta-btn.active .icon {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        /* RIGHT */
         .visual {
           flex: 1;
           display: flex;
@@ -153,22 +197,36 @@ export default function CTASection() {
 
           padding: 12px 14px;
 
-          border: 1px solid rgba(0,0,0,0.12);
-          border-radius: 12px;
+          border: 1px solid rgba(0,0,0,0.08);
 
-          box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+          background: #fff;
+
+          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        .icon {
-          color: black;
+        .badge .icon {
+          color: #166b5f;
+          opacity: 1;
+          transform: none;
         }
 
+        /* MOBILE */
         @media (max-width: 768px) {
           .cta-card {
             flex-direction: column;
-            padding: 28px;
+            padding: 24px;
+          }
+
+          .buttons {
+            flex-direction: column;
+          }
+
+          .cta-btn {
+            width: 100%;
+            justify-content: center;
           }
         }
+
       `}</style>
 
     </section>

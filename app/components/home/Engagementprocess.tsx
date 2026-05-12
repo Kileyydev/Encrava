@@ -10,63 +10,83 @@ import {
 } from "lucide-react";
 
 export default function EngagementProcess() {
+  const steps = [
+    {
+      icon: Search,
+      title: "Discovery",
+      desc: "We analyze your systems, exposure, and threat environment.",
+    },
+    {
+      icon: FileText,
+      title: "Proposal",
+      desc: "Clear scope, timelines, deliverables, and pricing.",
+    },
+    {
+      icon: Settings,
+      title: "Execution",
+      desc: "Hands-on delivery with structured progress updates.",
+    },
+    {
+      icon: Activity,
+      title: "Findings",
+      desc: "Technical + executive reporting in simple language.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Remediation",
+      desc: "Optional support to implement fixes and strengthen defenses.",
+    },
+  ];
+
   return (
-    <section className="w-full py-10 bg-[#f3f6f5] flex justify-center">
+    <section className="section">
+      <div className="wrapper">
 
-      <div className="max-w-6xl px-6 w-full">
+        {/* ENCRAVA-STYLE TITLE */}
+        <div className="title-wrap">
+          <span className="kicker">ENCRAVA PROCESS</span>
 
-        {/* TITLE */}
-        <h2 className="title">Client Engagement Process</h2>
-        <div className="underline" />
+          <h2>
+            Client Engagement{" "}
+            <span>Process</span>
+          </h2>
+
+          <div className="underline" />
+
+          <p className="subtitle">
+            A structured, transparent workflow from discovery to remediation.
+          </p>
+        </div>
 
         {/* FLOW */}
         <div className="flow">
 
-          <div className="step">
-            <Search className="icon" />
-            <h3>Discovery</h3>
-            <p>We analyze your systems, exposure, and threat environment.</p>
-          </div>
+          {steps.map((step, i) => {
+            const Icon = step.icon;
 
-          <div className="arrowWrap">
-            <ArrowRight className="arrow" />
-          </div>
+            return (
+              <div key={i} className="step-wrap">
 
-          <div className="step">
-            <FileText className="icon" />
-            <h3>Proposal</h3>
-            <p>Clear scope, timelines, deliverables, and transparent pricing.</p>
-          </div>
+                <div className="step">
 
-          <div className="arrowWrap">
-            <ArrowRight className="arrow" />
-          </div>
+                  <div className="top">
+                    <Icon size={18} className="icon" />
+                    <h3>{step.title}</h3>
+                  </div>
 
-          <div className="step">
-            <Settings className="icon" />
-            <h3>Execution</h3>
-            <p>Hands-on delivery with structured progress updates.</p>
-          </div>
+                  <p>{step.desc}</p>
 
-          <div className="arrowWrap">
-            <ArrowRight className="arrow" />
-          </div>
+                </div>
 
-          <div className="step">
-            <Activity className="icon" />
-            <h3>Findings</h3>
-            <p>Technical + executive reporting in simple language.</p>
-          </div>
+                {i !== steps.length - 1 && (
+                  <div className="arrow">
+                    <ArrowRight size={18} />
+                  </div>
+                )}
 
-          <div className="arrowWrap">
-            <ArrowRight className="arrow" />
-          </div>
-
-          <div className="step">
-            <ShieldCheck className="icon" />
-            <h3>Remediation</h3>
-            <p>Optional support to implement fixes and strengthen defenses.</p>
-          </div>
+              </div>
+            );
+          })}
 
         </div>
 
@@ -74,92 +94,137 @@ export default function EngagementProcess() {
 
       <style jsx>{`
 
-        .title {
+        /* SECTION */
+        .section {
+          width: 100%;
+          background: #fff;
+
+          padding-top: 14px;   /* reduced */
+          padding-bottom: 40px;
+        }
+
+        .wrapper {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+
+        /* TITLE SYSTEM (MATCH ENCRAVA STYLE) */
+        .title-wrap {
           text-align: center;
-          font-size: 28px;
-          font-weight: 600;
-          color: black;
+          margin-bottom: 18px;
+        }
+
+        .kicker {
+          font-size: 10px;
+          letter-spacing: 0.25em;
+          font-weight: 700;
+          color: rgba(22,107,95,0.9);
+        }
+
+        .title-wrap h2 {
+          font-size: 34px;
+          font-weight: 700;
+          letter-spacing: -0.03em;
+          color: #0f172a;
+          margin-top: 6px;
+        }
+
+        .title-wrap h2 span {
+          color: #166b5f;
         }
 
         .underline {
-          width: 120px;
-          height: 4px;
-          background: #ffe0f0;
-          margin: 10px auto 18px auto;
-          border-radius: 10px;
+          width: 70px;
+          height: 3px;
+          background: #166b5f;
+          margin: 10px auto 0;
+          border-radius: 999px;
         }
 
-        /* FLOW ROW */
+        .subtitle {
+          margin-top: 10px;
+          font-size: 13px;
+          color: rgba(0,0,0,0.6);
+        }
+
+        /* FLOW */
         .flow {
           display: flex;
           align-items: stretch;
           justify-content: space-between;
-          gap: 12px;
-
-          margin-top: 10px;
+          gap: 10px;
         }
 
-        /* STEP CARD */
-        .step {
+        .step-wrap {
+          display: flex;
+          align-items: center;
           flex: 1;
+        }
 
-          background: white;
+        /* CARD */
+        .step {
+          background: #fff;
 
-          border: 1px solid rgba(20, 83, 45, 0.25);
-          border-radius: 18px;
-
-          box-shadow: 0 16px 45px rgba(0,0,0,0.10);
+          border: 1px solid rgba(15,23,42,0.08);
 
           padding: 14px;
 
+          min-height: 120px;
+
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 8px;
 
-          min-height: 130px;
+          width: 100%;
+        }
+
+        .top {
+          display: flex;
+          align-items: center;
+          gap: 8px;
         }
 
         .icon {
-          color: #7BE09C;
+          color: #166b5f;
         }
 
         h3 {
           font-size: 14px;
           font-weight: 600;
-          color: black;
+          color: #0f172a;
         }
 
         p {
-          font-size: 12px;
+          font-size: 12.5px;
           color: rgba(0,0,0,0.65);
-          line-height: 1.4;
+          line-height: 1.5;
         }
 
-        /* ARROW CENTER FIX */
-        .arrowWrap {
+        /* ARROW */
+        .arrow {
           display: flex;
           align-items: center;
           justify-content: center;
-        }
 
-        .arrow {
-          color: #14532d;
-          filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+          padding: 0 6px;
+          color: #166b5f;
         }
 
         /* MOBILE */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+
           .flow {
             flex-direction: column;
-            align-items: stretch;
+          }
+
+          .step-wrap {
+            flex-direction: column;
           }
 
           .arrow {
             transform: rotate(90deg);
-          }
-
-          .arrowWrap {
-            padding: 6px 0;
+            padding: 8px 0;
           }
         }
 

@@ -17,9 +17,10 @@ export default function HomePage() {
       <TopNavBar />
       <HeroSection />
       <WhyChooseEncrava />
-      <IndustriesSection />
-      <ServicesSection />
       <ProductsSection />
+      <IndustriesSection />
+      
+      <ServicesSection />
       <EngagementProcess />
       <FAQSection />
       <ComplianceStrip />
