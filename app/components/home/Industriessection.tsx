@@ -93,7 +93,7 @@ export default function IndustriesSection() {
     {
       title: "AI-Powered Detection",
       text:
-        "Detects phishing, KRA scams, bank impersonation, and Kiswahili-language attacks using African-trained models.",
+        "Detects phishing, KRA scams, bank impersonation.",
     },
     {
       title: "Mobile-First Security",

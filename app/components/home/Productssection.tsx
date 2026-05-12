@@ -11,7 +11,6 @@ const slides = [
     points: [
       "M-Pesa fraud & SIM-swap monitoring",
       "Dark web + Telegram threat tracking",
-      "Kiswahili threat intelligence analysis",
       "Sub-60s real-time alert delivery",
     ],
     image: "/images/herosection/sphere2.png",
@@ -22,7 +21,6 @@ const slides = [
     desc: "Detects African-targeted phishing including M-Pesa scams, KRA impersonation, fake job offers, and business email compromise with AI models trained on local threat patterns.",
     points: [
       "99.7% phishing detection accuracy",
-      "Kiswahili NLP detection engine",
       "M-Pesa + KRA impersonation blocking",
       "Auto email quarantine & remediation",
     ],

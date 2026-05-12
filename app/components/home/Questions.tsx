@@ -33,7 +33,7 @@ export default function FAQSection() {
     },
     {
       q: "How accurate is Encrava Shield in detecting phishing?",
-      a: "Shield achieves up to 99.7% accuracy on African phishing datasets including Kiswahili-language scams and local impersonation campaigns.",
+      a: "Shield achieves up to 99.7% accuracy on African phishing datasets including scams and local impersonation campaigns.",
     },
     {
       q: "Does Encrava provide incident response support?",
