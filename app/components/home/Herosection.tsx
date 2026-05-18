@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
   const [active, setActive] = useState("consult");
@@ -13,8 +14,8 @@ useEffect(() => {
 }, []);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const router = useRouter();
 
-  /* ================= DRIFTING FOG ENGINE (UNCHANGED) ================= */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -133,31 +134,29 @@ useEffect(() => {
 
         <p className="hero-sub">
           Encrava delivers expert cybersecurity consulting and AI-powered
-          security products built for the African market — protecting mobile
+          security products built for the African market, protecting mobile
           money platforms, fintech innovators, government systems, and
           enterprises across the continent.
         </p>
 
         <div className="cta-row">
           <button
-            onMouseEnter={() => setActive("consult")}
-            className={`cta-btn ${
-              active === "consult" ? "active" : ""
-            }`}
-          >
-            Book Consultation
-            <ArrowUpRight className="icon" size={18} />
-          </button>
+  onMouseEnter={() => setActive("consult")}
+  onClick={() => router.push("/consultation")}
+  className={`cta-btn ${active === "consult" ? "active" : ""}`}
+>
+  Book Consultation
+  <ArrowUpRight className="icon" size={18} />
+</button>
 
-          <button
-            onMouseEnter={() => setActive("products")}
-            className={`cta-btn ${
-              active === "products" ? "active" : ""
-            }`}
-          >
-            Explore Products
-            <ArrowUpRight className="icon" size={18} />
-          </button>
+<button
+  onMouseEnter={() => setActive("products")}
+  onClick={() => router.push("/products")}
+  className={`cta-btn ${active === "products" ? "active" : ""}`}
+>
+  Explore Products
+  <ArrowUpRight className="icon" size={18} />
+</button>
         </div>
       </div>
 

@@ -14,7 +14,7 @@ const slides = [
       "Dark web + Telegram threat tracking",
       "Sub-60s real-time alert delivery",
     ],
-    image: "/images/herosection/sphere2.png",
+    image: "/images/background/intel.png",
     cta: "Explore Intel",
   },
   {
@@ -26,7 +26,7 @@ const slides = [
       "M-Pesa + KRA impersonation blocking",
       "Auto email quarantine & remediation",
     ],
-    image: "/images/herosection/sphere2.png",
+    image: "/images/products/shield3.png",
     cta: "Explore Shield",
   },
 ];

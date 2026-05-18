@@ -102,10 +102,10 @@ export default function TopNavBar() {
             priority
             className="
               object-contain
-              w-[72px]
-              sm:w-[82px]
-              md:w-[95px]
-              lg:w-[105px]
+              w-18
+              sm:w-20.5
+              md:w-23.75
+              lg:w-26.25
               h-auto
             "
           />

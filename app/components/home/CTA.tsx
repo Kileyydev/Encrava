@@ -1,10 +1,12 @@
 "use client";
 
-import { ArrowRight, Shield, Radar } from "lucide-react";
+import { ArrowRight, Shield, Radar, ArrowUpRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CTASection() {
   const [active, setActive] = useState<"consult" | "products" | null>(null);
+  const router = useRouter();
 
   return (
     <section className="section">
@@ -30,20 +32,22 @@ export default function CTASection() {
             <div className="buttons">
 
               <button
-                onMouseEnter={() => setActive("consult")}
-                className={`cta-btn ${active === "consult" ? "active" : ""}`}
-              >
-                Book Consultation
-                <ArrowRight className="icon" size={18} />
-              </button>
+  onMouseEnter={() => setActive("consult")}
+  onClick={() => router.push("/consultation")}
+  className={`cta-btn ${active === "consult" ? "active" : ""}`}
+>
+  Book Consultation
+  <ArrowUpRight className="icon" size={18} />
+</button>
 
-              <button
-                onMouseEnter={() => setActive("products")}
-                className={`cta-btn ${active === "products" ? "active" : ""}`}
-              >
-                Explore Products
-                <ArrowRight className="icon" size={18} />
-              </button>
+<button
+  onMouseEnter={() => setActive("products")}
+  onClick={() => router.push("/products")}
+  className={`cta-btn ${active === "products" ? "active" : ""}`}
+>
+  Explore Products
+  <ArrowUpRight className="icon" size={18} />
+</button>
 
             </div>
 
