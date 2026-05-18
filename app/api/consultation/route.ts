@@ -1,12 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
-  console.log("🔑 RESEND_API_KEY exists:", !!process.env.RESEND_API_KEY);
-
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+
+    console.log("🔑 RESEND_API_KEY exists:", !!apiKey);
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { success: false, error: "Missing RESEND_API_KEY" },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
     const formData = await request.formData();
 
     const fullName = formData.get("fullName") as string;
@@ -20,13 +29,9 @@ export async function POST(request: NextRequest) {
 
     console.log("📧 Attempting to send email for:", fullName);
 
-    if (!process.env.RESEND_API_KEY) {
-      throw new Error("RESEND_API_KEY is missing in environment variables");
-    }
-
     const { data, error } = await resend.emails.send({
-      from: "Encrava Consultations <onboarding@resend.dev>", 
-      to: ["youractualemail@gmail.com"],        // ← CHANGE THIS
+      from: "Encrava Consultations <onboarding@resend.dev>",
+      to: ["youractualemail@gmail.com"],
       subject: `New Consultation Request - ${fullName}`,
       html: `
         <h2>New Consultation Booking</h2>
@@ -44,7 +49,10 @@ export async function POST(request: NextRequest) {
 
     if (error) {
       console.error("❌ Resend API Error:", error);
-      return NextResponse.json({ success: false, resendError: error }, { status: 500 });
+      return NextResponse.json(
+        { success: false, resendError: error },
+        { status: 500 }
+      );
     }
 
     console.log("✅ Email sent successfully!", data);
@@ -52,13 +60,14 @@ export async function POST(request: NextRequest) {
 
   } catch (error: any) {
     console.error("🚨 Full Server Error:", error);
-    console.error("Error Message:", error.message);
-    console.error("Error Stack:", error.stack);
 
-    return NextResponse.json({ 
-      success: false, 
-      error: error.message || "Unknown server error",
-      type: error.name
-    }, { status: 500 });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message || "Unknown server error",
+        type: error.name,
+      },
+      { status: 500 }
+    );
   }
 }

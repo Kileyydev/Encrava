@@ -18,7 +18,6 @@ export default function TopNavBar() {
   const [productOpen, setProductOpen] = useState(false);
 
   const [visible, setVisible] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -34,7 +33,6 @@ export default function TopNavBar() {
     const reveal = () => setVisible(true);
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
       reveal();
     };
 
@@ -63,19 +61,19 @@ export default function TopNavBar() {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // 🔥 NEW: underline style
   const linkStyle =
-    "relative flex items-center gap-2 text-[14px] transition after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#166b5f] after:transition-all after:duration-300 hover:after:w-full";
+    "relative flex items-center gap-2 text-[13px] xl:text-[14px] font-medium transition whitespace-nowrap after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#166b5f] after:transition-all after:duration-300 hover:after:w-full";
 
   return (
     <header
       ref={wrapperRef}
       className={`
         fixed top-0 left-0 w-full z-50
-        flex items-center justify-between px-6 py-4
         transition-all duration-500 ease-out
 
         ${
@@ -85,113 +83,275 @@ export default function TopNavBar() {
         }
       `}
     >
-      {/* LEFT: LOGO */}
-      <Link href="/" className="shrink-0">
-        <Image
-          src="/images/logos/logo.png"
-          alt="Logo"
-          width={100}
-          height={100}
-          className="object-contain"
-          priority
-        />
-      </Link>
-
-      {/* CENTER: GLASS NAV (ALWAYS GLASS NOW) */}
       <div
         className="
-          backdrop-blur-xl bg-white/70 border border-black/10 shadow-lg
-          flex items-center justify-center
-          gap-8 px-10 py-6 rounded-full
-          transition-all duration-500
+          w-full
+          px-3 sm:px-4 md:px-6 lg:px-8
+          py-3
+          flex items-center justify-between
+          gap-3 lg:gap-6
         "
       >
-        <nav className="hidden md:flex items-center gap-8 whitespace-nowrap">
-          {links.slice(0, 2).map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link key={item.name} href={item.href} className={linkStyle}>
-                <Icon size={16} />
-                {item.name}
-              </Link>
-            );
-          })}
+        {/* LOGO */}
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/images/logos/logo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            priority
+            className="
+              object-contain
+              w-[72px]
+              sm:w-[82px]
+              md:w-[95px]
+              lg:w-[105px]
+              h-auto
+            "
+          />
+        </Link>
 
-          {/* PRODUCTS */}
-          <div className="relative flex items-center">
-            <Link href="/products" className={linkStyle}>
-              <Boxes size={16} />
-              Products
-            </Link>
+        {/* CENTER NAV */}
+        <div
+          className="
+            hidden md:flex
+            flex-1
+            min-w-0
+            justify-center
+          "
+        >
+          <div
+            className="
+              relative
 
-            <button onClick={() => setProductOpen(!productOpen)}>
-              <ChevronDown
-                size={14}
-                className={`transition-transform ${
-                  productOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+              backdrop-blur-xl
+              bg-white/70
+              border border-black/10
+              shadow-lg
 
-            {productOpen && (
-              <div className="absolute top-9 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-black/10 shadow-xl w-48 py-2 rounded-xl">
-                <Link
-                  href="/products/shield"
-                  className="block px-4 py-2 text-[13px] hover:bg-[#7BE09C]/10"
-                  onClick={() => setProductOpen(false)}
-                >
-                  Encrava Shield
+              flex items-center justify-center
+              overflow-visible
+              max-w-full
+
+              rounded-full
+
+              px-4 lg:px-6 xl:px-8
+              py-4 lg:py-5
+
+              transition-all duration-500
+            "
+          >
+            <nav
+              className="
+                flex items-center
+                gap-4 lg:gap-5 xl:gap-8
+                whitespace-nowrap
+              "
+            >
+              {links.slice(0, 2).map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={linkStyle}
+                  >
+                    <Icon
+                      size={16}
+                      className="hidden lg:block shrink-0"
+                    />
+                    {item.name}
+                  </Link>
+                );
+              })}
+
+              {/* PRODUCTS */}
+              <div className="relative flex items-center gap-1 shrink-0">
+                <Link href="/products" className={linkStyle}>
+                  <Boxes
+                    size={16}
+                    className="hidden lg:block shrink-0"
+                  />
+                  Products
                 </Link>
-                <Link
-                  href="/products/intel"
-                  className="block px-4 py-2 text-[13px] hover:bg-[#7BE09C]/10"
-                  onClick={() => setProductOpen(false)}
+
+                <button
+                  onClick={() => setProductOpen(!productOpen)}
+                  className="
+                    flex items-center justify-center
+                    w-5 h-5
+                    rounded-full
+                    hover:bg-black/5
+                    transition
+                  "
                 >
-                  Encrava Intel
-                </Link>
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-300 ${
+                      productOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {productOpen && (
+                  <div
+                    className="
+                      absolute
+                      top-11
+                      left-1/2
+                      -translate-x-1/2
+
+                      z-50
+                      w-52
+
+                      bg-white/95
+                      backdrop-blur-xl
+                      border border-black/10
+                      shadow-2xl
+                      rounded-2xl
+
+                      overflow-hidden
+                      py-2
+                    "
+                  >
+                    <Link
+                      href="/products/shield"
+                      className="
+                        block
+                        px-4 py-3
+                        text-[13px]
+                        hover:bg-[#7BE09C]/10
+                        transition
+                      "
+                      onClick={() => setProductOpen(false)}
+                    >
+                      Encrava Shield
+                    </Link>
+
+                    <Link
+                      href="/products/intel"
+                      className="
+                        block
+                        px-4 py-3
+                        text-[13px]
+                        hover:bg-[#7BE09C]/10
+                        transition
+                      "
+                      onClick={() => setProductOpen(false)}
+                    >
+                      Encrava Intel
+                    </Link>
+                  </div>
+                )}
               </div>
-            )}
+
+              {links.slice(2).map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={linkStyle}
+                  >
+                    <Icon
+                      size={16}
+                      className="hidden lg:block shrink-0"
+                    />
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </nav>
           </div>
+        </div>
 
-          {links.slice(2).map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link key={item.name} href={item.href} className={linkStyle}>
-                <Icon size={16} />
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* CTA */}
+        <Link
+          href="/consultation"
+          className="
+            hidden md:flex
+            shrink-0
+
+            items-center justify-center
+
+            px-4 lg:px-5 xl:px-6
+            py-2.5
+
+            text-[12px] xl:text-[13px]
+            font-medium
+            text-white
+
+            bg-[#166b5f]
+            rounded-full
+            shadow-md
+
+            hover:bg-[#0f5c52]
+            transition
+          "
+        >
+          Book Consultation
+        </Link>
+
+        {/* MOBILE BUTTON */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="
+            md:hidden
+            shrink-0
+
+            w-10 h-10
+            rounded-full
+
+            bg-white/80
+            backdrop-blur-xl
+            border border-black/10
+            shadow-md
+
+            flex items-center justify-center
+
+            text-2xl
+          "
+        >
+          {mobileOpen ? "−" : "+"}
+        </button>
       </div>
-
-      {/* RIGHT CTA */}
-      <Link
-        href="/consultation"
-        className="hidden md:block px-6 py-2 text-[13px] font-medium text-white bg-[#166b5f] rounded-full shadow-md hover:bg-[#0f5c52] transition"
-      >
-        Book Consultation
-      </Link>
-
-      {/* MOBILE BUTTON */}
-      <button
-        onClick={() => setMobileOpen(!mobileOpen)}
-        className="md:hidden text-xl"
-      >
-        {mobileOpen ? "−" : "+"}
-      </button>
 
       {/* MOBILE MENU */}
       {mobileOpen && (
-        <div className="absolute top-20 left-4 right-4 bg-white/90 backdrop-blur-xl border border-black/10 shadow-xl rounded-2xl p-6">
-          <div className="flex flex-col gap-4">
+        <div
+          className="
+            md:hidden
+
+            mx-3 sm:mx-4
+            mt-1
+
+            bg-white/90
+            backdrop-blur-2xl
+
+            border border-black/10
+            shadow-2xl
+
+            rounded-3xl
+            p-5
+          "
+        >
+          <div className="flex flex-col gap-1">
             {links.map((item) => {
               const Icon = item.icon;
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center gap-3"
+                  className="
+                    flex items-center gap-3
+                    px-4 py-3
+                    rounded-xl
+                    hover:bg-black/5
+                    transition
+                  "
                   onClick={() => setMobileOpen(false)}
                 >
                   <Icon size={18} />
@@ -200,9 +360,90 @@ export default function TopNavBar() {
               );
             })}
 
+            {/* MOBILE PRODUCTS */}
+            <div className="mt-1">
+              <button
+                onClick={() => setProductOpen(!productOpen)}
+                className="
+                  w-full
+                  flex items-center justify-between
+
+                  px-4 py-3
+                  rounded-xl
+
+                  hover:bg-black/5
+                  transition
+                "
+              >
+                <div className="flex items-center gap-3">
+                  <Boxes size={18} />
+                  Products
+                </div>
+
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    productOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {productOpen && (
+                <div className="ml-5 mt-2 flex flex-col gap-1">
+                  <Link
+                    href="/products/shield"
+                    className="
+                      px-4 py-3
+                      rounded-xl
+                      text-[14px]
+                      hover:bg-[#7BE09C]/10
+                      transition
+                    "
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
+                  >
+                    Encrava Shield
+                  </Link>
+
+                  <Link
+                    href="/products/intel"
+                    className="
+                      px-4 py-3
+                      rounded-xl
+                      text-[14px]
+                      hover:bg-[#7BE09C]/10
+                      transition
+                    "
+                    onClick={() => {
+                      setMobileOpen(false);
+                      setProductOpen(false);
+                    }}
+                  >
+                    Encrava Intel
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* CTA */}
             <Link
               href="/consultation"
-              className="mt-4 py-3 bg-[#166b5f] text-white text-center rounded-xl"
+              className="
+                mt-4
+                py-3.5
+
+                bg-[#166b5f]
+                text-white
+                text-center
+                font-medium
+
+                rounded-2xl
+
+                hover:bg-[#0f5c52]
+                transition
+              "
               onClick={() => setMobileOpen(false)}
             >
               Book Consultation

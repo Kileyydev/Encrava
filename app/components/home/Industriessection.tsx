@@ -148,7 +148,7 @@ export default function IndustriesSection() {
         .section {
           position: relative;
           background: #fff;
-          overflow: hidden;
+          overflow-x: clip;
 
           /* tight integration with previous section */
           padding: 30px 8% 60px;

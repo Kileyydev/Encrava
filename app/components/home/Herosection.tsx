@@ -6,6 +6,12 @@ import { ArrowUpRight } from "lucide-react";
 export default function HeroSection() {
   const [active, setActive] = useState("consult");
 
+  const [mounted, setMounted] = useState(false);
+
+useEffect(() => {
+  setMounted(true);
+}, []);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   /* ================= DRIFTING FOG ENGINE (UNCHANGED) ================= */
@@ -50,7 +56,7 @@ export default function HeroSection() {
       ctx.fillStyle = base;
       ctx.fillRect(0, 0, w, h);
 
-      fog.forEach(p => {
+      fog.forEach((p) => {
         const waveX = Math.sin(t + p.seed) * 0.4;
         const waveY = Math.cos(t + p.seed) * 0.4;
 
@@ -62,7 +68,14 @@ export default function HeroSection() {
         if (p.y < -200) p.y = h + 200;
         if (p.y > h + 200) p.y = -200;
 
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+        const gradient = ctx.createRadialGradient(
+          p.x,
+          p.y,
+          0,
+          p.x,
+          p.y,
+          p.r
+        );
 
         gradient.addColorStop(0, `rgba(22,107,95,${p.a})`);
         gradient.addColorStop(0.6, `rgba(22,107,95,${p.a * 0.4})`);
@@ -85,12 +98,12 @@ export default function HeroSection() {
     };
 
     window.addEventListener("resize", resize);
+
     return () => window.removeEventListener("resize", resize);
   }, []);
 
   return (
     <section className="hero">
-
       {/* ================= FOG CANVAS ================= */}
       <canvas ref={canvasRef} className="fog" />
 
@@ -99,7 +112,7 @@ export default function HeroSection() {
         <div className="sphere-fade" />
       </div>
 
-      {/* ================= SPHERES (FINAL ALIGNMENT) ================= */}
+      {/* ================= SPHERES (UNCHANGED DESIGN) ================= */}
       <div className="sphere sphere1">
         <img src="/images/herosection/sphere1.png" alt="Sphere 1" />
       </div>
@@ -111,23 +124,26 @@ export default function HeroSection() {
       {/* ================= CONTENT ================= */}
       <div className="content">
         <h1 className="hero-title">
-          Africa’s Cyber Threats Are Unique.<br />
+          Africa’s Cyber Threats Are Unique.
+          <br />
           So Is Our Protection.
         </h1>
 
         <div className="underline" />
 
         <p className="hero-sub">
-          Encrava delivers expert cybersecurity consulting and AI-powered security products
-          built for the African market — protecting mobile money platforms, fintech innovators,
-          government systems, and enterprises across the continent.
+          Encrava delivers expert cybersecurity consulting and AI-powered
+          security products built for the African market — protecting mobile
+          money platforms, fintech innovators, government systems, and
+          enterprises across the continent.
         </p>
 
         <div className="cta-row">
-
           <button
             onMouseEnter={() => setActive("consult")}
-            className={`cta-btn ${active === "consult" ? "active" : ""}`}
+            className={`cta-btn ${
+              active === "consult" ? "active" : ""
+            }`}
           >
             Book Consultation
             <ArrowUpRight className="icon" size={18} />
@@ -135,12 +151,13 @@ export default function HeroSection() {
 
           <button
             onMouseEnter={() => setActive("products")}
-            className={`cta-btn ${active === "products" ? "active" : ""}`}
+            className={`cta-btn ${
+              active === "products" ? "active" : ""
+            }`}
           >
             Explore Products
             <ArrowUpRight className="icon" size={18} />
           </button>
-
         </div>
       </div>
 
@@ -149,9 +166,11 @@ export default function HeroSection() {
         .hero {
           position: relative;
           min-height: 100vh;
+          width: 100%;
           display: flex;
           align-items: center;
           background: #fafafa;
+
           overflow-x: clip;
         }
 
@@ -160,23 +179,38 @@ export default function HeroSection() {
           inset: 0;
           z-index: 2;
           pointer-events: none;
+
+          width: 100%;
+          height: 100%;
         }
 
         .bg {
           position: absolute;
           inset: 0;
           z-index: 1;
+          overflow: hidden;
         }
 
         .sphere-fade {
           position: absolute;
           inset: 0;
+
           background:
-            radial-gradient(circle at 75% 25%, transparent 0%, transparent 140px, rgba(250,250,250,0.9) 320px),
-            radial-gradient(circle at 85% 85%, transparent 0%, transparent 180px, rgba(250,250,250,0.9) 380px);
+            radial-gradient(
+              circle at 75% 25%,
+              transparent 0%,
+              transparent 140px,
+              rgba(250,250,250,0.9) 320px
+            ),
+            radial-gradient(
+              circle at 85% 85%,
+              transparent 0%,
+              transparent 180px,
+              rgba(250,250,250,0.9) 380px
+            );
         }
 
-        /* ================= SPHERES (UPDATED FINAL POSITIONING) ================= */
+        /* ================= SPHERES ================= */
 
         .sphere {
           position: absolute;
@@ -188,29 +222,38 @@ export default function HeroSection() {
           width: 100%;
           height: auto;
           display: block;
+
           filter: drop-shadow(0 25px 55px rgba(0, 0, 0, 0.1));
         }
 
-        /* 🔥 sphere1: pushed RIGHT + UP (away from text, keeps diagonal flow) */
-         .sphere1 {
+        /* KEEPING ORIGINAL LOOK */
+        .sphere1 {
           top: 16%;
           right: 10%;
           width: 290px;
+
           transform: rotate(-15deg);
         }
 
         @media (min-width: 768px) {
-          .sphere1 { width: 400px; right: 12%; }
+          .sphere1 {
+            width: 400px;
+            right: 12%;
+          }
         }
 
         @media (min-width: 1200px) {
-          .sphere1 { width: 410px; right: 15%; }
+          .sphere1 {
+            width: 410px;
+            right: 15%;
+          }
         }
 
         .sphere2 {
           bottom: -18%;
           right: -6%;
           width: 490px;
+
           transform: rotate(18deg);
         }
 
@@ -231,11 +274,20 @@ export default function HeroSection() {
         }
 
         /* ================= CONTENT ================= */
+
         .content {
           position: relative;
           z-index: 30;
+
           max-width: 720px;
+
+          width: 100%;
+
           padding-left: 8%;
+          padding-right: 1.5rem;
+
+          padding-top: 7rem;
+          padding-bottom: 3rem;
         }
 
         .hero-title {
@@ -249,7 +301,9 @@ export default function HeroSection() {
           width: 110px;
           height: 6px;
           background: #166b5f;
+
           margin: 18px 0 28px;
+
           border-radius: 999px;
         }
 
@@ -257,11 +311,13 @@ export default function HeroSection() {
           font-size: 18px;
           color: #374151;
           line-height: 1.7;
+
           margin-bottom: 42px;
         }
 
         .cta-row {
           display: flex;
+          flex-wrap: wrap;
           gap: 14px;
         }
 
@@ -269,17 +325,24 @@ export default function HeroSection() {
           display: flex;
           align-items: center;
           gap: 8px;
+
           padding: 12px 20px;
+
           border-radius: 999px;
+
           background: transparent;
           border: 1px solid rgba(0,0,0,0.1);
+
           cursor: pointer;
           transition: 0.3s;
+
+          white-space: nowrap;
         }
 
         .cta-btn.active {
           background: #166b5f;
           color: white;
+
           box-shadow: 0 10px 25px rgba(22,107,95,0.25);
         }
 
@@ -294,10 +357,69 @@ export default function HeroSection() {
           transform: translateX(0);
         }
 
-        @media (max-width: 768px) {
+        /* ================= RESPONSIVE SCALING ONLY ================= */
+
+        @media (max-width: 1200px) {
           .content {
-            padding: 24px;
+            max-width: 650px;
+            padding-left: 6%;
+          }
+
+          .hero-title {
+            font-size: 52px;
+          }
+        }
+
+        @media (max-width: 992px) {
+          .content {
+            max-width: 580px;
+            padding-left: 5%;
+          }
+
+          .hero-title {
+            font-size: 46px;
+          }
+
+          .hero-sub {
+            font-size: 17px;
+          }
+
+          .sphere1 {
+            right: 4%;
+          }
+
+          .sphere2 {
+            right: -16%;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero {
+            min-height: 100svh;
+          }
+
+          .content {
+            padding: 0 24px;
+            padding-top: 8rem;
+            padding-bottom: 4rem;
+
+            max-width: 100%;
+
             text-align: center;
+          }
+
+          .hero-title {
+            font-size: clamp(2.5rem, 9vw, 4rem);
+            line-height: 1.08;
+          }
+
+          .underline {
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .hero-sub {
+            font-size: 16px;
           }
 
           .cta-row {
@@ -307,6 +429,46 @@ export default function HeroSection() {
           .cta-btn {
             width: 100%;
             justify-content: center;
+          }
+
+          /* ONLY scaling/positioning spheres for mobile */
+          .sphere1 {
+            width: 240px;
+            top: 10%;
+            right: -18%;
+          }
+
+          .sphere2 {
+            width: 380px;
+            bottom: -10%;
+            right: -38%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .content {
+            padding-left: 18px;
+            padding-right: 18px;
+          }
+
+          .hero-title {
+            font-size: clamp(2.2rem, 11vw, 3.2rem);
+          }
+
+          .hero-sub {
+            font-size: 15px;
+            line-height: 1.65;
+          }
+
+          .sphere1 {
+            width: 180px;
+            right: -20%;
+          }
+
+          .sphere2 {
+            width: 300px;
+            right: -42%;
+            bottom: -4%;
           }
         }
       `}</style>
