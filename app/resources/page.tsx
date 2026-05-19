@@ -35,17 +35,6 @@ export default function ResourcesPage() {
     },
     {
       id: 2,
-      title: "Kiswahili Phishing: The Growing Threat",
-      description: "How attackers are using local languages to bypass traditional detection. Includes real examples and defence strategies.",
-      type: "report",
-      icon: "📧",
-      date: "March 2026",
-      readTime: "12 min read",
-      popular: true,
-      featured: false
-    },
-    {
-      id: 3,
       title: "BEC Defence Guide for African Finance Teams",
       description: "Practical steps to identify and stop business email compromise attacks targeting procurement and finance departments.",
       type: "guide",
@@ -56,7 +45,7 @@ export default function ResourcesPage() {
       featured: false
     },
     {
-      id: 4,
+      id: 3,
       title: "Webinar: Dark Web Monitoring for African Orgs",
       description: "Recording of live session covering how to monitor East African dark web markets for leaked credentials.",
       type: "webinar",
@@ -67,7 +56,7 @@ export default function ResourcesPage() {
       featured: false
     },
     {
-      id: 5,
+      id: 4,
       title: "KDPA Compliance: A Cybersecurity Perspective",
       description: "Understanding the Kenya Data Protection Act requirements and how to align your security posture.",
       type: "guide",
@@ -78,7 +67,7 @@ export default function ResourcesPage() {
       featured: false
     },
     {
-      id: 6,
+      id: 5,
       title: "Case Study: Bank Fraud Prevention with Encrava Intel",
       description: "How a tier-1 Kenyan bank reduced fraud incidents by 67% using Africa-specific threat intelligence.",
       type: "case",
@@ -89,7 +78,7 @@ export default function ResourcesPage() {
       featured: true
     },
     {
-      id: 7,
+      id: 6,
       title: "Safaricom & Airtel Sender ID Spoofing Analysis",
       description: "Technical deep-dive into how attackers impersonate mobile network operators and how to detect it.",
       type: "report",
@@ -100,7 +89,7 @@ export default function ResourcesPage() {
       featured: false
     },
     {
-      id: 8,
+      id: 7,
       title: "Blog: 5 Signs Your Organisation is Being Targeted",
       description: "Early warning indicators of APT activity and cybercriminal reconnaissance in East Africa.",
       type: "blog",
@@ -111,7 +100,7 @@ export default function ResourcesPage() {
       featured: false
     },
     {
-      id: 9,
+      id: 8,
       title: "Ransomware in Africa: A Growing Crisis",
       description: "Webinar recording with incident responders covering recent attacks and prevention strategies.",
       type: "webinar",
