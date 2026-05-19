@@ -41,9 +41,10 @@ export default function ServicesPage() {
 
       <main className="min-h-screen bg-white">
 
-        {/* ── HERO ── */}
-        <section className="relative bg-white pt-28 pb-10 overflow-hidden">
+        {/* ── HERO ── same layout as WhyEncrava / Services section */}
+        <section className="relative bg-white pt-32 pb-16 md:pb-24 overflow-hidden">
 
+          {/* glow */}
           <div className="absolute -top-24 -left-24 w-[320px] h-80 bg-[#166b5f]/10 blur-[120px]" />
 
           <div className="max-w-7xl mx-auto px-6">
@@ -51,7 +52,7 @@ export default function ServicesPage() {
 
               {/* LEFT */}
               <div className="lg:col-span-4">
-                <div className="sticky top-28 space-y-4">
+                <div className="sticky top-28 space-y-5">
 
                   <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase">
                     Encrava Services
@@ -70,7 +71,7 @@ export default function ServicesPage() {
                     government, and enterprise environments.
                   </p>
 
-                  <div className="flex flex-wrap gap-3 pt-1">
+                  <div className="flex flex-wrap gap-3 pt-2">
                     <Link
                       href="/consultation"
                       className="inline-flex items-center gap-2 bg-[#166b5f] text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition"
@@ -88,7 +89,7 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {/* RIGHT — service cards */}
+              {/* RIGHT — 3-col card grid matching Services.tsx exactly */}
               <div className="lg:col-span-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
                   {services.map((service, i) => {
@@ -97,8 +98,9 @@ export default function ServicesPage() {
                     return (
                       <div
                         key={i}
-                        className="relative p-6 min-h-52 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
+                        className="relative p-6 min-h-57.5 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
                       >
+                        {/* smear */}
                         <div
                           className="absolute -inset-10 opacity-10 pointer-events-none"
                           style={{
@@ -109,19 +111,21 @@ export default function ServicesPage() {
                           }}
                         />
 
+                        {/* content */}
                         <div className="relative z-10 flex flex-col h-full">
+
                           <div className="flex items-center gap-3 mb-3">
-                            <Icon className="text-[#166b5f]" size={20} />
-                            <h3 className="text-[0.95rem] font-semibold text-slate-900 leading-snug">
+                            <Icon className="text-[#166b5f]" size={22} />
+                            <h3 className="text-[1rem] font-semibold text-slate-900 leading-snug">
                               {service.title}
                             </h3>
                           </div>
 
-                          <p className="text-sm text-slate-500 leading-6">
+                          <p className="text-sm text-slate-500 leading-7">
                             {service.short}
                           </p>
 
-                          <div className="mt-auto pt-4">
+                          <div className="mt-auto pt-5">
                             <Link
                               href={`/services/${service.slug}`}
                               className="inline-flex items-center gap-2 text-[#166b5f] text-[12px] font-semibold underline underline-offset-4 hover:opacity-80 transition"
@@ -129,6 +133,7 @@ export default function ServicesPage() {
                               Learn More
                             </Link>
                           </div>
+
                         </div>
                       </div>
                     );
@@ -140,8 +145,8 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ── PROCESS ── */}
-        <section className="relative bg-white py-10 border-t border-slate-200 overflow-hidden">
+        {/* ── PROCESS — same card grid pattern ── */}
+        <section className="relative bg-white py-16 md:py-24 border-t border-slate-200 overflow-hidden">
 
           <div className="absolute -top-32 -right-32 w-[320px] h-80 bg-[#166b5f]/10 blur-[120px]" />
 
@@ -150,7 +155,7 @@ export default function ServicesPage() {
 
               {/* LEFT */}
               <div className="lg:col-span-4">
-                <div className="sticky top-28 space-y-4">
+                <div className="sticky top-28 space-y-5">
 
                   <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase">
                     How We Work
@@ -183,16 +188,16 @@ export default function ServicesPage() {
                   ].map((step) => (
                     <div
                       key={step.num}
-                      className="relative p-6 min-h-44 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
+                      className="relative p-6 min-h-52.5 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
                     >
                       <div className="flex flex-col h-full">
-                        <p className="text-3xl font-bold text-[#166b5f]/20 mb-3">
+                        <p className="text-3xl font-bold text-[#166b5f]/20 mb-4">
                           {step.num}
                         </p>
-                        <h4 className="text-[0.95rem] font-semibold text-slate-900 mb-2 leading-snug">
+                        <h4 className="text-[1rem] font-semibold text-slate-900 mb-3 leading-snug">
                           {step.title}
                         </h4>
-                        <p className="text-sm text-slate-500 leading-6">
+                        <p className="text-sm text-slate-500 leading-7">
                           {step.desc}
                         </p>
                       </div>
@@ -205,12 +210,12 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ── COMPLIANCE ── */}
-        <section className="w-full py-10 bg-white border-t border-slate-200 flex justify-center">
+        {/* ── COMPLIANCE STRIP — reusing ComplianceStrip pattern ── */}
+        <section className="w-full py-12 bg-white border-t border-slate-200 flex justify-center">
           <div className="max-w-7xl w-full px-6">
 
-            <div className="text-center mb-6">
-              <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase mb-2">
+            <div className="text-center mb-8">
+              <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase mb-3">
                 Standards & Frameworks
               </p>
               <h2 className="text-[1.8rem] font-bold text-slate-900">
@@ -234,9 +239,9 @@ export default function ServicesPage() {
               ].map((fw) => (
                 <div
                   key={fw}
-                  className="flex items-center gap-2 px-4 py-2 border border-[#166b5f]/25 rounded-full text-[12.5px] font-medium text-slate-800 bg-white shadow-sm"
+                  className="flex items-center gap-2 px-4 py-2.5 border border-[#166b5f]/25 rounded-full text-[12.5px] font-medium text-slate-800 bg-white shadow-sm"
                 >
-                  <ShieldCheck size={13} className="text-[#7BE09C]" />
+                  <ShieldCheck size={14} className="text-[#7BE09C]" />
                   {fw}
                 </div>
               ))}
@@ -245,14 +250,15 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ── CTA ── */}
-        <section className="w-full bg-white flex justify-center py-8 border-t border-slate-200">
+        {/* ── CTA — matching CTA.tsx pattern ── */}
+        <section className="w-full bg-white flex justify-center py-8">
           <div className="w-full max-w-6xl px-6">
-            <div className="bg-white border border-black/8 shadow-[0_25px_70px_rgba(0,0,0,0.12)] p-8 flex flex-col md:flex-row justify-between gap-10">
-
+            <div
+              className="bg-white border border-black/8 shadow-[0_25px_70px_rgba(0,0,0,0.12)] p-9 flex flex-col md:flex-row justify-between gap-10"
+            >
               {/* LEFT */}
               <div className="flex-1">
-                <h2 className="text-[24px] font-bold text-slate-900 leading-snug">
+                <h2 className="text-[26px] font-bold text-slate-900 leading-snug">
                   Ready to Build a Stronger Security Foundation?
                 </h2>
                 <p className="mt-3 text-sm text-black/65 leading-7 max-w-lg">
@@ -260,21 +266,21 @@ export default function ServicesPage() {
                   assessment of your current posture and a clear path forward.
                   No sales pressure.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
+                <div className="mt-5 flex flex-wrap gap-3">
                   <Link
                     href="/consultation"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/12 text-sm font-semibold text-slate-900 hover:border-[#166b5f] transition"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-black/12 text-sm font-semibold text-slate-900 hover:border-[#166b5f] transition"
                   >
                     Book Consultation <ArrowRight size={16} />
                   </Link>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/12 text-sm font-semibold text-slate-900 hover:border-[#166b5f] transition"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-black/12 text-sm font-semibold text-slate-900 hover:border-[#166b5f] transition"
                   >
                     Contact Us <ArrowRight size={16} />
                   </Link>
                 </div>
-                <p className="mt-3 text-xs text-slate-400">
+                <p className="mt-4 text-xs text-slate-400">
                   Active incident?{" "}
                   <a href="mailto:ir@encrava.africa" className="text-[#166b5f] underline">
                     ir@encrava.africa
@@ -283,8 +289,8 @@ export default function ServicesPage() {
                 </p>
               </div>
 
-              {/* RIGHT — green badges */}
-              <div className="flex-1 flex flex-col justify-center gap-3">
+              {/* RIGHT — green badges matching CTA.tsx */}
+              <div className="flex-1 flex flex-col justify-center gap-3.5">
                 {[
                   "KDPA Aligned Security",
                   "Real-Time African Threat Intelligence",
@@ -292,9 +298,9 @@ export default function ServicesPage() {
                 ].map((badge) => (
                   <div
                     key={badge}
-                    className="flex items-center gap-2.5 px-4 py-3 bg-[#166b5f] text-white text-sm font-medium shadow-[0_10px_25px_rgba(0,0,0,0.10)] hover:-translate-y-0.5 transition"
+                    className="flex items-center gap-2.5 px-4 py-3.5 bg-[#166b5f] text-white text-sm font-medium shadow-[0_10px_25px_rgba(0,0,0,0.10)] hover:-translate-y-0.5 transition"
                   >
-                    <ShieldCheck size={15} className="opacity-90" />
+                    <ShieldCheck size={16} className="opacity-90" />
                     {badge}
                   </div>
                 ))}
