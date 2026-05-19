@@ -21,7 +21,7 @@ export default function ProductsLandingPage() {
           </h1>
           <p className="text-xl text-[#2f5e53] max-w-2xl mx-auto">
             Global solutions miss local threats. Our products are engineered specifically for the African threat landscape 
-            — from M-Pesa fraud to Kiswahili phishing and East African cybercrime networks.
+            — from M-Pesa fraud to phishing and East African cybercrime networks.
           </p>
         </div>
       </section>
