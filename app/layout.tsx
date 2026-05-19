@@ -10,6 +10,24 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "Encrava",
   description: "Encrava Web App",
+
+  icons: {
+    icon: [
+      {
+        url: "/favicon.ico",
+        sizes: "512x512",
+      },
+      {
+        url: "/icon-192.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+    apple: "/icon-192.png",
+    shortcut: "/favicon.ico",
+  },
+
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

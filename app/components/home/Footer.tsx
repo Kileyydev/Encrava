@@ -40,7 +40,8 @@ export default function Footer() {
                 className="mobile-title"
                 onClick={() => setCompanyOpen(!companyOpen)}
               >
-                Company <span>{companyOpen ? "−" : "+"}</span>
+                Company
+                <span className="toggle-icon">{companyOpen ? "−" : "+"}</span>
               </button>
 
               <div className={`links ${companyOpen ? "open" : ""}`}>
@@ -57,7 +58,8 @@ export default function Footer() {
                 className="mobile-title"
                 onClick={() => setContactOpen(!contactOpen)}
               >
-                Contact <span>{contactOpen ? "−" : "+"}</span>
+                Contact
+                <span className="toggle-icon">{contactOpen ? "−" : "+"}</span>
               </button>
 
               <div className={`links ${contactOpen ? "open" : ""}`}>
@@ -117,14 +119,12 @@ export default function Footer() {
           padding: 0 clamp(16px, 3vw, 24px);
         }
 
-        /* GRID */
         .grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: clamp(16px, 2vw, 28px);
         }
 
-        /* BRAND */
         .logo-img {
           height: clamp(70px, 6vw, 98px);
           width: auto;
@@ -138,14 +138,6 @@ export default function Footer() {
           color: white;
           opacity: 0.95;
           line-height: 1.5;
-        }
-
-        /* LINKS */
-        h4 {
-          font-size: 13px;
-          font-weight: 700;
-          margin-bottom: 10px;
-          color: white;
         }
 
         a {
@@ -170,7 +162,6 @@ export default function Footer() {
           color: white;
         }
 
-        /* DIVIDER */
         .divider {
           height: 1px;
           background: black;
@@ -185,7 +176,6 @@ export default function Footer() {
           opacity: 0.9;
         }
 
-        /* FLOAT BUTTON */
         .floating {
           position: absolute;
           right: 18px;
@@ -209,7 +199,6 @@ export default function Footer() {
           cursor: pointer;
         }
 
-        /* MODAL */
         .overlay {
           position: fixed;
           inset: 0;
@@ -260,7 +249,7 @@ export default function Footer() {
           }
         }
 
-        /* ================= MOBILE ACCORDION ================= */
+        /* ================= MOBILE ONLY ACCORDION ================= */
         @media (max-width: 768px) {
           .grid {
             grid-template-columns: 1fr;
@@ -287,6 +276,10 @@ export default function Footer() {
             cursor: pointer;
           }
 
+          .toggle-icon {
+            display: inline; /* visible only mobile because button only exists there */
+          }
+
           .links {
             max-height: 0;
             overflow: hidden;
@@ -295,6 +288,21 @@ export default function Footer() {
 
           .links.open {
             max-height: 300px;
+          }
+        }
+
+        /* 🔥 BIG SCREENS: REMOVE + / − COMPLETELY */
+        @media (min-width: 769px) {
+          .mobile-title {
+            pointer-events: none;
+          }
+
+          .toggle-icon {
+            display: none;
+          }
+
+          .links {
+            max-height: none !important;
           }
         }
       `}</style>

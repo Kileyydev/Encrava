@@ -5,32 +5,19 @@ import Footer from "@/app/components/home/Footer";
 
 import {
   ArrowUpRight,
-  CalendarDays,
+  Mail,
+  Phone,
+  MapPin,
   ShieldCheck,
   BrainCircuit,
   Globe,
-  CheckCircle2,
 } from "lucide-react";
 
 import { useState } from "react";
 
-export default function ConsultationPage() {
-  const [active, setActive] = useState<"consult" | "call" | null>("consult");
-
-  // Calendar & Time State
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [preferredLanguage, setPreferredLanguage] = useState("English");
+export default function ContactPage() {
+  const [active, setActive] = useState<"message" | "support" | null>("message");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const benefits = [
-    "African-focused threat intelligence",
-    "Cloud & infrastructure security",
-    "KDPA compliance support",
-    "Fintech & mobile money protection",
-    "AI-powered phishing detection",
-    "Incident response & recovery",
-  ];
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,36 +25,23 @@ export default function ConsultationPage() {
 
     const formData = new FormData(e.currentTarget);
 
-    console.log("📤 Form submission started...");
-    console.log("Form Data:", Object.fromEntries(formData)); // See what data is being sent
-
     try {
-      const response = await fetch("/api/consultation", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
 
-      const result = await response.json().catch(() => ({}));
-
-      console.log("📥 Server Response:", { status: response.status, result });
-
       if (response.ok) {
-        console.log("✅ Successfully sent!");
-        alert("✅ Consultation request sent successfully! We'll contact you soon.");
+        alert("✅ Message sent successfully! We'll get back to you soon.");
         e.currentTarget.reset();
-        setSelectedDate("");
-        setSelectedTime("");
-        setPreferredLanguage("English");
       } else {
-        console.error("❌ Server Error:", result);
-        alert("❌ Failed to send. Please try again.");
+        alert("❌ Failed to send message.");
       }
     } catch (error) {
-      console.error("🚨 Network / Fetch Error:", error);
-      alert("❌ Something went wrong. Please check your internet connection.");
+      console.error(error);
+      alert("❌ Something went wrong.");
     } finally {
       setIsSubmitting(false);
-      console.log("🏁 Form submission finished.");
     }
   };
 
@@ -92,33 +66,62 @@ export default function ConsultationPage() {
               <div className="max-w-2xl">
 
                 <p className="text-[11px] uppercase tracking-[0.28em] text-[#166b5f] font-semibold">
-                  Encrava Consultation
+                  Contact Encrava
                 </p>
 
                 <h1 className="mt-4 text-4xl md:text-6xl font-bold leading-none tracking-[-0.05em] text-[#0f172a]">
-                  Secure Your Organization{" "}
+                  Let’s Secure Your{" "}
                   <span className="text-[#166b5f]">
-                    Before Attacks Happen.
+                    Digital Infrastructure.
                   </span>
                 </h1>
 
                 <div className="w-24 h-1 bg-[#166b5f] mt-6" />
 
                 <p className="mt-7 text-[15px] leading-8 text-slate-600 max-w-xl">
-                  Speak with Encrava’s cybersecurity specialists about penetration
-                  testing, AI-driven detection, KDPA compliance, cloud security,
-                  incident response, and fintech protection built for Africa.
+                  Reach out to Encrava for cybersecurity inquiries, partnerships,
+                  product support, threat intelligence, or enterprise protection
+                  solutions tailored for Africa.
                 </p>
 
- 
-                {/* STATS */}
+
+                {/* CONTACT CARDS */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
+
+                  <div className="stat-card">
+                    <Mail size={18} />
+                    <div>
+                      <h3>Email</h3>
+                      <p>support@encrava.com</p>
+                    </div>
+                  </div>
+
+                  <div className="stat-card">
+                    <Phone size={18} />
+                    <div>
+                      <h3>Phone</h3>
+                      <p>+254 700 000 000</p>
+                    </div>
+                  </div>
+
+                  <div className="stat-card">
+                    <MapPin size={18} />
+                    <div>
+                      <h3>Location</h3>
+                      <p>Nairobi, Kenya</p>
+                    </div>
+                  </div>
+
+                </div>
+
+                {/* EXTRA SECURITY STATS */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
 
                   <div className="stat-card">
                     <ShieldCheck size={18} />
                     <div>
-                      <h3>Fintech Security</h3>
-                      <p>Africa-focused protection</p>
+                      <h3>KDPA Ready</h3>
+                      <p>Compliance-focused security</p>
                     </div>
                   </div>
 
@@ -126,7 +129,7 @@ export default function ConsultationPage() {
                     <BrainCircuit size={18} />
                     <div>
                       <h3>AI Detection</h3>
-                      <p>Real-time monitoring</p>
+                      <p>Real-time threat intelligence</p>
                     </div>
                   </div>
 
@@ -134,7 +137,7 @@ export default function ConsultationPage() {
                     <Globe size={18} />
                     <div>
                       <h3>Pan-African</h3>
-                      <p>Regional threat coverage</p>
+                      <p>Regional cyber protection</p>
                     </div>
                   </div>
 
@@ -154,15 +157,17 @@ export default function ConsultationPage() {
 
                     {/* HEADER */}
                     <div className="flex items-center gap-4 mb-8">
-                      <div className="w-12 h-12 bg-[#166b5f] text-white flex items-center justify-center shrink-0 ">
-                        <CalendarDays size={20} />
+                      <div className="w-12 h-12 bg-[#166b5f] text-white flex items-center justify-center shrink-0">
+                        <Mail size={20} />
                       </div>
+
                       <div>
                         <p className="text-[11px] uppercase tracking-[0.22em] text-slate-500 font-semibold">
-                          BOOK CONSULTATION
+                          CONTACT ENCRAVA
                         </p>
+
                         <h2 className="text-2xl font-bold text-[#0f172a]">
-                          Let’s Talk Security
+                          Send Us a Message
                         </h2>
                       </div>
                     </div>
@@ -171,110 +176,96 @@ export default function ConsultationPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
                         <div>
                           <label className="label">Full Name</label>
-                          <input name="fullName" type="text" placeholder="Your name" className="input" required />
-                        </div>
-                        <div>
-                          <label className="label">Company</label>
-                          <input name="company" type="text" placeholder="Organization" className="input" />
-                        </div>
-                      </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div>
-                          <label className="label">Work Email</label>
-                          <input name="email" type="email" placeholder="name@company.com" className="input" required />
-                        </div>
-                        <div>
-                          <label className="label">Phone Number</label>
-                          <input name="phone" type="tel" placeholder="+254..." className="input" required />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="label">Preferred Language</label>
-                        <div className="flex gap-6 mt-2">
-                          <label className="flex items-center gap-2 cursor-pointer">
-                            <input 
-                              type="radio" 
-                              name="language" 
-                              value="English"
-                              checked={preferredLanguage === "English"}
-                              onChange={() => setPreferredLanguage("English")}
-                            />
-                            English
-                          </label>
-                          <label className="flex items-center gap-2 cursor-pointer">
-                            <input 
-                              type="radio" 
-                              name="language" 
-                              value="Swahili"
-                              checked={preferredLanguage === "Swahili"}
-                              onChange={() => setPreferredLanguage("Swahili")}
-                            />
-                            Swahili
-                          </label>
-                        </div>
-                      </div>
-
-                      {/* Calendar & Time */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <div>
-                          <label className="label">Preferred Date</label>
-                          <input 
-                            name="date"
-                            type="date" 
-                            value={selectedDate}
-                            onChange={(e) => setSelectedDate(e.target.value)}
-                            min={new Date().toISOString().split("T")[0]}
+                          <input
+                            name="fullName"
+                            type="text"
+                            placeholder="Your name"
                             className="input"
                             required
                           />
                         </div>
 
                         <div>
-                          <label className="label">Preferred Time</label>
-                          <select 
-                            name="time"
-                            value={selectedTime}
-                            onChange={(e) => setSelectedTime(e.target.value)}
+                          <label className="label">Company</label>
+
+                          <input
+                            name="company"
+                            type="text"
+                            placeholder="Organization"
+                            className="input"
+                          />
+                        </div>
+
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                        <div>
+                          <label className="label">Email Address</label>
+
+                          <input
+                            name="email"
+                            type="email"
+                            placeholder="name@company.com"
                             className="input"
                             required
-                          >
-                            <option value="">Select Time Slot</option>
-                            <option value="09:00">09:00 AM</option>
-                            <option value="10:00">10:00 AM</option>
-                            <option value="11:00">11:00 AM</option>
-                            <option value="14:00">02:00 PM</option>
-                            <option value="15:00">03:00 PM</option>
-                            <option value="16:00">04:00 PM</option>
-                          </select>
+                          />
                         </div>
+
+                        <div>
+                          <label className="label">Phone Number</label>
+
+                          <input
+                            name="phone"
+                            type="tel"
+                            placeholder="+254..."
+                            className="input"
+                          />
+                        </div>
+
                       </div>
 
                       <div>
-                        <label className="label">Project Details / Concerns</label>
-                        <textarea
-                          name="details"
-                          rows={4}
-                          placeholder="Tell us about your systems, concerns, or goals..."
-                          className="input resize-none"
+                        <label className="label">Subject</label>
+
+                        <input
+                          name="subject"
+                          type="text"
+                          placeholder="What would you like to discuss?"
+                          className="input"
+                          required
                         />
                       </div>
 
-                      <button 
-                        type="submit" 
+                      <div>
+                        <label className="label">Message</label>
+
+                        <textarea
+                          name="message"
+                          rows={5}
+                          placeholder="Tell us more about your inquiry..."
+                          className="input resize-none"
+                          required
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
                         disabled={isSubmitting}
                         className="submit-btn"
                       >
-                        {isSubmitting ? "Sending..." : "Schedule Consultation Now"}
+                        {isSubmitting ? "Sending..." : "Send Message"}
                         <ArrowUpRight size={18} />
                       </button>
 
                     </form>
 
                   </div>
+
                 </div>
 
               </div>
@@ -282,15 +273,15 @@ export default function ConsultationPage() {
             </div>
 
           </div>
+
         </section>
 
       </main>
 
       <Footer />
 
-      {/* STYLES - Unchanged */}
+      {/* STYLES */}
       <style jsx>{`
-        /* ... your original styles (unchanged) ... */
         .cta-btn {
           display: flex;
           align-items: center;

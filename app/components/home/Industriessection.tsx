@@ -86,34 +86,34 @@ export default function IndustriesSection() {
 
   const cards = [
     {
-      title: "African Threat Intelligence",
+      title: "Financial Services & Fintech",
       text:
-        "Monitors M-Pesa fraud networks, SIM swap groups, and Africa-specific cybercrime ecosystems in real time.",
+        "Protects banking systems, mobile money platforms, and digital payment infrastructure from cyber fraud and attacks.",
     },
     {
-      title: "AI-Powered Detection",
+      title: "Telecommunications",
       text:
-        "Detects phishing, KRA scams, bank impersonation.",
+        "Secures telecom networks, SIM infrastructure, and subscriber systems against identity and SIM-swap fraud.",
     },
     {
-      title: "Mobile-First Security",
+      title: "Government & Public Sector",
       text:
-        "Secures fintech, telecom, and mobile money infrastructure built for Africa’s mobile-first economy.",
+        "Defends national institutions and public services from cyber espionage and infrastructure-targeted attacks.",
     },
     {
-      title: "KDPA Compliance",
+      title: "Technology & SaaS",
       text:
-        "Aligned with Kenya Data Protection Act 2019, ODPC requirements, and regional African privacy laws.",
+        "Protects cloud platforms, APIs, and software ecosystems powering modern digital businesses.",
     },
     {
-      title: "Pan-African Coverage",
+      title: "E-commerce & Digital Retail",
       text:
-        "Protection across Kenya, East Africa, West Africa, and Southern Africa threat landscapes.",
+        "Secures online marketplaces, payment flows, and customer data from fraud and breaches.",
     },
     {
-      title: "Built for Africa",
+      title: "Energy & Critical Infrastructure",
       text:
-        "Engineered specifically for African infrastructure, threat actors, and operational realities.",
+        "Safeguards utilities, energy systems, and operational infrastructure from cyber disruption.",
     },
   ];
 
@@ -149,8 +149,6 @@ export default function IndustriesSection() {
           position: relative;
           background: #fff;
           overflow-x: clip;
-
-          /* tight integration with previous section */
           padding: 30px 8% 60px;
           margin-top: -15px;
         }
@@ -168,7 +166,6 @@ export default function IndustriesSection() {
           margin-bottom: 10px;
         }
 
-        /* underline */
         .underline {
           width: 70px;
           height: 4px;
@@ -201,14 +198,11 @@ export default function IndustriesSection() {
           }
         }
 
-        /* ================= SOLID CARDS ================= */
         .card {
-          background: #166b5f; /* 🔥 SOLID ENCRAVA GREEN */
+          background: #166b5f;
           padding: 20px;
           min-height: 150px;
-
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -227,7 +221,6 @@ export default function IndustriesSection() {
           line-height: 1.6;
         }
 
-        /* small accent line */
         .line {
           width: 36px;
           height: 3px;
