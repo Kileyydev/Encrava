@@ -2,189 +2,197 @@
 import Link from "next/link";
 import { 
   Search, 
-  Download, 
   Calendar, 
-  Clock, 
-  ArrowRight, 
+  Download, 
+  PlayCircle, 
   FileText, 
-  Video, 
   BookOpen, 
-  Briefcase,
-  ChevronRight,
-  Mail,
-  Newspaper,
+  Video, 
+  Users, 
   TrendingUp,
   Shield,
-  Radar
+  Radar,
+  ArrowRight,
+  ChevronRight,
+  Mail
 } from "lucide-react";
 import Footer from "../components/home/Footer";
 import TopNavBar from "../components/home/Navbar";
 
-// Resource type definition
+// Resource type definitions
+type ResourceType = "report" | "blog" | "webinar" | "case" | "doc";
+
 interface Resource {
-  id: string;
+  id: number;
   title: string;
-  type: "report" | "blog" | "webinar" | "case" | "doc";
+  type: ResourceType;
   description: string;
   date: string;
   readTime?: string;
-  duration?: string;
-  icon: React.ReactNode;
-  featured?: boolean;
+  icon: string;
   link: string;
-  tags: string[];
+  featured?: boolean;
+  downloadUrl?: string;
 }
 
 const resources: Resource[] = [
   {
-    id: "state-of-cybersecurity-east-africa-2026",
+    id: 1,
     title: "The State of Cybersecurity in East Africa 2026",
     type: "report",
     description: "An in-depth analysis of emerging threats, M-Pesa fraud trends, SIM-swap broker activity, and nation-state actors targeting Kenya, Uganda, Tanzania, and Rwanda.",
     date: "April 2026",
-    readTime: "25 min read",
-    icon: <TrendingUp className="w-6 h-6" />,
+    readTime: "48 pages",
+    icon: "📊",
+    link: "/resources/state-of-cybersecurity-east-africa-2026",
     featured: true,
-    link: "/resources/reports/state-of-cybersecurity-east-africa-2026",
-    tags: ["Threat Intelligence", "M-Pesa", "East Africa"]
+    downloadUrl: "/downloads/east-africa-cybersecurity-report-2026.pdf"
   },
   {
-    id: "m-pesa-fraud-trends-kenya-2026",
+    id: 2,
     title: "M-Pesa Fraud Trends in Kenya 2026",
     type: "report",
-    description: "Analysis of 500+ fraud campaigns targeting mobile money users, including SIM-swap patterns and phishing techniques.",
+    description: "Analysis of 500+ fraud campaigns targeting mobile money users, including SIM-swap tactics, fake USSD pages, and social engineering patterns.",
     date: "March 2026",
-    readTime: "18 min read",
-    icon: <Shield className="w-6 h-6" />,
-    link: "/resources/reports/mpesa-fraud-trends-2026",
-    tags: ["M-Pesa", "Fraud", "Mobile Money"]
+    readTime: "32 pages",
+    icon: "📱",
+    link: "/resources/mpesa-fraud-trends-2026",
+    downloadUrl: "/downloads/mpesa-fraud-report-2026.pdf"
   },
   {
-    id: "kiswahili-phishing-emerging-threat",
+    id: 3,
     title: "Kiswahili Phishing: The Emerging Threat",
     type: "blog",
-    description: "How attackers are using local languages to bypass detection — and what your organisation can do about it.",
+    description: "How attackers are using local languages to bypass traditional detection systems, and why African organisations need Kiswahili NLP.",
     date: "February 2026",
     readTime: "8 min read",
-    icon: <BookOpen className="w-6 h-6" />,
-    link: "/resources/blog/kiswahili-phishing-emerging-threat",
-    tags: ["Phishing", "Kiswahili", "NLP"]
+    icon: "🇰🇪",
+    link: "/blog/kiswahili-phishing-emerging-threat"
   },
   {
-    id: "securing-kenyan-government-digital-infrastructure",
-    title: "Securing Kenyan Government Digital Infrastructure",
-    type: "webinar",
-    description: "On-demand webinar with KE-CIRT/CC on protecting eCitizen, KRA iTax, and county government systems.",
-    date: "January 2026",
-    duration: "45 min",
-    icon: <Video className="w-6 h-6" />,
-    link: "/resources/webinars/securing-government-infrastructure",
-    tags: ["Government", "eCitizen", "KE-CIRT"]
-  },
-  {
-    id: "tier-1-bank-stops-sim-swap-fraud",
-    title: "How a Tier-1 Kenyan Bank Stopped SIM-Swap Fraud",
+    id: 4,
+    title: "How a Tier-1 Bank Stopped SIM-Swap Fraud",
     type: "case",
-    description: "Case study: Real-time threat intelligence in action, preventing over KES 50M in potential losses.",
-    date: "December 2025",
+    description: "Case study: How Encrava Intel provided real-time intelligence that helped a major Kenyan bank prevent SIM-swap attacks before customer impact.",
+    date: "January 2026",
     readTime: "12 min read",
-    icon: <Briefcase className="w-6 h-6" />,
-    link: "/resources/case-studies/tier1-bank-sim-swap-fraud",
-    tags: ["Case Study", "Banking", "SIM-Swap"]
+    icon: "🏦",
+    link: "/case-studies/tier1-bank-sim-swap-prevention"
   },
   {
-    id: "encrava-shield-api-integration-guide",
-    title: "Encrava Shield API Integration Guide",
+    id: 5,
+    title: "API Integration Guide for Encrava Shield",
     type: "doc",
-    description: "Technical documentation for Microsoft 365, Google Workspace, and custom SIEM integration.",
-    date: "November 2025",
-    readTime: "15 min read",
-    icon: <FileText className="w-6 h-6" />,
-    link: "/resources/docs/shield-api-integration",
-    tags: ["API", "Integration", "Technical"]
+    description: "Complete technical documentation for integrating Encrava Shield with Microsoft 365, Google Workspace, and custom SIEM platforms.",
+    date: "December 2025",
+    readTime: "24 pages",
+    icon: "📘",
+    link: "/docs/shield-api-integration"
   },
   {
-    id: "dark-web-monitoring-african-organisations",
+    id: 6,
     title: "Dark Web Monitoring for African Organisations",
     type: "report",
-    description: "What Kenyan credentials are selling for on dark web markets — and how to protect your organisation.",
-    date: "October 2025",
-    readTime: "20 min read",
-    icon: <Radar className="w-6 h-6" />,
-    link: "/resources/reports/dark-web-monitoring-africa",
-    tags: ["Dark Web", "Credentials", "Monitoring"]
+    description: "What Kenyan credentials are selling for on dark web markets, and how to proactively protect your organisation.",
+    date: "November 2025",
+    readTime: "28 pages",
+    icon: "🌐",
+    link: "/resources/dark-web-monitoring-africa",
+    downloadUrl: "/downloads/dark-web-report-2025.pdf"
   },
   {
-    id: "bec-attacks-targeting-procurement-teams",
+    id: 7,
     title: "BEC Attacks Targeting Procurement Teams",
     type: "blog",
-    description: "How to protect against CEO fraud and invoice scams targeting Kenyan corporates.",
-    date: "September 2025",
+    description: "How to protect against CEO fraud, invoice scams, and business email compromise targeting finance and procurement departments.",
+    date: "October 2025",
     readTime: "6 min read",
-    icon: <BookOpen className="w-6 h-6" />,
-    link: "/resources/blog/bec-attacks-procurement",
-    tags: ["BEC", "CEO Fraud", "Email Security"]
+    icon: "💼",
+    link: "/blog/bec-attacks-procurement-teams"
   },
   {
-    id: "ngo-cyber-resilience-east-africa",
+    id: 8,
+    title: "Securing Kenyan Government Digital Infrastructure",
+    type: "webinar",
+    description: "On-demand webinar with KE-CIRT/CC covering eCitizen security, KRA iTax protection, and national infrastructure defense.",
+    date: "September 2025",
+    readTime: "45 min",
+    icon: "🎥",
+    link: "/webinars/securing-kenyan-government-infrastructure"
+  },
+  {
+    id: 9,
     title: "NGO Cyber Resilience in East Africa",
     type: "case",
     description: "How a regional NGO reduced phishing risk by 94% with Encrava Shield.",
-    date: "July 2025",
+    date: "August 2025",
     readTime: "10 min read",
-    icon: <Briefcase className="w-6 h-6" />,
-    link: "/resources/case-studies/ngo-cyber-resilience",
-    tags: ["NGO", "Phishing", "Non-profit"]
+    icon: "🤝",
+    link: "/case-studies/ngo-cyber-resilience"
   },
   {
-    id: "encrava-intel-api-documentation",
+    id: 10,
     title: "Encrava Intel API Documentation",
     type: "doc",
-    description: "RESTful API reference for STIX 2.1 and TAXII 2.1 integration with your SIEM or SOAR.",
-    date: "June 2025",
-    readTime: "20 min read",
-    icon: <FileText className="w-6 h-6" />,
-    link: "/resources/docs/intel-api-reference",
-    tags: ["API", "STIX", "TAXII"]
+    description: "RESTful API reference for STIX 2.1 and TAXII 2.1 integration, including authentication and data export examples.",
+    date: "July 2025",
+    readTime: "36 pages",
+    icon: "🔌",
+    link: "/docs/intel-api-documentation"
   },
   {
-    id: "mobile-money-fraud-prevention-webinar",
-    title: "Mobile Money Fraud Prevention Strategies",
+    id: 11,
+    title: "Fintech Security in East Africa",
     type: "webinar",
-    description: "Expert panel discussion on protecting Fintech platforms from emerging fraud techniques.",
+    description: "Expert panel on securing mobile money platforms, digital lending apps, and payment gateways.",
+    date: "June 2025",
+    readTime: "60 min",
+    icon: "📱",
+    link: "/webinars/fintech-security-east-africa"
+  },
+  {
+    id: 12,
+    title: "KDPA Compliance: A Practical Guide",
+    type: "report",
+    description: "How Kenyan organisations can achieve and maintain Kenya Data Protection Act compliance.",
     date: "May 2025",
-    duration: "60 min",
-    icon: <Video className="w-6 h-6" />,
-    link: "/resources/webinars/mobile-money-fraud-prevention",
-    tags: ["Fintech", "Mobile Money", "Fraud"]
+    readTime: "40 pages",
+    icon: "📋",
+    link: "/resources/kdpa-compliance-guide",
+    downloadUrl: "/downloads/kdpa-compliance-guide.pdf"
   }
 ];
 
-const typeConfig = {
-  report: {
-    label: "Threat Report",
-    color: "bg-[#166b5f]/10 text-[#166b5f]",
-    icon: <TrendingUp className="w-4 h-4" />
+const typeConfig: Record<ResourceType, { label: string; bgColor: string; textColor: string; icon: JSX.Element }> = {
+  report: { 
+    label: "Threat Report", 
+    bgColor: "bg-[#166b5f]/10", 
+    textColor: "text-[#166b5f]",
+    icon: <FileText className="w-3.5 h-3.5" />
   },
-  blog: {
-    label: "Blog Post",
-    color: "bg-[#ffb3c6]/20 text-[#b1536e]",
-    icon: <BookOpen className="w-4 h-4" />
+  blog: { 
+    label: "Blog Post", 
+    bgColor: "bg-[#ffb3c6]/20", 
+    textColor: "text-[#b1536e]",
+    icon: <BookOpen className="w-3.5 h-3.5" />
   },
-  webinar: {
-    label: "Webinar",
-    color: "bg-[#2b9a7a]/10 text-[#2b9a7a]",
-    icon: <Video className="w-4 h-4" />
+  webinar: { 
+    label: "Webinar", 
+    bgColor: "bg-[#2b9a7a]/10", 
+    textColor: "text-[#2b9a7a]",
+    icon: <Video className="w-3.5 h-3.5" />
   },
-  case: {
-    label: "Case Study",
-    color: "bg-[#1e3a5f]/10 text-[#1e3a5f]",
-    icon: <Briefcase className="w-4 h-4" />
+  case: { 
+    label: "Case Study", 
+    bgColor: "bg-[#1e3a5f]/10", 
+    textColor: "text-[#1e3a5f]",
+    icon: <Users className="w-3.5 h-3.5" />
   },
-  doc: {
-    label: "Documentation",
-    color: "bg-[#d45a7a]/10 text-[#d45a7a]",
-    icon: <FileText className="w-4 h-4" />
+  doc: { 
+    label: "Documentation", 
+    bgColor: "bg-[#d45a7a]/10", 
+    textColor: "text-[#d45a7a]",
+    icon: <FileText className="w-3.5 h-3.5" />
   }
 };
 
@@ -211,21 +219,47 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* Search & Filter Bar */}
+      <section className="py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white/60 backdrop-blur-sm rounded-full p-2 flex flex-col sm:flex-row gap-3 items-center justify-between border border-green-200/50">
+            <div className="flex flex-wrap gap-2 px-3">
+              {["All", "Reports", "Blog", "Webinars", "Case Studies", "Documentation"].map((category) => (
+                <button
+                  key={category}
+                  className="px-4 py-1.5 rounded-full text-sm font-medium text-[#2f5e53] hover:bg-[#166b5f] hover:text-white transition-all"
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search resources..."
+                className="pl-10 pr-4 py-2 rounded-full border border-green-200 bg-white w-64 focus:outline-none focus:ring-2 focus:ring-[#166b5f]"
+              />
+              <Search className="absolute left-3 top-2.5 w-4 h-4 text-[#4b5563]" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Resource */}
       {featuredResource && (
-        <section className="pb-12">
+        <section className="py-12">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-white to-[#f5fbf7] rounded-3xl overflow-hidden shadow-xl border border-green-200/30">
-              <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-                <div>
-                  <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full ${typeConfig[featuredResource.type].color} mb-4`}>
-                    {typeConfig[featuredResource.type].icon}
-                    <span>FEATURED — {typeConfig[featuredResource.type].label}</span>
+            <div className="bg-gradient-to-r from-white to-[#f5fbf7] rounded-3xl overflow-hidden shadow-xl border border-green-200/50">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-8 md:p-10">
+                  <span className="inline-flex items-center gap-1.5 bg-[#ffe0f0] text-[#b14562] px-3 py-1 rounded-full text-xs font-semibold">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    Featured Resource
                   </span>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#145c4f] mb-4">
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#145c4f] mt-4 mb-3">
                     {featuredResource.title}
                   </h2>
-                  <p className="text-[#2f5e53] mb-6 leading-relaxed">
+                  <p className="text-[#2f5e53] mb-4 leading-relaxed">
                     {featuredResource.description}
                   </p>
                   <div className="flex flex-wrap gap-4 mb-6 text-sm text-[#4b5563]">
@@ -233,40 +267,28 @@ export default function ResourcesPage() {
                       <Calendar className="w-4 h-4" />
                       {featuredResource.date}
                     </span>
-                    {featuredResource.readTime && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {featuredResource.readTime}
-                      </span>
-                    )}
-                    {featuredResource.duration && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {featuredResource.duration}
-                      </span>
-                    )}
+                    <span className="flex items-center gap-1">
+                      <BookOpen className="w-4 h-4" />
+                      {featuredResource.readTime}
+                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {featuredResource.tags.map(tag => (
-                      <span key={tag} className="bg-[#e8f3ef] text-[#166b5f] text-xs px-3 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap gap-3">
+                    <Link
+                      href={featuredResource.link}
+                      className="inline-flex items-center gap-2 bg-[#166b5f] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#0f5549] transition"
+                    >
+                      Download Report <Download className="w-4 h-4" />
+                    </Link>
+                    <Link
+                      href={featuredResource.link}
+                      className="inline-flex items-center gap-2 border-2 border-[#166b5f] text-[#166b5f] px-6 py-2.5 rounded-full font-semibold hover:bg-[#166b5f]/10 transition"
+                    >
+                      Learn More <ChevronRight className="w-4 h-4" />
+                    </Link>
                   </div>
-                  <Link 
-                    href={featuredResource.link}
-                    className="inline-flex items-center gap-2 bg-[#166b5f] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0f5549] transition"
-                  >
-                    Download Report
-                    <Download className="w-4 h-4" />
-                  </Link>
                 </div>
-                <div className="bg-gradient-to-br from-[#c5e5d9] to-[#b8dfd0] rounded-2xl flex items-center justify-center p-8">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">📊</div>
-                    <p className="text-[#0e5a4d] font-medium">48 pages of actionable insights</p>
-                    <p className="text-[#0e5a4d] text-sm">Free download — no email required</p>
-                  </div>
+                <div className="bg-gradient-to-br from-[#c5e5d9] to-[#b8dfd0] p-10 flex items-center justify-center">
+                  <div className="text-7xl">{featuredResource.icon}</div>
                 </div>
               </div>
             </div>
@@ -274,116 +296,106 @@ export default function ResourcesPage() {
         </section>
       )}
 
-      {/* Resource Grid */}
-      <section className="py-12">
+      {/* Resources Grid */}
+      <section className="py-12 pb-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#145c4f]">Latest Resources</h2>
-            <div className="relative">
-              <input 
-                type="text" 
-                placeholder="Search resources..." 
-                className="pl-10 pr-4 py-2 rounded-full border border-green-200 bg-white/80 focus:outline-none focus:ring-2 focus:ring-[#166b5f] w-64"
-              />
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-[#4b5563]" />
-            </div>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl font-bold text-[#145c4f]">Latest Resources</h2>
+            <Link href="/resources/all" className="text-[#166b5f] font-semibold hover:text-[#b1536e] transition inline-flex items-center gap-1">
+              View all <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
-          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherResources.map((resource) => (
-              <Link 
-                key={resource.id}
-                href={resource.link}
-                className="group bg-white/95 rounded-2xl overflow-hidden shadow-md border border-green-200/30 hover:shadow-xl transition-all hover:-translate-y-1"
-              >
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-3xl">{resource.icon}</div>
-                    <span className={`inline-flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full ${typeConfig[resource.type].color}`}>
-                      {typeConfig[resource.type].icon}
-                      <span>{typeConfig[resource.type].label}</span>
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-[#0a2f2a] mb-2 group-hover:text-[#166b5f] transition">
-                    {resource.title}
-                  </h3>
-                  <p className="text-sm text-[#2f5e53] mb-4 line-clamp-2">
-                    {resource.description}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-[#4b5563]">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {resource.date}
-                    </span>
-                    {resource.readTime && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+            {otherResources.slice(0, 9).map((resource) => {
+              const config = typeConfig[resource.type];
+              return (
+                <Link
+                  key={resource.id}
+                  href={resource.link}
+                  className="bg-white/95 rounded-2xl overflow-hidden shadow-md border border-green-200/30 hover:shadow-xl transition-all hover:-translate-y-1 group"
+                >
+                  <div className="p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${config.bgColor} ${config.textColor}`}>
+                        {config.icon}
+                        {config.label}
+                      </span>
+                      <span className="text-xs text-[#4b5563]">{resource.date}</span>
+                    </div>
+                    <div className="text-3xl mb-3">{resource.icon}</div>
+                    <h3 className="font-bold text-[#0a2f2a] mb-2 group-hover:text-[#166b5f] transition">
+                      {resource.title}
+                    </h3>
+                    <p className="text-sm text-[#2f5e53] mb-4 line-clamp-2">
+                      {resource.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-[#4b5563] flex items-center gap-1">
+                        <BookOpen className="w-3 h-3" />
                         {resource.readTime}
                       </span>
-                    )}
-                    {resource.duration && (
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {resource.duration}
+                      <span className="text-[#166b5f] font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Read more <ArrowRight className="w-3.5 h-3.5" />
                       </span>
-                    )}
+                    </div>
                   </div>
-                </div>
-                <div className="px-6 py-3 border-t border-green-100 bg-[#f9fdfb] flex items-center justify-between text-sm">
-                  <span className="text-[#166b5f] font-medium">Read more</span>
-                  <ArrowRight className="w-4 h-4 text-[#166b5f] group-hover:translate-x-1 transition" />
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Category Quick Links */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#145c4f] text-center mb-8">Browse by Category</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {Object.entries(typeConfig).map(([key, config]) => (
-              <Link 
-                key={key}
-                href={`/resources/category/${key}`}
-                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition ${config.color} hover:opacity-80`}
-              >
-                {config.icon}
-                {config.label}s
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
+      {/* CTA: Newsletter */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#c5e5d9] to-[#edf7f1] rounded-3xl p-8 md:p-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
-              <Mail className="w-8 h-8 text-[#b1536e]" />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0e5a4d] mb-4">
+            <Mail className="w-12 h-12 text-[#166b5f] mx-auto mb-4" />
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0e5a4d] mb-3">
               Get weekly threat intelligence
             </h2>
             <p className="text-[#2f5e53] max-w-lg mx-auto mb-6">
               Subscribe to our newsletter for the latest African cyber threat landscape updates, delivered every Tuesday.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input 
-                type="email" 
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
                 placeholder="Your email address"
-                className="flex-1 px-4 py-3 rounded-full border-none focus:outline-none focus:ring-2 focus:ring-[#b1536e]"
+                className="flex-1 px-5 py-3 rounded-full border-none focus:outline-none focus:ring-2 focus:ring-[#166b5f]"
+                required
               />
-              <button className="bg-[#b1536e] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#9a4560] transition">
+              <button
+                type="submit"
+                className="bg-[#b1536e] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#9a4560] transition"
+              >
                 Subscribe →
               </button>
+            </form>
+            <p className="text-xs text-[#4b5563] mt-4">No spam. Unsubscribe anytime.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats / Trust Indicators */}
+      <section className="py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-[#166b5f]">300+</div>
+              <div className="text-sm text-[#2f5e53]">Organisations Secured</div>
             </div>
-            <p className="text-xs text-[#4b5563] mt-4">
-              No spam. Unsubscribe anytime. We respect your privacy.
-            </p>
+            <div>
+              <div className="text-3xl font-bold text-[#166b5f]">99.7%</div>
+              <div className="text-sm text-[#2f5e53]">Threat Detection Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#166b5f]">50+</div>
+              <div className="text-sm text-[#2f5e53]">Threat Reports Published</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#166b5f]">15k+</div>
+              <div className="text-sm text-[#2f5e53]">Newsletter Subscribers</div>
+            </div>
           </div>
         </div>
       </section>
