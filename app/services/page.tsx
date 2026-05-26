@@ -41,137 +41,124 @@ export default function ServicesPage() {
 
       <main className="min-h-screen bg-white">
 
-        {/* ── HERO ── */}
-        <section className="relative bg-white pt-28 pb-10 overflow-hidden">
+        {/* ── HERO — clean centered intro ── */}
+        <section className="relative bg-white pt-28 pb-0 overflow-hidden border-b border-slate-200">
 
           <div className="absolute -top-24 -left-24 w-[320px] h-80 bg-[#166b5f]/10 blur-[120px]" />
 
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-12 gap-12">
 
-              {/* LEFT */}
-              <div className="lg:col-span-4">
-                <div className="sticky top-28 space-y-4">
+            {/* Centered intro */}
+            <div className="max-w-2xl mx-auto text-center pb-12">
 
-                  <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase">
-                    Encrava Services
-                  </p>
+              <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase mb-5">
+                Encrava Services
+              </p>
 
-                  <h1 className="text-[2.3rem] md:text-[3.4rem] font-bold leading-[1.05] text-slate-900">
-                    Cybersecurity Built for{" "}
-                    <span className="text-[#166b5f]">Africa.</span>
-                  </h1>
+              <h1 className="text-[2rem] md:text-[2.6rem] font-bold leading-[1.1] text-slate-900 mb-4">
+                Cybersecurity Built for{" "}
+                <span className="text-[#166b5f]">Africa.</span>
+              </h1>
 
-                  <div className="w-22.5 h-1 bg-[#166b5f]" />
+              <p className="text-sm md:text-[0.95rem] text-slate-500 leading-7 mb-8">
+                From penetration testing to compliance and incident response,
+                Encrava delivers security systems tailored for African fintech,
+                government, and enterprise environments.
+              </p>
 
-                  <p className="text-sm md:text-[0.95rem] text-slate-500 leading-7 max-w-md">
-                    From penetration testing to compliance and incident response,
-                    Encrava delivers security systems tailored for African fintech,
-                    government, and enterprise environments.
-                  </p>
-
-                  <div className="flex flex-wrap gap-3 pt-1">
-                    <Link
-                      href="/consultation"
-                      className="inline-flex items-center gap-2 bg-[#166b5f] text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition"
-                    >
-                      Book Consultation <ArrowUpRight size={15} />
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="inline-flex items-center gap-2 border border-black/15 text-slate-700 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-50 transition"
-                    >
-                      Talk to Our Team
-                    </Link>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* RIGHT — service cards */}
-              <div className="lg:col-span-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
-                  {services.map((service, i) => {
-                    const Icon = icons[service.slug] ?? ShieldCheck;
-                    const smear = smears[service.slug] ?? "/assets/smears/smear1.png";
-                    return (
-                      <div
-                        key={i}
-                        className="relative p-6 min-h-52 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
-                      >
-                        <div
-                          className="absolute -inset-10 opacity-10 pointer-events-none"
-                          style={{
-                            backgroundImage: `url(${smear})`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "contain",
-                            backgroundPosition: "top right",
-                          }}
-                        />
-
-                        <div className="relative z-10 flex flex-col h-full">
-                          <div className="flex items-center gap-3 mb-3">
-                            <Icon className="text-[#166b5f]" size={20} />
-                            <h3 className="text-[0.95rem] font-semibold text-slate-900 leading-snug">
-                              {service.title}
-                            </h3>
-                          </div>
-
-                          <p className="text-sm text-slate-500 leading-6">
-                            {service.short}
-                          </p>
-
-                          <div className="mt-auto pt-4">
-                            <Link
-                              href={`/services/${service.slug}`}
-                              className="inline-flex items-center gap-2 text-[#166b5f] text-[12px] font-semibold underline underline-offset-4 hover:opacity-80 transition"
-                            >
-                              Learn More
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="/consultation"
+                  className="inline-flex items-center gap-2 bg-[#166b5f] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition"
+                >
+                  Book Consultation <ArrowUpRight size={15} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 border border-black/15 text-slate-700 px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-50 transition"
+                >
+                  Talk to Our Team
+                </Link>
               </div>
 
             </div>
+
+            {/* Full width card grid */}
+            <div className="border-t border-slate-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+                {services.map((service, i) => {
+                  const Icon = icons[service.slug] ?? ShieldCheck;
+                  const smear = smears[service.slug] ?? "/assets/smears/smear1.png";
+                  return (
+                    <div
+                      key={i}
+                      className="relative p-7 min-h-52 border-b border-slate-200 lg:border-r hover:bg-[#166b5f]/5 transition"
+                    >
+                      <div
+                        className="absolute -inset-10 opacity-10 pointer-events-none"
+                        style={{
+                          backgroundImage: `url(${smear})`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "contain",
+                          backgroundPosition: "top right",
+                        }}
+                      />
+
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex items-center gap-3 mb-3">
+                          <Icon className="text-[#166b5f] shrink-0" size={20} />
+                          <h3 className="text-[0.95rem] font-semibold text-slate-900 leading-snug">
+                            {service.title}
+                          </h3>
+                        </div>
+
+                        <p className="text-sm text-slate-500 leading-6">
+                          {service.short}
+                        </p>
+
+                        <div className="mt-auto pt-4">
+                          <Link
+                            href={`/services/${service.slug}`}
+                            className="inline-flex items-center gap-2 text-[#166b5f] text-[12px] font-semibold underline underline-offset-4 hover:opacity-80 transition"
+                          >
+                            Learn More
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
           </div>
         </section>
 
         {/* ── PROCESS ── */}
-        <section className="relative bg-white py-10 border-t border-slate-200 overflow-hidden">
+        <section className="relative bg-white py-10 border-b border-slate-200 overflow-hidden">
 
           <div className="absolute -top-32 -right-32 w-[320px] h-80 bg-[#166b5f]/10 blur-[120px]" />
 
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-12 gap-12">
 
-              {/* LEFT */}
               <div className="lg:col-span-4">
                 <div className="sticky top-28 space-y-4">
-
                   <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase">
                     How We Work
                   </p>
-
                   <h2 className="text-[2.3rem] md:text-[3.4rem] font-bold leading-[1.05] text-slate-900">
                     Our Engagement{" "}
                     <span className="text-[#166b5f]">Process.</span>
                   </h2>
-
                   <div className="w-22.5 h-1 bg-[#166b5f]" />
-
                   <p className="text-sm md:text-[0.95rem] text-slate-500 leading-7 max-w-md">
                     A clear, transparent process from first contact to remediation
                     support — with no surprises at any stage.
                   </p>
-
                 </div>
               </div>
 
-              {/* RIGHT */}
               <div className="lg:col-span-8">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
                   {[
@@ -206,9 +193,8 @@ export default function ServicesPage() {
         </section>
 
         {/* ── COMPLIANCE ── */}
-        <section className="w-full py-10 bg-white border-t border-slate-200 flex justify-center">
+        <section className="w-full py-10 bg-white border-b border-slate-200 flex justify-center">
           <div className="max-w-7xl w-full px-6">
-
             <div className="text-center mb-6">
               <p className="text-xs tracking-[0.25em] font-bold text-[#166b5f] uppercase mb-2">
                 Standards & Frameworks
@@ -218,7 +204,6 @@ export default function ServicesPage() {
               </h2>
               <div className="w-[140px] h-1 bg-[#166b5f] mx-auto mt-3 rounded-full" />
             </div>
-
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 "KDPA 2019 Compliant",
@@ -241,16 +226,14 @@ export default function ServicesPage() {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
         {/* ── CTA ── */}
-        <section className="w-full bg-white flex justify-center py-8 border-t border-slate-200">
+        <section className="w-full bg-white flex justify-center py-8">
           <div className="w-full max-w-6xl px-6">
             <div className="bg-white border border-black/8 shadow-[0_25px_70px_rgba(0,0,0,0.12)] p-8 flex flex-col md:flex-row justify-between gap-10">
 
-              {/* LEFT */}
               <div className="flex-1">
                 <h2 className="text-[24px] font-bold text-slate-900 leading-snug">
                   Ready to Build a Stronger Security Foundation?
@@ -283,7 +266,6 @@ export default function ServicesPage() {
                 </p>
               </div>
 
-              {/* RIGHT — green badges */}
               <div className="flex-1 flex flex-col justify-center gap-3">
                 {[
                   "KDPA Aligned Security",
