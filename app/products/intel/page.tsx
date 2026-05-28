@@ -6,11 +6,11 @@ import TopNavBar from "../../components/home/Navbar";
 
 export default function IntelPage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#f0f9ff] to-[#eef6f0]">
+    <div className="min-h-screen bg-white">
 
       <TopNavBar />
       
-          {/* Hero Section */}
+      {/* Hero Section */}
       <section className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -18,10 +18,10 @@ export default function IntelPage() {
               <span className="bg-[#ffe0f0] text-[#b34e6b] px-4 py-1.5 rounded-full text-sm font-semibold inline-block mb-6">
                 🕵️‍♂️ African Threat Intelligence
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold bg-linear-to-r from-[#166b5f] to-[#2b9a7a] bg-clip-text text-transparent mb-6">
-                African Threats Need African Intelligence
+              <h1 className="text-4xl md:text-5xl font-extrabold text-[#0f172a] mb-6">
+                African Threats Need <span className="text-[#166b5f]">African Intelligence</span>
               </h1>
-              <p className="text-lg text-[#2f5e53] mb-8 leading-relaxed">
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 Encrava Intel monitors the threat sources that matter most to African organisations — local cybercriminal networks, 
                 mobile money fraud syndicates, regional dark web markets, and the threat actors specifically targeting Kenya and Sub-Saharan Africa.
               </p>
@@ -33,10 +33,10 @@ export default function IntelPage() {
                   Request demo
                 </Link>
               </div>
-              <p className="text-sm text-[#4b5563] mt-4">No credit card required · M-Pesa payment available</p>
+              <p className="text-sm text-slate-500 mt-4">No credit card required · M-Pesa payment available</p>
             </div>
-            <div className="bg-linear-to-br from-[#d2eae2] to-[#e0f1ea] rounded-3xl p-8 shadow-xl">
-              <h3 className="text-xl font-bold text-[#1e5a4e] mb-4">🔍 Real-time African Intel</h3>
+            <div className="bg-white border border-black/5 shadow-[0_20px_60px_rgba(15,23,42,0.08)] rounded-3xl p-8">
+              <h3 className="text-xl font-bold text-[#0f172a] mb-4">🔍 Real-time African Intel</h3>
               <div className="space-y-3">
                 {[
                   '📡 3,000+ global + 800+ Africa-specific sources',
@@ -44,12 +44,12 @@ export default function IntelPage() {
                   '🇰🇪 Kiswahili NLP engine & local dark web',
                   '📱 M-Pesa fraud monitoring module'
                 ].map(item => (
-                  <div key={item} className="text-[#2f5e53]">{item}</div>
+                  <div key={item} className="text-slate-600">{item}</div>
                 ))}
               </div>
-              <div className="mt-6 bg-white/80 rounded-2xl p-4">
-                <p className="text-sm italic">"Encrava Intel detected a SIM-swap broker within 90 seconds — proactive defense saved millions."</p>
-                <p className="text-xs font-bold mt-2">— CISO, Tier-1 Kenyan Bank</p>
+              <div className="mt-6 bg-slate-50 rounded-2xl p-4 border border-black/5">
+                <p className="text-sm italic text-slate-600">"Encrava Intel detected a SIM-swap broker within 90 seconds — proactive defense saved millions."</p>
+                <p className="text-xs font-bold text-slate-700 mt-2">— CISO, Tier-1 Kenyan Bank</p>
               </div>
             </div>
           </div>
@@ -57,10 +57,10 @@ export default function IntelPage() {
       </section>
 
       {/* Africa-Specific Sources Section */}
-      <section className="py-16 bg-white/30">
+      <section className="py-16 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#145c4f] mb-4">Africa-Specific Intelligence Sources</h2>
-          <p className="text-[#2f5e53] mb-8">We don't just translate global feeds — we embed inside African underground ecosystems.</p>
+          <h2 className="text-3xl font-bold text-[#0f172a] mb-4">Africa-Specific Intelligence Sources</h2>
+          <p className="text-slate-600 mb-8">We don't just translate global feeds — we embed inside African underground ecosystems.</p>
           <div className="grid md:grid-cols-2 gap-3">
             {[
               'East African Telegram & WhatsApp fraud channels',
@@ -72,9 +72,9 @@ export default function IntelPage() {
               'KE-CIRT/CC, CSIRT-Africa, ZA-CERT, NG-CERT feeds',
               'African Union cyber threat-sharing network'
             ].map(source => (
-              <div key={source} className="flex items-center gap-2 bg-white/80 rounded-full px-4 py-2 border border-green-200">
+              <div key={source} className="flex items-center gap-2 bg-white rounded-full px-4 py-2 border border-black/5 shadow-[0_2px_8px_rgba(15,23,42,0.04)]">
                 <span className="text-[#166b5f]">✓</span>
-                <span className="text-sm text-[#1e4a42]">{source}</span>
+                <span className="text-sm text-slate-700">{source}</span>
               </div>
             ))}
           </div>
@@ -84,8 +84,8 @@ export default function IntelPage() {
       {/* Key Features Table */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#145c4f] mb-8">Key Features — Built for African defenders</h2>
-          <div className="bg-white/80 rounded-2xl overflow-hidden border border-green-200">
+          <h2 className="text-3xl font-bold text-[#0f172a] mb-8">Key Features — Built for African defenders</h2>
+          <div className="bg-white rounded-2xl overflow-hidden border border-black/5 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
             <table className="w-full">
               <tbody>
                 {[
@@ -99,9 +99,9 @@ export default function IntelPage() {
                   ['Executive Threat Briefings', 'Weekly plain-language briefs in English & Kiswahili for board/C-suite.'],
                   ['Full API Access', 'RESTful JSON, complete data export for SIEM/SOAR/custom tools.']
                 ].map(([feature, details]) => (
-                  <tr key={feature} className="border-b border-green-100">
-                    <td className="py-4 px-6 font-semibold text-[#0f5549] w-1/3">{feature}</td>
-                    <td className="py-4 px-6 text-[#2f5e53]">{details}</td>
+                  <tr key={feature} className="border-b border-black/5 last:border-0">
+                    <td className="py-4 px-6 font-semibold text-[#0f172a] w-1/3">{feature}</td>
+                    <td className="py-4 px-6 text-slate-600">{details}</td>
                   </tr>
                 ))}
               </tbody>
@@ -111,23 +111,23 @@ export default function IntelPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-white/30">
+      <section className="py-16 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-[#145c4f] mb-4">Custom Pricing for Every Organisation</h2>
-            <p className="text-lg text-[#2f5e53] max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#0f172a] mb-4">Custom Pricing for Every Organisation</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               We understand that every organisation has unique needs. Get a personalised quote tailored to your security requirements, user count, and deployment preferences.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left side - Why custom pricing */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-green-200">
+            <div className="bg-white rounded-2xl p-8 shadow-[0_10px_30px_rgba(15,23,42,0.04)] border border-black/5">
               <div className="flex items-center gap-3 mb-6">
                 <div className="bg-[#ffe0f0] p-3 rounded-full">
                   <Shield className="w-6 h-6 text-[#b14562]" />
                 </div>
-                <h3 className="text-xl font-bold text-[#145c4f]">Why custom quotes?</h3>
+                <h3 className="text-xl font-bold text-[#0f172a]">Why custom quotes?</h3>
               </div>
               <ul className="space-y-4">
                 {[
@@ -138,13 +138,13 @@ export default function IntelPage() {
                   '✓ Annual subscription — get 2 months free',
                   '✓ M-Pesa, RTGS, and flexible payment terms available'
                 ].map(item => (
-                  <li key={item} className="text-[#2f5e53]">{item}</li>
+                  <li key={item} className="text-slate-600">{item}</li>
                 ))}
               </ul>
             </div>
 
             {/* Right side - Contact form / CTA */}
-            <div className="bg-linear-to-br from-[#166b5f] to-[#0f5549] rounded-2xl p-8 shadow-xl text-white">
+            <div className="bg-[#166b5f] rounded-2xl p-8 shadow-xl text-white">
               <h3 className="text-2xl font-bold mb-4">Get Your Custom Quote</h3>
               <p className="text-white/80 mb-6">Fill in the details and our team will respond within 24 hours with a tailored pricing proposal.</p>
               
@@ -200,8 +200,8 @@ export default function IntelPage() {
           </div>
 
           {/* Additional note */}
-          <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#ffb3c6]">
-            <p className="text-sm text-[#2f5e53]">
+          <div className="mt-8 bg-[#fef4ea] rounded-2xl p-4 border-l-4 border-[#166b5f]">
+            <p className="text-sm text-slate-700">
               💡 <span className="font-semibold">Looking for a bundle?</span> Ask about our Encrava Shield + Intel combined package — proactive threat intelligence plus AI-powered email protection at a discounted rate. NGO and public sector discounts of up to 30% available.
             </p>
           </div>
@@ -212,8 +212,8 @@ export default function IntelPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-[#145c4f] mb-4">Everything in Enterprise (Shirika)</h2>
-            <p className="text-[#2f5e53]">Premium features for large organisations and government entities</p>
+            <h2 className="text-3xl font-bold text-[#0f172a] mb-4">Everything in Enterprise (Shirika)</h2>
+            <p className="text-slate-600">Premium features for large organisations and government entities</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -224,10 +224,10 @@ export default function IntelPage() {
               { icon: <Zap className="w-8 h-8" />, title: "99.9% SLA-backed Uptime", desc: "Enterprise-grade reliability with guaranteed uptime" },
               { icon: <Globe className="w-8 h-8" />, title: "Multi-tenant Support", desc: "Manage multiple subsidiaries or departments from one console" }
             ].map(feature => (
-              <div key={feature.title} className="bg-white rounded-2xl p-6 text-center shadow-md border border-green-200 hover:shadow-lg transition">
+              <div key={feature.title} className="bg-white rounded-2xl p-6 text-center shadow-[0_10px_30px_rgba(15,23,42,0.04)] border border-black/5 hover:shadow-lg transition">
                 <div className="text-[#166b5f] flex justify-center mb-4">{feature.icon}</div>
-                <h3 className="font-bold text-[#145c4f] mb-2">{feature.title}</h3>
-                <p className="text-sm text-[#2f5e53]">{feature.desc}</p>
+                <h3 className="font-bold text-[#0f172a] mb-2">{feature.title}</h3>
+                <p className="text-sm text-slate-600">{feature.desc}</p>
               </div>
             ))}
           </div>
