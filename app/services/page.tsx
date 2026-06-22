@@ -216,7 +216,7 @@ export default function ServicesPage() {
               <h2 className="text-[1.8rem] font-bold text-slate-900">
                 Compliance We Support
               </h2>
-              <div className="w-[140px] h-1 bg-[#166b5f] mx-auto mt-3 rounded-full" />
+              <div className="w-35 h-1 bg-[#166b5f] mx-auto mt-3 rounded-full" />
             </div>
 
             <div className="flex flex-wrap justify-center gap-3">
