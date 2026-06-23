@@ -2,9 +2,12 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, CheckCircle2, CalendarDays, Brain, Users, Clock, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { Shield, CheckCircle2, CalendarDays, Brain, Users, ArrowUpRight, ChevronDownIcon } from "lucide-react";
 import Footer from "../../components/home/Footer";
 import TopNavBar from "../../components/home/Navbar";
+import { ShieldAlert } from "lucide-react";
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function ShieldPage() {
   const features = [
@@ -30,13 +33,50 @@ export default function ShieldPage() {
     "WhatsApp-initiated email phishing"
   ];
 
-  const howItWorks = [
-    { step: "1", title: "Ingest", desc: "Email arrives via API (M365, GWS, on-prem)" },
-    { step: "2", title: "Analyse", desc: "AI analyses 200+ signals in under 2 seconds" },
-    { step: "3", title: "Score", desc: "Threat score 0-100 with explanation" },
-    { step: "4", title: "Act", desc: "Deliver, quarantine, or block based on policy" },
-    { step: "5", title: "Learn", desc: "Continuous improvement from every decision" }
-  ];
+
+const howItWorks = [
+  {
+    step: "01",
+    title: "Ingest",
+    subtitle: "Connect",
+    desc: "Email arrives via API (M365, GWS, on-prem)",
+    label: "Easy Debitum!"
+  },
+  {
+    step: "02",
+    title: "Analyse",
+    subtitle: "Inspect",
+    desc: "AI analyses 200+ signals in under 2 seconds",
+    label: "Super Fast!"
+  },
+  {
+    step: "03",
+    title: "Score",
+    subtitle: "Risk Rating",
+    desc: "Threat score 0-100 with explanation",
+    label: "Smahhhrt!"
+  },
+  {
+    step: "04",
+    title: "Act",
+    subtitle: "Enforce Policy",
+    desc: "Deliver, quarantine, or block based on policy",
+    label: "Easy Process!"
+  },
+  {
+    step: "05",
+    title: "Learn",
+    subtitle: "Improve",
+    desc: "Continuous improvement from every decision",
+    label: "Smart Learning"
+  }
+];
+
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   const integrations = [
     "Microsoft 365 (Exchange Online)",
@@ -47,6 +87,12 @@ export default function ShieldPage() {
     "ServiceNow / Freshdesk",
     "WhatsApp Business API"
   ];
+
+  const [openStep, setOpenStep] = useState<number | null>(0);
+
+  function toggleStep(index: number): void {
+    setOpenStep((prev) => (prev === index ? null : index));
+  }
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
@@ -64,7 +110,7 @@ export default function ShieldPage() {
             {/* LEFT COLUMN */}
             <div>
               <p className="text-[11px] uppercase tracking-[0.28em] text-[#166b5f] font-semibold">
-                🛡️ Encrava Shield
+                Encrava Shield
               </p>
               <h1 className="mt-4 text-4xl md:text-6xl font-bold leading-none tracking-[-0.05em] text-[#0f172a]">
                 Phishing Attacks in Africa{" "}
@@ -132,18 +178,21 @@ export default function ShieldPage() {
                   
                   {/* Real threats we stop daily */}
                   <div className="mb-6">
-                    <h3 className="text-sm font-semibold text-[#0f172a] mb-3">🛡️ Real threats we stop daily</h3>
+                    <h3 className="text-sm font-semibold text-[#0f172a] mb-3">Real threats we stop daily</h3>
                     <div className="space-y-2">
-                      {[
-                        '📱 M-Pesa fake SMS & email scams',
-                        '🏦 KCB / Equity Bank lookalike portals',
-                        '📄 KRA iTax refund phishing',
-                        '🇰🇪 eCitizen & Huduma fraud',
-                        '💼 CEO fraud / BEC targeting finance'
-                      ].map(item => (
-                        <div key={item} className="text-sm text-slate-600">{item}</div>
-                      ))}
-                    </div>
+  {[
+    'M-Pesa fake SMS & email scams',
+    'KCB / Equity Bank lookalike portals',
+    'KRA iTax refund phishing',
+    '🇰🇪 eCitizen & Huduma fraud',
+    'CEO fraud / BEC targeting finance',
+  ].map((item) => (
+    <div key={item} className="flex items-start gap-2">
+      <span className="mt-1 text-[#166b5f]">•</span>
+      <span>{item}</span>
+    </div>
+  ))}
+</div>
                   </div>
                   
                   <div className="bg-slate-50 rounded-xl p-4 mb-6">
@@ -168,66 +217,167 @@ export default function ShieldPage() {
       </section>
 
       {/* African Phishing Threats We Detect */}
-      <section className="py-16 bg-slate-50/30">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <h2 className="text-3xl font-bold text-[#0f172a]">African Phishing Threats We Detect</h2>
-          <div className="w-16 h-0.5 bg-[#166b5f] mt-3 mb-4" />
-          <p className="text-slate-600 mb-8">Global platforms miss local context. Shield sees everything.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {threats.map((threat, idx) => (
-              <div key={idx} className="flex items-center gap-2 bg-white border border-black/5 p-3 shadow-[0_2px_8px_rgba(15,23,42,0.04)]">
-                <span className="text-[#166b5f] text-lg">⚠️</span>
-                <span className="text-sm text-slate-700">{threat}</span>
-              </div>
-            ))}
+    
+
+<section className="py-12 bg-slate-50/30">
+  <div className="max-w-7xl mx-auto px-5 md:px-8">
+    {/* Header */}
+    <div className="max-w-3xl mb-8">
+      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#166b5f]/10 border border-[#166b5f]/15 rounded-full mb-4">
+        <ShieldAlert className="w-4 h-4 text-[#166b5f]" />
+        <span className="text-xs font-semibold tracking-wide uppercase text-[#166b5f]">
+          Threat Intelligence
+        </span>
+      </div>
+
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0f172a]">
+        African Phishing Threats We Detect
+      </h2>
+
+      <p className="mt-3 text-lg text-slate-600 leading-relaxed">
+        Generic scanners miss regional attack patterns. Encrava Shield is
+        trained to identify phishing campaigns targeting African users,
+        institutions, and businesses.
+      </p>
+    </div>
+
+    {/* Threat Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {threats.map((threat, idx) => (
+        <div
+          key={idx}
+          className="group relative overflow-hidden bg-white border border-slate-200 rounded-2xl p-4 transition-all duration-300 "
+        >
+          {/* Accent */}
+          <div className="absolute left-0 top-0 h-full w-1 bg-[#166b5f]" />
+
+          <div className="flex items-start gap-3 pl-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#166b5f]/10 shrink-0">
+              <ShieldAlert className="w-5 h-5 text-[#166b5f]" />
+            </div>
+
+            <div>
+              <span className="text-sm font-medium text-slate-800 leading-relaxed">
+                {threat}
+              </span>
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Key Features Table */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <h2 className="text-3xl font-bold text-[#0f172a]">Key Features — African-first protection</h2>
-          <div className="w-16 h-0.5 bg-[#166b5f] mt-3 mb-8" />
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white border border-black/5 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
-              <tbody>
-                {features.map((feature, idx) => (
-                  <tr key={idx} className="border-b border-black/5 last:border-0">
-                    <td className="p-5 font-semibold text-[#0f172a] w-1/3">{feature.name}</td>
-                    <td className="p-5 text-slate-600">{feature.desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+    <section className="relative overflow-hidden bg-white py-12">
+  <div className="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+    <h2 className="text-4xl font-bold text-[#0f172a]">
+      Key Features — African-First Protection
+    </h2>
+
+    <div className="w-17.5 h-1 bg-[#166b5f] mt-3 mb-4" />
+
+    <p className="text-slate-500 max-w-2xl mb-10 leading-relaxed">
+      Purpose-built to identify local phishing campaigns, impersonation attacks,
+      fraudulent domains, and social engineering threats targeting African
+      businesses and consumers.
+    </p>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {features.map((feature, idx) => (
+        <div
+          key={idx}
+          className="bg-[#166b5f] p-6 shadow-[0_18px_40px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1"
+        >
+          <div className="w-10 h-0.75 bg-white mb-4" />
+
+          <h3 className="text-white font-bold text-lg mb-3">
+            {feature.name}
+          </h3>
+
+          <p className="text-white/80 text-sm leading-relaxed">
+            {feature.desc}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+
+
+
+</section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-16 bg-slate-50/30">
-        <div className="max-w-7xl mx-auto px-5 md:px-8">
-          <h2 className="text-3xl font-bold text-center text-[#0f172a]">How Encrava Shield Works</h2>
-          <div className="w-16 h-0.5 bg-[#166b5f] mx-auto mt-3 mb-10" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6">
-            {howItWorks.map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-12 h-12 bg-[#166b5f] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3">
-                  {item.step}
-                </div>
-                <h3 className="font-bold text-[#0f172a]">{item.title}</h3>
-                <p className="text-xs text-slate-500 mt-1">{item.desc}</p>
-              </div>
-            ))}
+  <section id="how-it-works" className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left - Plain Image */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+            <img 
+              src="/images/products/shield10.png" 
+              alt="Secure Investment Process" 
+              className="max-w-full h-auto rounded-2xl shadow-lg"
+            />
+          </div>
+
+          {/* Right - FAQ Style Accordion */}
+          <div className="lg:col-span-7">
+            <div className="mb-10 text-center lg:text-left">
+              <h2 className="text-3xl font-bold text-[#0f172a]">
+                Securely / Collateral Backed Investment
+              </h2>
+              <div className="w-24 h-0.75 bg-[#fffff] mx-auto lg:mx-0 mt-3" />
+              <p className="mt-4 text-slate-600 text-base">
+                From setup to everyday use, we've made investment effortless.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {howItWorks.map((item, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div key={index} className="faq">
+                    <button
+                      className="question"
+                      onClick={() => toggle(index)}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center font-bold text-lg shrink-0">
+                          {item.step}
+                        </div>
+                        <div>
+                          <span className="font-semibold">{item.title}</span>
+                          {item.subtitle && (
+                            <span className="block text-sm text-white/70 mt-0.5">{item.subtitle}</span>
+                          )}
+                        </div>
+                      </div>
+                      {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    </button>
+
+                    <div className={`answer ${isOpen ? "open" : ""}`}>
+                      <p>{item.desc}</p>
+                      <div className="mt-4 inline-block bg-white/20 text-white text-xs font-medium px-5 py-2 rounded-3xl">
+                        {item.label}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </section>
+      </div>
 
+      {/* FAQ Matching Styles */}
+      
+    </section>
       {/* Integration Support */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <h2 className="text-3xl font-bold text-[#0f172a]">Integration Support</h2>
-          <div className="w-16 h-0.5 bg-[#166b5f] mt-3 mb-8" />
+          <div className="w-16 h-0.5 bg-[#fffff] mt-3 mb-8" />
           <div className="flex flex-wrap gap-3">
             {integrations.map((integration, idx) => (
               <span key={idx} className="bg-white border border-black/5 px-4 py-2 rounded-full text-sm text-slate-700 shadow-[0_2px_4px_rgba(15,23,42,0.04)]">
@@ -242,7 +392,7 @@ export default function ShieldPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-slate-50/30">
+      <section className="py-8 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <h2 className="text-3xl font-bold text-center text-[#0f172a]">Simple, transparent pricing</h2>
           <div className="w-16 h-0.5 bg-[#166b5f] mx-auto mt-3 mb-4" />
@@ -365,6 +515,47 @@ export default function ShieldPage() {
           font-size: 12px;
           color: #64748b;
           margin-top: 3px;
+        }
+      `}</style>
+      <style jsx>{`
+        .faq {
+          background: #166b5f;
+          border: none;
+          overflow: hidden;
+          border-radius: 12px;
+        }
+        .question {
+          width: 100%;
+          padding: 18px 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #166b5f;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+          font-size: 15px;
+          font-weight: 600;
+          text-align: left;
+        }
+        .answer {
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.35s ease;
+          padding: 0 20px;
+          background: #166b5f;
+        }
+        .answer.open {
+          max-height: 320px;
+          padding: 0 20px 20px 20px;
+        }
+        .answer p {
+          font-size: 14.5px;
+          color: rgba(255,255,255,0.9);
+          line-height: 1.65;
+        }
+        svg {
+          color: white;
         }
       `}</style>
     </div>

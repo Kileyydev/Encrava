@@ -43,7 +43,7 @@ export default function EncravaProductShowcase() {
   const slide = slides[index];
 
   return (
-    <section className="relative w-full bg-[#166b5f] text-white overflow-hidden pt-6 pb-16">
+    <section className="relative w-full bg-[#166b5f] text-white overflow-hidden pt-26 pb-16">
 
       {/* container */}
       <div className="max-w-6xl mx-auto px-4 md:px-6 relative">
